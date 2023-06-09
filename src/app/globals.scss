@@ -1,11 +1,11 @@
 :root {
-  .menu {
-    opacity: 0;
-  }
-
-  .view {
+  .header-menu {
     opacity: 1;
     height: 80vh;
     background-color: black;
+  }
+
+  .hidden {
+    opacity: 0;
   }
 }
