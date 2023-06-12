@@ -1,4 +1,3 @@
-import { ReduxProvider } from '@/redux/provider';
 import { Inter } from 'next/font/google';
 import './globals.scss';
 import Header from './components/header';
@@ -20,7 +19,7 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         <Header />
-        <ReduxProvider>{children}</ReduxProvider>
+        {children}
         <Footer />
       </body>
     </html>
