@@ -27,26 +27,25 @@
 
 .line {
   display: block;
-  width: 30px;
+  width: 20px;
   height: 4px;
   background-color: #C63575 ;
+  transition: transform 0.3s ease-out,
+  opacity 0.1s ease-out;
   margin-bottom: 4px;
   margin-right: 20px;
-}
+} 
 
 .burger-menu.active .line:nth-child(1) {
-  transform: rotate(45deg) translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
- 
+  transform: rotate(135deg) translate(3px, -4px);
+  width: 25px;
 }
 .burger-menu.active .line:nth-child(2) {
   opacity: 0;
 }
 .burger-menu.active .line:nth-child(3) {
-  transform: rotate(45deg) translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+  transform: rotate(-135deg) translate(7px, 8px);
+  width: 25px;
 }
 
 .header-menu ul {
