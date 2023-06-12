@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className='header-container'>
+      <div className="header-container">
         <a href="/">
           <Image
             src={logo}
@@ -20,53 +20,65 @@ export default function Header() {
             priority={true}
           />
         </a>
-        <div className={`burger-menu ${navOpen ? 'active cross' : ''}`} 
-        onClick={handleToggle}
+        <div
+          className={`burger-menu ${navOpen ? 'active cross' : ''}`}
+          onClick={handleToggle}
           //className={navOpen ? 'burger-menu__cross' : 'burger-menu__line'}
           //onClick={handleToggle}
         >
           {/* toggle class for switch icon burger to cross */}
           {/* BurgerMenu */}
-          <span className='line'></span>
-          <span className='line'></span>
-          <span className='line'></span>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
         </div>
       </div>
-      <div className={`header-menu ${navOpen ? '' : 'hidden'} `}>{/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
+      <div className={`header-menu ${navOpen ? '' : 'hidden'} `}>
+        {/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
         {/* toggle class for hide menu */}
         <ul>
           <li>
-            <a className='header-link' href="/">Accueil</a>
+            <a className="header-link" href="/">
+              Accueil
+            </a>
           </li>
           <li>
-            <a className='header-link' href="/team">Team</a>
+            <a className="header-link" href="/team">
+              Team
+            </a>
           </li>
           <li>
-            <a className='header-link' href="/articles">Articles</a>
+            <a className="header-link" href="/articles">
+              Articles
+            </a>
           </li>
           <li>
-            <a className='header-link' href="/calendrier">Calendrier</a>
+            <a className="header-link" href="/calendrier">
+              Calendrier
+            </a>
           </li>
           <li>
-            <a className='header-link' href="/recrutement">Recrutement</a>
+            <a className="header-link" href="/recrutement">
+              Recrutement
+            </a>
           </li>
         </ul>
-        <div className='social-link'>
-          <a href='lien_vers_youtube'>
-            <div className='social-item'>
-              <img src='logo_youtube' alt='Youtube' />
+        <div className="social-link">
+          <a href="lien_vers_youtube">
+            <div className="social-item">
+              <img src="logo_youtube" alt="Youtube" />
               <span>Chaine youtube</span>
             </div>
           </a>
-          <a href='lien_vers_twitter'>
-            <div className='social-item'>
-              <img src='logo_twitter' alt='Twitter' />
+          <a href="lien_vers_twitter">
+            <div className="social-item">
+              <img src="logo_twitter" alt="Twitter" />
               <span>Page Twitter</span>
             </div>
           </a>
-          <a href='lien_vers_twitch'>
-            <div className='social-item'>
-              <img src='logo_twitch' alt='Twitch' />
+          <a href="lien_vers_twitch">
+            <div className="social-item">
+              <img src="logo_twitch" alt="Twitch" />
               <span>Chaine Twitch</span>
             </div>
           </a>
