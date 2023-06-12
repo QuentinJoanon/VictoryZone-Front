@@ -18,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <div className="wrapper">
+          <Header />
+          <main className="content">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

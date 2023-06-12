@@ -2,11 +2,21 @@
 
 :root {
   font-size: 62.5%; // Règle des 62.5% (ex: 23px = 2.3rem)
+  background-color: #142e4a;
+
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    flex: 1;
+  }
 
   .header-menu {
     opacity: 1;
     height: auto;
-    background-color: #142E4A;
+    background-color: #142e4a;
     visibility: visible;
     max-height: 100vh;
     transition: max-height 0.3s ease;
@@ -31,13 +41,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #123A56;
+    background-color: #123a56;
 
     .line {
       display: block;
       width: 20px;
       height: 4px;
-      background-color: #C63575;
+      background-color: #c63575;
       transition: transform 0.3s ease-out, opacity 0.1s ease-out;
       margin-bottom: 4px;
       margin-right: 20px;
@@ -97,18 +107,20 @@
   // Footer
   .footer {
     width: 100%;
-    
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
 
     &__container {
       display: flex;
       justify-content: space-around;
-      background-color: #f0f;
+      background-color: #123a56;
     }
     &__logo {
       justify-content: flex-start;
       align-items: flex-end;
     }
-    &__links {     
+    &__links {
       justify-content: center;
       align-items: flex-start;
     }
@@ -117,11 +129,21 @@
       flex-wrap: wrap;
       justify-content: flex-start;
       align-items: flex-start;
-      }
+      margin-top: 20px;
+      color: white;
+    }
+    &__link {
+      color: white;
+      text-decoration: none;
+    }
     &__social {
       display: flex;
       justify-content: flex-end;
     }
+    &__additional-link {
+      text-decoration: none;
+      color: white;
+      padding: 20px;
     }
-
   }
+}
