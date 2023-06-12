@@ -36,21 +36,41 @@ export default function Header() {
         {/* toggle class for hide menu */}
         <ul>
           <li>
-            <a href="/">Accueil</a>
+            <a className='header-link' href="/">Accueil</a>
           </li>
           <li>
-            <a href="/team">Team</a>
+            <a className='header-link' href="/team">Team</a>
           </li>
           <li>
-            <a href="/articles">Articles</a>
+            <a className='header-link' href="/articles">Articles</a>
           </li>
           <li>
-            <a href="/calendrier">Calendrier</a>
+            <a className='header-link' href="/calendrier">Calendrier</a>
           </li>
           <li>
-            <a href="/recrutement">Recrutement</a>
+            <a className='header-link' href="/recrutement">Recrutement</a>
           </li>
         </ul>
+        <div className='social-link'>
+          <a href='lien_vers_youtube'>
+            <div className='social-item'>
+              <img src='logo_youtube' alt='Youtube' />
+              <span>Chaine youtube</span>
+            </div>
+          </a>
+          <a href='lien_vers_twitter'>
+            <div className='social-item'>
+              <img src='logo_twitter' alt='Twitter' />
+              <span>Page Twitter</span>
+            </div>
+          </a>
+          <a href='lien_vers_twitch'>
+            <div className='social-item'>
+              <img src='logo_twitch' alt='Twitch' />
+              <span>Chaine Twitch</span>
+            </div>
+          </a>
+        </div>
       </div>
     </header>
   );
