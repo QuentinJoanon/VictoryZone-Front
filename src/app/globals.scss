@@ -1,11 +1,127 @@
+@import '../styles/reset.scss';
+
 :root {
+  font-size: 62.5%; // Règle des 62.5% (ex: 23px = 2.3rem)
+
   .header-menu {
     opacity: 1;
-    height: 80vh;
-    background-color: black;
+    height: auto;
+    background-color: #142E4A;
+    visibility: visible;
+    max-height: 100vh;
+    transition: max-height 0.3s ease;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      list-style-type: none;
+    }
+
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
   }
 
-  .hidden {
-    opacity: 0;
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #123A56;
+
+    .line {
+      display: block;
+      width: 20px;
+      height: 4px;
+      background-color: #C63575;
+      transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+      margin-bottom: 4px;
+      margin-right: 20px;
+    }
+
+    .burger-menu.active {
+      .line:nth-child(1) {
+        transform: rotate(135deg) translate(3px, -4px);
+        width: 25px;
+      }
+
+      .line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .line:nth-child(3) {
+        transform: rotate(-135deg) translate(7px, 8px);
+        width: 25px;
+      }
+    }
   }
-}
+
+  .header-link {
+    color: white;
+    font-size: 2.3rem;
+    text-decoration: none;
+
+    &:hover {
+      color: red;
+    }
+  }
+
+  .social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 10px;
+
+      img {
+        width: 50px; //Ajuster la taille
+        height: 50px; //Ajuster la taille
+      }
+
+      span {
+        color: white;
+        font-size: 1.6rem;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  // Footer
+  .footer {
+    width: 100%;
+    
+
+    &__container {
+      display: flex;
+      justify-content: space-around;
+      background-color: #f0f;
+    }
+    &__logo {
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+    &__links {     
+      justify-content: center;
+      align-items: flex-start;
+    }
+    &__links-list {
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      }
+    &__social {
+      display: flex;
+      justify-content: flex-end;
+    }
+    }
+
+  }
