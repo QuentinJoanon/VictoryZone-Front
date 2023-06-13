@@ -109,6 +109,7 @@
   // --     --
   .footer {
     width: 100%;
+
     position: sticky;
     bottom: 0;
     z-index: 1;
@@ -131,21 +132,25 @@
       flex-wrap: wrap;
       justify-content: flex-start;
       align-items: flex-start;
+
       margin-top: 20px;
       color: white;
     }
     &__link {
       color: white;
       text-decoration: none;
+
     }
     &__social {
       display: flex;
       justify-content: flex-end;
     }
+
     &__additional-link {
       text-decoration: none;
       color: white;
       padding: 20px;
     }
+
   }
 }

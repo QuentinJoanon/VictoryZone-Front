@@ -1,4 +1,10 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
+import axios, { AxiosError } from 'axios';
+import DashboardMenu from './dashboard-menu';
+
+const API_URL =
+  'https://projet-14-victory-zone-back-production.up.railway.app/';
 
 export default function Login() {
   const userRef = useRef<HTMLInputElement>(null);
@@ -19,21 +25,37 @@ export default function Login() {
     setErrMsg('');
   }, [email, password]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    localStorage.setItem('isAdmin', 'true');
-    console.log(email, password);
-    setEmail('');
-    setPassword('');
-    setSuccess(true);
-  };
+    try {
+      const response = await axios.post(`${API_URL}api/auth/login`, {
+        email: email,
+        password: password,
+      });
+      if (response.data.data.permission_level === 1) {
+        localStorage.setItem('isAdmin', 'true');
+        localStorage.setItem('accessToken', response.data.data.accessToken);
+        localStorage.setItem('refreshToken', response.data.data.refreshToken);
+      }
+      setSuccess(true);
+    } catch (error: AxiosError | any) {
+      if (!error?.response) {
+        setErrMsg('Le serveur ne répond pas');
+      } else if (error.response?.status === 400) {
+        setErrMsg('Email ou mot de passe incorrect');
+      } else if (error.response?.status === 401) {
+        setErrMsg('Email ou mot de passe incorrect');
+      } else {
+        setErrMsg('Email ou mot de passe incorrect');
+      }
+      errRef.current!.focus();
+    }
+  }
 
   return (
     <>
       {success ? (
-        <section>
-          <h1>Vous êtes connecté !</h1>
-        </section>
+        <DashboardMenu />
       ) : (
         <div className="login">
           <p
