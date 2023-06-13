@@ -9,15 +9,18 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <a href="/" className="footer__logo">
-          <Image
-            src={logo}
-            width={100}
-            height={100}
-            alt="Logo VictoryZone"
-            priority={true}
-          />
-        </a>
+        <div className="footer__image">
+          <a href="/">
+            <Image
+              className="footer__logo"
+              src={logo}
+              // width={50}
+              // height={50}
+              alt="Logo VictoryZone"
+              priority={true}
+            />
+          </a>
+        </div>
 
         <div className="footer__links">
           <ul className="footer__links-list">
@@ -46,21 +49,19 @@ export default function Footer() {
 
         <div className="footer__separator"></div>
 
-        <div className="footer__additional-link">
-          <div className="footer__additional-links">
-            <ul className="footer__additional-links-list">
-              <li>
-                <a href="/dashboard" className="footer__additional-link">
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a href="/cgu" className="footer__additional-link">
-                  CGU
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div className="footer__additional-links">
+          <ul className="footer__additional-links-list">
+            <li>
+              <a href="/dashboard" className="footer__link">
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="/cgu" className="footer__link">
+                CGU
+              </a>
+            </li>
+          </ul>
           <div className="footer__social">
             <a href="https://www.youtube.com" className="footer__social-link">
               <Image src={youtube} width={20} height={20} alt="Logo Youtube" />
@@ -68,7 +69,7 @@ export default function Footer() {
             <a href="https://www.twitch.tv" className="footer__social-link">
               <Image src={twitch} width={20} height={20} alt="Logo Twitch" />
             </a>
-            <a href="https://www.youtube.com" className="footer__social-link">
+            <a href="https://www.twitter.com" className="footer__social-link">
               <Image src={twitter} width={20} height={20} alt="Logo Twitter" />
             </a>
           </div>
