@@ -63,26 +63,6 @@ export default function Header() {
             </a>
           </li>
         </ul>
-        <div className="social-link">
-          <a href="lien_vers_youtube">
-            <div className="social-item">
-              <img src="logo_youtube" alt="Youtube" />
-              <span>Chaine youtube</span>
-            </div>
-          </a>
-          <a href="lien_vers_twitter">
-            <div className="social-item">
-              <img src="logo_twitter" alt="Twitter" />
-              <span>Page Twitter</span>
-            </div>
-          </a>
-          <a href="lien_vers_twitch">
-            <div className="social-item">
-              <img src="logo_twitch" alt="Twitch" />
-              <span>Chaine Twitch</span>
-            </div>
-          </a>
-        </div>
       </div>
     </header>
   );

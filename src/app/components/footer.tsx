@@ -1,6 +1,9 @@
 'use client';
 import logo from '../../assets/logo.png';
 import Image from 'next/image';
+import twitch from '../../../public/twitch.svg';
+import youtube from '../../../public/youtube.svg';
+import twitter from '../../../public/twitter.svg';
 
 export default function Footer() {
   return (
@@ -60,25 +63,31 @@ export default function Footer() {
           </div>
           <div className="footer__social">
             <a href="https://www.youtube.com" className="footer__social-link">
-              <img
-                src="youtube logo"
-                alt="Youtube"
-                className="footer__social-icon"
+              <Image
+                src={youtube}
+                width={20}
+                height={20}
+                alt="Logo Youtube"
+                priority={true}
               />
             </a>
-            <a href="https://www.twitter.com" className="footer__social-link">
-              <img
-                src="twitter logo"
-                alt="Twitter"
-                className="footer__social-icon"
+            <a href="https://www.youtube.com" className="footer__social-link">
+              <Image
+                src={twitch}
+                width={20}
+                height={20}
+                alt="Logo Twitch"
+                priority={true}
               />
-            </a>
-            <a href="https://www.twitch.tv" className="footer__social-link">
-              <img
-                src="twitch logo"
-                alt="Twitch"
-                className="footer__social-icon"
-              />
+              <a href="https://www.youtube.com" className="footer__social-link">
+                <Image
+                  src={twitter}
+                  width={20}
+                  height={20}
+                  alt="Logo Twitter"
+                  priority={true}
+                />
+              </a>
             </a>
           </div>
         </div>
