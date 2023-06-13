@@ -6,8 +6,8 @@ export default function DashboardLayout({
   dashboard: JSX.Element;
   login: JSX.Element;
 }) {
-  const isAdmin = localStorage.getItem('isAdmin');
-  console.log(isAdmin);
+  const isAdmin =
+    typeof window !== 'undefined' && localStorage.getItem('isAdmin');
   if (isAdmin === 'true') {
     return dashboard;
   } else {

@@ -7,17 +7,15 @@ export default function DashboardMenu() {
     localStorage.removeItem('refreshToken');
   };
   return (
-    <header>
-      <div className={'dashboard-menu'}>
-        {/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
-        <ul>
-          <li>
-            <a className="header-link" href="/dashboard" onClick={handleSubmit}>
-              Deconnexion
-            </a>
-          </li>
-        </ul>
-      </div>
-    </header>
+    <div className={'dashboard-menu'}>
+      {/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
+      <ul>
+        <li>
+          <a className="header-link" href="/dashboard" onClick={handleSubmit}>
+            Deconnexion
+          </a>
+        </li>
+      </ul>
+    </div>
   );
 }
