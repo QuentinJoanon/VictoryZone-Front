@@ -3,6 +3,8 @@
 export default function DashboardMenu() {
   const handleSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     localStorage.removeItem('isAdmin');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   };
   return (
     <header>
