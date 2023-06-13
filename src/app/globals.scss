@@ -6,7 +6,7 @@
   .header-menu {
     opacity: 1;
     height: auto;
-    background-color: #142E4A;
+    background-color: #142e4a;
     visibility: visible;
     max-height: 100vh;
     transition: max-height 0.3s ease;
@@ -31,13 +31,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #123A56;
+    background-color: #123a56;
 
     .line {
       display: block;
       width: 20px;
       height: 4px;
-      background-color: #C63575;
+      background-color: #c63575;
       transition: transform 0.3s ease-out, opacity 0.1s ease-out;
       margin-bottom: 4px;
       margin-right: 20px;
@@ -97,7 +97,6 @@
   // Footer
   .footer {
     width: 100%;
-    
 
     &__container {
       display: flex;
@@ -108,7 +107,7 @@
       justify-content: flex-start;
       align-items: flex-end;
     }
-    &__links {     
+    &__links {
       justify-content: center;
       align-items: flex-start;
     }
@@ -117,11 +116,10 @@
       flex-wrap: wrap;
       justify-content: flex-start;
       align-items: flex-start;
-      }
+    }
     &__social {
       display: flex;
       justify-content: flex-end;
     }
-    }
-
   }
+}
