@@ -3,6 +3,7 @@
 :root {
   font-size: 62.5%; // Règle des 62.5% (ex: 23px = 2.3rem)
   background-color: #142e4a;
+  color: white;
 
   // ***** HEADER *****
   .header-menu {
@@ -12,6 +13,7 @@
     visibility: visible;
     max-height: 100vh;
     transition: max-height 0.3s ease;
+    font-size: 1.6rem;
 
     ul {
       display: flex;
@@ -109,7 +111,7 @@
   // --     --
   .footer {
     width: 100%;
-
+    font-size: 1.6rem;
     position: sticky;
     bottom: 0;
     z-index: 1;
@@ -126,12 +128,7 @@
       justify-content: center;
       align-items: center;
     }
-    &__logo {
-      width: 100%;
-      height: auto;
-    }
     &__links {
-
       display: flex;
       width: 33.33%;
       padding-left: 20px;
@@ -159,6 +156,5 @@
         margin-right: 10px;
       }
     }
-
   }
 }

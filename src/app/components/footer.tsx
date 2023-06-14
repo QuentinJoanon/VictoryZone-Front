@@ -14,8 +14,8 @@ export default function Footer() {
             <Image
               className="footer__logo"
               src={logo}
-              // width={50}
-              // height={50}
+              width={100}
+              height={100}
               alt="Logo VictoryZone"
               priority={true}
             />
