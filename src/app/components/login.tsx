@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
 import DashboardMenu from './dashboard-menu';
+import '../dashboard/@login/login.scss';
 
 const API_URL =
   'https://projet-14-victory-zone-back-production.up.railway.app/';
