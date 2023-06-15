@@ -1,44 +1,25 @@
 'use client';
 
 import { useEffect } from 'react';
-import axios from 'axios';
-import Article from '../components/Article';
-import { useArticleContext, ArticleData } from '../context/articles';
+import { useArticleContext, ArticleData } from '../context/Article';
+import { AllArticles, fetchArticles } from '../components_api/ArticlesList';
 
 const API_URL =
   'https://projet-14-victory-zone-back-production.up.railway.app/';
 
+/**
+ * Renders a list of articles fetched from the server and displays them on the screen.
+ *
+ * @return {JSX.Element} The main component with a list of articles.
+ */
 export default function Articles() {
-  // const [articlesList, setArticlesList] = useState<ArticleData[]>([]);
-  const { articlesList, setArticlesList } = useArticleContext();
+  const { setArticlesList } = useArticleContext();
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}api/articles`)
-      .then((response) => {
-        setArticlesList(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    fetchArticles(setArticlesList);
+  });
 
-  const articles = articlesList.map((article: ArticleData) => (
-    <Article
-      key={article.id}
-      id={article.id}
-      title={article.title}
-      content={article.content}
-      author={article.author}
-      large_image={article.large_image}
-      created_at={article.created_at}
-      categories={
-        Array.isArray(article.categories)
-          ? article.categories.map((category) => category.label)
-          : []
-      }
-    />
-  ));
+  const articles = AllArticles();
 
   return (
     <main>

@@ -1,6 +1,6 @@
-import { ArticleData } from '../context/articles';
+import { ArticleData } from '../context/Article';
 
-export default function Article({
+export default function CardArticle({
   id,
   title,
   content,

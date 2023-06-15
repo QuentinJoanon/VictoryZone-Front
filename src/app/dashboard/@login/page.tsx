@@ -1,6 +1,6 @@
 'use client';
 
-import Login from '../../components/login';
+import Login from '../../components/Login';
 
 export default function Dashboard() {
   return (
