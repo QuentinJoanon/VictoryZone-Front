@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Renders the dashboard menu component.
+ *
+ * @return {JSX.Element} The dashboard menu component.
+ */
 export default function DashboardMenu() {
   const handleSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     localStorage.removeItem('isAdmin');
