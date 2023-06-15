@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import Article from '../components/Article';
+import { useArticleContext } from '../context/articles';
 
 export interface ArticleData {
   id: number;
@@ -11,28 +12,28 @@ export interface ArticleData {
   author: string;
   large_image: string;
   created_at: string;
-  categories?: string;
+  categories?: any | string;
 }
 
 const API_URL =
   'https://projet-14-victory-zone-back-production.up.railway.app/';
 
 export default function Articles() {
-  const [articlesList, setArticlesList] = useState<ArticleData[]>([]);
+  // const [articlesList, setArticlesList] = useState<ArticleData[]>([]);
+  const { articlesList, setArticlesList } = useArticleContext();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${API_URL}api/articles`);
+    axios
+      .get(`${API_URL}api/articles`)
+      .then((response) => {
         setArticlesList(response.data.data);
-      } catch (error: AxiosError | any) {
+      })
+      .catch((error) => {
         console.log(error);
-      }
-    };
-    fetchData();
+      });
   }, []);
 
-  const articles = articlesList.map((article) => (
+  const articles = articlesList.map((article: ArticleData) => (
     <Article
       key={article.id}
       id={article.id}
@@ -41,7 +42,11 @@ export default function Articles() {
       author={article.author}
       large_image={article.large_image}
       created_at={article.created_at}
-      categories={article.categories?.map((category) => category.label)}
+      categories={
+        Array.isArray(article.categories)
+          ? article.categories.map((category) => category.label)
+          : []
+      }
     />
   ));
 
