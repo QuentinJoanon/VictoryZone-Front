@@ -24,7 +24,7 @@ export function fetchArticles(
 }
 
 export function AllArticles() {
-  const { articlesList, setArticlesList } = useArticleContext();
+  const { articlesList } = useArticleContext();
   const articles = articlesList.map((article: ArticleData) => (
     <CardArticle
       key={article.id}

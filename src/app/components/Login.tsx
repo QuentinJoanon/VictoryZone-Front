@@ -34,7 +34,6 @@ export default function Login() {
         password: password,
       });
       if (response.data.data.permission_level === 1) {
-        localStorage.setItem('isAdmin', 'true');
         localStorage.setItem('accessToken', response.data.data.accessToken);
         localStorage.setItem('refreshToken', response.data.data.refreshToken);
       }

@@ -1,11 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useArticleContext, ArticleData } from '../context/Article';
+import { useArticleContext } from '../context/Article';
 import { AllArticles, fetchArticles } from '../components_api/ArticlesList';
-
-const API_URL =
-  'https://projet-14-victory-zone-back-production.up.railway.app/';
 
 /**
  * Renders a list of articles fetched from the server and displays them on the screen.

@@ -1,6 +1,6 @@
 'use client';
 
-import DashboardMenu from '@/app/components/dashboard-menu';
+import DashboardMenu from '@/app/components/DashboardMenu';
 
 export default function DashboardHome() {
   return (
