@@ -2,10 +2,28 @@
 
 import { createContext, useContext, useState } from 'react';
 
-const ArticlesContext = createContext({});
+export interface ArticleData {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  large_image: string;
+  created_at: string;
+  categories?: any | string;
+}
 
-export const ArticlesContextProvider = ({ children }) => {
-  const [articlesList, setArticlesList] = useState([]);
+interface ArticleContextType {
+  articlesList: ArticleData[];
+  setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>;
+}
+
+const ArticlesContext = createContext<ArticleContextType>({
+  articlesList: [],
+  setArticlesList: () => {},
+});
+
+export const ArticlesContextProvider = ({ children }: any) => {
+  const [articlesList, setArticlesList] = useState<ArticleData[]>([]);
 
   return (
     <ArticlesContext.Provider value={{ articlesList, setArticlesList }}>

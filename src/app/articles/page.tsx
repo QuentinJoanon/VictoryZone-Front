@@ -1,19 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import axios, { AxiosError } from 'axios';
+import { useEffect } from 'react';
+import axios from 'axios';
 import Article from '../components/Article';
-import { useArticleContext } from '../context/articles';
-
-export interface ArticleData {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  large_image: string;
-  created_at: string;
-  categories?: any | string;
-}
+import { useArticleContext, ArticleData } from '../context/articles';
 
 const API_URL =
   'https://projet-14-victory-zone-back-production.up.railway.app/';

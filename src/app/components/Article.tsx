@@ -1,4 +1,4 @@
-import { ArticleData } from '../articles/page';
+import { ArticleData } from '../context/articles';
 
 export default function Article({
   id,
