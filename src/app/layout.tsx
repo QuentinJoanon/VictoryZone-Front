@@ -1,7 +1,7 @@
-import { Inter } from 'next/font/google';
 import './globals.scss';
-import Header from './components/header';
-import Footer from './components/footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { ArticlesContextProvider } from './context/Article';
 
 export const metadata = {
   title: 'VictoryZone',
@@ -18,7 +18,9 @@ export default function RootLayout({
       <body>
         <div className="wrapper">
           <Header />
-          <main className="content">{children}</main>
+          <ArticlesContextProvider>
+            <main className="content">{children}</main>
+          </ArticlesContextProvider>
           <Footer />
         </div>
       </body>
