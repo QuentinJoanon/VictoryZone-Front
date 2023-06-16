@@ -2,6 +2,7 @@ import './globals.scss';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { ArticlesContextProvider } from './context/Article';
+import { CalendarContextProvider } from './context/Calendar';
 
 export const metadata = {
   title: 'VictoryZone',
@@ -19,7 +20,9 @@ export default function RootLayout({
         <div className="wrapper">
           <Header />
           <ArticlesContextProvider>
-            <main className="content">{children}</main>
+            <CalendarContextProvider>
+              <main className="content">{children}</main>
+            </CalendarContextProvider>
           </ArticlesContextProvider>
           <Footer />
         </div>

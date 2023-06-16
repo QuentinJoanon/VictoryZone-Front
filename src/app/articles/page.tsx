@@ -15,9 +15,10 @@ export default function Articles() {
 
   useEffect(() => {
     fetchArticles(setArticlesList);
-  });
+  }, [setArticlesList]);
 
   const articles = AllArticles();
+  console.log(articles);
 
   return (
     <main>
