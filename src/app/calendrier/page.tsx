@@ -21,8 +21,10 @@ export default function Calendar() {
 
   return (
     <main>
-      <h1>Calendrier</h1>
+      <h1>CALENDRIER</h1>
+      <h2>PROCHAINS MATCHS</h2>
       <div>{futureCalendars}</div>
+      <h2>DERNIERS RESULTATS</h2>
     </main>
   );
 }
