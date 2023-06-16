@@ -18,7 +18,6 @@ export default function Articles() {
   }, [setArticlesList]);
 
   const articles = AllArticles();
-  console.log(articles);
 
   return (
     <main>

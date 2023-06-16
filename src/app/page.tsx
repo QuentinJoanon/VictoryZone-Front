@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { HomeArticles, fetchArticles } from './components_api/ArticlesList';
+import { AllArticles, fetchHomeArticles } from './components_api/ArticlesList';
 import { useArticleContext } from './context/Article';
 import './index.scss';
 
@@ -9,10 +9,10 @@ export default function Home() {
   const { setArticlesList } = useArticleContext();
 
   useEffect(() => {
-    fetchArticles(setArticlesList);
+    fetchHomeArticles(setArticlesList);
   });
 
-  const articles = HomeArticles();
+  const articles = AllArticles();
   return (
     <main>
       <h1>Accueil</h1>

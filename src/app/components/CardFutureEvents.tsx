@@ -1,19 +1,17 @@
-import { CalendarData } from '../context/Calendar';
+import { CalendarFutureData } from '../context/Calendar';
 
-export default function CardNextEvents({
+export default function CardFutureEvents({
   id,
   event_name,
   event_date,
-  adversary_name,
   adversary_name_short,
-  replay_link,
   live_link,
   score,
-  large_image,
+  image,
   publication_date,
   created_at,
   updated_at,
-}: CalendarData) {
+}: CalendarFutureData) {
   return (
     <div className="event">
       <h2 className="event__name">{event_name}</h2>
