@@ -5,39 +5,71 @@
 
 import { createContext, useContext, useState } from 'react';
 
-export interface CalendarData {
+export interface CalendarFutureData {
   // Mettre ? pour les types facultatifs
   id: number;
   event_name: string;
   event_date: number;
-  adversary_name: string;
   adversary_name_short: string;
-  replay_link?: string;
   live_link?: string;
   score?: string;
-  large_image: string;
+  image: string;
+  publication_date?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface CalendarPastData {
+  // Mettre ? pour les types facultatifs
+  id: number;
+  event_name: string;
+  event_date: number;
+  adversary_name_short: string;
+  replay_link?: string;
+  score: string;
+  image: string;
   publication_date?: string;
   created_at?: string;
   updated_at?: string;
 }
 
 interface CalendarContextType {
-  calendarList: CalendarData[];
-  setCalendarList: React.Dispatch<React.SetStateAction<CalendarData[]>>;
+  calendarFutureList: CalendarFutureData[];
+  setCalendarFutureList: React.Dispatch<
+    React.SetStateAction<CalendarFutureData[]>
+  >;
+
+  calendarPastList: CalendarPastData[];
+  setCalendarPastList: React.Dispatch<React.SetStateAction<CalendarPastData[]>>;
 }
 
 const CalendarContext = createContext<CalendarContextType>({
+  calendarFutureList: [], // calendarList : Qui represente la liste des evenements
+  setCalendarFutureList: () => {}, // setCalendarList: Fonction pour mettre à jour cette liste.
+
   // Le contexte contient deux valeurs :
-  calendarList: [], // calendarList : Qui represente la liste des evenements
-  setCalendarList: () => {}, // setCalendarList: Fonction pour mettre à jour cette liste.
+  calendarPastList: [], // calendarList : Qui represente la liste des evenements
+  setCalendarPastList: () => {}, // setCalendarList: Fonction pour mettre à jour cette liste.
 });
 
 export const CalendarContextProvider = ({ children }: any) => {
   // Le composant 'CalendarContextProvider' va fournir le contexte des calendrier a ses composants enfants.
-  const [calendarList, setCalendarList] = useState<CalendarData[]>([]); // Il utilise le hook 'useState' pour initialiser l'etat de 'calendarList' à un tableau vide.
+  const [calendarFutureList, setCalendarFutureList] = useState<
+    CalendarFutureData[]
+  >([]); // Il utilise le hook 'useState' pour initialiser l'etat de 'calendarList' à un tableau vide.
+  const [calendarPastList, setCalendarPastList] = useState<CalendarPastData[]>(
+    []
+  );
 
   return (
-    <CalendarContext.Provider value={{ calendarList, setCalendarList }}>
+    <CalendarContext.Provider
+      value={{
+        calendarFutureList,
+        setCalendarFutureList,
+        calendarPastList,
+        setCalendarPastList,
+      }}
+    >
       {/*Ensuite il rend le contexte des calendriers avec les valeurs 'calendarList' et 'setCalendarList' fournis par le hook 'useState'*/}
       {children}
     </CalendarContext.Provider>
