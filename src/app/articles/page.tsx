@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useArticleContext } from '../context/Article';
 import { AllArticles, fetchArticles } from '../components_api/ArticlesList';
+import './index.scss';
 
 /**
  * Renders a list of articles fetched from the server and displays them on the screen.
