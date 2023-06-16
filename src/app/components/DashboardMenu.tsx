@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 /**
  * Renders the dashboard menu component.
  *
@@ -14,6 +16,11 @@ export default function DashboardMenu() {
     <div className={'dashboard-menu'}>
       {/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
       <ul>
+        <li>
+          <a className="header-link" href="/dashboard/articles">
+            Modifier les articles
+          </a>
+        </li>
         <li>
           <a className="header-link" href="/dashboard" onClick={handleSubmit}>
             Deconnexion

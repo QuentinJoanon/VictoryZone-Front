@@ -5,6 +5,16 @@
   background-color: #142e4a;
   color: white;
 
+  .article__img {
+    // width: 500px;
+    height: 150px;
+    position: relative;
+  }
+
+  .img {
+    object-fit: contain;
+  }
+
   // ***** HEADER *****
   .header-menu {
     opacity: 1;
