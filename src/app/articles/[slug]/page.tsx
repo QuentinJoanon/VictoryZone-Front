@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ArticleData } from '@/app/context/Article';
 import Image from 'next/image';
+import './index.scss';
 
 export default function Article({ params }: { params: { slug: string } }) {
   const [article, setArticle] = useState<ArticleData | any>({});
@@ -26,13 +27,14 @@ export default function Article({ params }: { params: { slug: string } }) {
   return (
     <div className="article">
       <h2 className="article__title">{article.title}</h2>
-      <Image
-        className="article__img"
-        src={article.large_image}
-        width={100}
-        height={500}
-        alt={article.figcaption}
-      />
+      <div className="article__img">
+        <Image
+          className="img"
+          src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {article.large_image}
+          fill={true}
+          alt={article.figcaption}
+        />
+      </div>
       <p className="article__category">{labels}</p>
       <p className="article__content">{article.content}</p>
       <p className="article__date">{article.created_at}</p>

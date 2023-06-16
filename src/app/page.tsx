@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { HomeArticles, fetchArticles } from './components_api/ArticlesList';
 import { useArticleContext } from './context/Article';
+import './index.scss';
 
 export default function Home() {
   const { setArticlesList } = useArticleContext();

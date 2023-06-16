@@ -6,9 +6,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'files.slack.com',
-        port: '',
-        pathname: '/files-pri',
+        hostname: 'cdn.discordapp.com',
+        //port: '',
+        //pathname: '',
       },
     ],
   },
