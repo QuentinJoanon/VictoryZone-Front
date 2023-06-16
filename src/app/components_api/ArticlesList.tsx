@@ -20,6 +20,19 @@ export function fetchArticles(
     });
 }
 
+export function fetchHomeArticles(
+  setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
+) {
+  axios
+    .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles?home=true`)
+    .then((response) => {
+      setArticlesList(response.data.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 export function AllArticles() {
   const { articlesList } = useArticleContext();
   const articles = articlesList.map((article: ArticleData) => (
