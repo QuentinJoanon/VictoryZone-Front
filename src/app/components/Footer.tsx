@@ -1,5 +1,5 @@
 'use client';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.webp';
 import Image from 'next/image';
 import twitch from '../../../public/twitch.svg';
 import youtube from '../../../public/youtube.svg';
@@ -14,7 +14,7 @@ export default function Footer() {
             <Image
               className="footer__logo"
               src={logo}
-              width={100}
+              // width={100}
               height={100}
               alt="Logo VictoryZone"
               priority={true}

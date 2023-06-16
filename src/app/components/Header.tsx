@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.webp';
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
@@ -14,7 +14,7 @@ export default function Header() {
         <a href="/">
           <Image
             src={logo}
-            width={100}
+            // width={100}
             height={100}
             alt="Logo VictoryZone"
             priority={true}

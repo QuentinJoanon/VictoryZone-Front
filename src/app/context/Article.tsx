@@ -3,12 +3,16 @@
 import { createContext, useContext, useState } from 'react';
 
 export interface ArticleData {
-  id: number;
+  id?: number;
+  slug?: string;
   title: string;
   content: string;
   author: string;
-  large_image: string;
+  large_image?: string;
+  figcaption?: string;
+  publication_date?: string;
   created_at: string;
+  updated_at?: string;
   categories?: any | string;
 }
 
