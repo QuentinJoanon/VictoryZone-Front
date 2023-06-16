@@ -2,9 +2,6 @@ import axios from 'axios';
 import { ArticleData, useArticleContext } from '../context/Article';
 import CardArticle from '../components/CardArticle';
 
-const API_URL =
-  'https://projet-14-victory-zone-back-production.up.railway.app/';
-
 /**
  * Fetches articles from the API and updates the state with the response data.
  *
@@ -14,7 +11,7 @@ export function fetchArticles(
   setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
 ) {
   axios
-    .get(`${API_URL}api/articles`)
+    .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles`)
     .then((response) => {
       setArticlesList(response.data.data);
     })
@@ -28,7 +25,7 @@ export function AllArticles() {
   const articles = articlesList.map((article: ArticleData) => (
     <CardArticle
       key={article.id}
-      id={article.id}
+      slug={article.slug}
       title={article.title}
       content={article.content}
       author={article.author}
@@ -51,7 +48,7 @@ export function HomeArticles() {
     .map((article: ArticleData) => (
       <CardArticle
         key={article.id}
-        id={article.id}
+        slug={article.slug}
         title={article.title}
         content={article.content}
         author={article.author}
