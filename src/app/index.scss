@@ -4,6 +4,45 @@
   position: relative;
 }
 
+.article {
+  background-color: #0095ff; /* couleur de fond de la carte */
+  border-radius: 10px; /* arrondir les coins de la carte */
+  padding: 20px; /* espace intérieur de la carte */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* ombre de la carte */
+  margin-top: 20px;
+  border: 2px solid #c44dff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 .img {
   object-fit: contain;
+}
+
+.article__content {
+  background-color: rgb(255, 0, 25);
+}
+
+@media (min-width: 1024px) {
+
+  .article {
+    width: 300px; /* ajuster la largeur de la carte selon vos besoins */
+    height: 350px; /* ajouter un espacement entre les cartes */
+    margin-bottom: 50px;
+  }
+
+  .article__img {
+    width: 120%;
+    right: 40px;
+    height: 200px; /* ajuster la taille de l'image dans la carte en media query */
+  }
+
+  .articles__home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 30px;
+    
+  }
+  
 }
