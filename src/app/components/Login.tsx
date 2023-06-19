@@ -36,6 +36,7 @@ export default function Login() {
       if (response.data.data.permission_level === 1) {
         localStorage.setItem('accessToken', response.data.data.accessToken);
         localStorage.setItem('refreshToken', response.data.data.refreshToken);
+        localStorage.setItem('user_name', response.data.data.user_name);
       }
       setSuccess(true);
     } catch (error: AxiosError | any) {
