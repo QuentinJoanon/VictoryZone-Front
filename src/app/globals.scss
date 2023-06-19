@@ -71,7 +71,7 @@
     text-decoration: none;
 
     &:hover {
-      color: red;
+      color: #c63575;
     }
   }
 
@@ -170,7 +170,8 @@
       background-color: #123a56;
       position: absolute;
       top: 30px;
-      left: 130px;
+      left: 50%;
+      transform: translateX(-50%);
       
       ul {
         flex-direction: row;
@@ -187,11 +188,34 @@
     }
 
     .header-container {
-
       .line {
         display: none; // caché lines on desktop
       }
     }
 
+  }
+
+  // ***** FOOTER *****
+  
+  .footer {
+    font-size: 1.6rem;
+  
+    &__links {
+   
+      justify-content: flex-start;
+      padding-left: 0;
+      gap: 20px;
+    }
+  
+    &__additional-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      margin-top: 50px;
+    }
+  
+    &__social {
+      margin-left: auto;
+    }
   }
 }
