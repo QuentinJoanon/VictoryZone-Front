@@ -7,11 +7,11 @@ export interface ArticleData {
   slug?: string;
   title: string;
   content: string;
-  author: string;
+  author: string | null;
   large_image?: string;
   figcaption?: string;
   publication_date?: string;
-  created_at: string;
+  created_at?: string;
   updated_at?: string;
   categories?: any | string;
 }

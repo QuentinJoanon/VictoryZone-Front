@@ -2,7 +2,11 @@
 
 import { useEffect } from 'react';
 import { useArticleContext } from '@/app/context/Article';
-import { AllArticles, fetchArticles } from '@/app/components_api/ArticlesList';
+import {
+  AllEditableArticles,
+  fetchAdminArticles,
+} from '@/app/components_api/ArticlesAdmin';
+import Link from 'next/link';
 
 /**
  * Renders a list of articles fetched from the server and displays them on the screen.
@@ -13,14 +17,18 @@ export default function DashboardArticles() {
   const { setArticlesList } = useArticleContext();
 
   useEffect(() => {
-    fetchArticles(setArticlesList);
+    fetchAdminArticles(setArticlesList);
   }, [setArticlesList]);
 
-  const articles = AllArticles();
+  const articles = AllEditableArticles();
 
   return (
     <main>
       <h1>Articles</h1>
+      <Link href="/dashboard/articles/create">
+        <button>Ajouter un article</button>
+      </Link>
+
       <div>{articles}</div>
     </main>
   );
