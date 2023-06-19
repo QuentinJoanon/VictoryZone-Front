@@ -26,6 +26,23 @@ export function fetchCalendars(
     });
 }
 
+// Appel API pour afficher 1 futurevent et 1pastevent sur la home page
+export function fetchHomeCalendars(
+  setCalendarFutureList: React.Dispatch<
+    React.SetStateAction<CalendarFutureData[]>
+  >,
+  setCalendarPastList: React.Dispatch<React.SetStateAction<CalendarPastData[]>>
+) {
+  axios
+    .get(`${process.env.NEXT_PUBLIC_API_URL}api/calendar?home=true`)
+    .then((response) => {
+      setCalendarFutureList(response.data.data.future_event);
+      setCalendarPastList(response.data.data.past_event);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 export function AllFutureCalendars() {
   const { calendarFutureList, setCalendarFutureList } = useCalendarContext();
   const calendars = calendarFutureList.map((calendar: CalendarFutureData) => (

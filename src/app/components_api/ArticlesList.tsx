@@ -53,24 +53,3 @@ export function AllArticles() {
   ));
   return articles;
 }
-
-export function HomeArticles() {
-  const { articlesList } = useArticleContext();
-  const articles = articlesList.map((article: ArticleData) => (
-    <CardArticle
-      key={article.id}
-      slug={article.slug}
-      title={article.title}
-      content={article.content}
-      author={article.author}
-      large_image={article.large_image}
-      created_at={article.created_at}
-      categories={
-        Array.isArray(article.categories)
-          ? article.categories.map((category) => category.label)
-          : []
-      }
-    />
-  ));
-  return articles;
-}
