@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <main>
       <h1>Accueil</h1>
-      <div>{articles}</div>
       <div>{calendars}</div>
+      <div className= "articles__home" >{articles}</div>
     </main>
   );
 }
