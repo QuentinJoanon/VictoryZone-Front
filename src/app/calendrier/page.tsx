@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useCalendarContext } from '../context/Calendar';
 import {
   AllFutureCalendars,
+  AllPastCalendars,
   fetchCalendars,
 } from '../components_api/CalendarList';
 
@@ -18,6 +19,7 @@ export default function Calendar() {
   }, [setCalendarFutureList, setCalendarPastList]);
 
   const futureCalendars = AllFutureCalendars();
+  const pastCalendars = AllPastCalendars();
 
   return (
     <main>
@@ -25,6 +27,7 @@ export default function Calendar() {
       <h2>PROCHAINS MATCHS</h2>
       <div>{futureCalendars}</div>
       <h2>DERNIERS RESULTATS</h2>
+      <div>{pastCalendars}</div>
     </main>
   );
 }

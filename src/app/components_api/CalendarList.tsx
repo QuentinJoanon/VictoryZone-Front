@@ -6,6 +6,7 @@ import {
 } from '../context/Calendar';
 import CardFutureEvents from '../components/CardFutureEvents';
 import React from 'react';
+import CardPastEvents from '../components/CardPastEvents';
 
 export function fetchCalendars(
   setCalendarFutureList: React.Dispatch<
@@ -35,6 +36,23 @@ export function AllFutureCalendars() {
       event_date={calendar.event_date}
       adversary_name_short={calendar.adversary_name_short}
       live_link={calendar.live_link}
+      image={calendar.image}
+    />
+  ));
+  return calendars;
+}
+
+export function AllPastCalendars() {
+  const { calendarPastList } = useCalendarContext();
+  const calendars = calendarPastList.map((calendar: CalendarPastData) => (
+    <CardPastEvents
+      key={calendar.id}
+      id={calendar.id}
+      event_name={calendar.event_name}
+      event_date={calendar.event_date}
+      adversary_name_short={calendar.adversary_name_short}
+      replay_link={calendar.replay_link}
+      score={calendar.score}
       image={calendar.image}
     />
   ));
