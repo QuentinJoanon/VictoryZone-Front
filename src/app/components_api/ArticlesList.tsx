@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { ArticleData, useArticleContext } from '../context/Article';
 import CardArticle from '../components/CardArticle';
-import CardEditableArticle from '../components/CardEditableArticle';
 
 /**
  * Fetches articles from the API and updates the state with the response data.

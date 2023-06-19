@@ -1,16 +1,12 @@
-import axios from 'axios';
 import { ArticleData, useArticleContext } from '../context/Article';
 import CardEditableArticle from '../components/CardEditableArticle';
+import axiosInstance from './axiosInstance';
 
 export function fetchAdminArticles(
   setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
 ) {
-  axios
-    .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles/admin`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-    })
+  axiosInstance
+    .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles/admin`)
     .then((response) => {
       setArticlesList(response.data.data);
     })
@@ -20,7 +16,7 @@ export function fetchAdminArticles(
 }
 
 export function createNewArticle(newArticle: ArticleData) {
-  axios({
+  axiosInstance({
     method: 'post',
     url: `${process.env.NEXT_PUBLIC_API_URL}api/articles`,
     headers: {

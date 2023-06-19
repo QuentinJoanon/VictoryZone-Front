@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import moment from 'moment';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 
 export default function NewArticle() {
@@ -30,9 +29,6 @@ export default function NewArticle() {
     e.preventDefault();
     if (newArticle.publication_date === '') {
       newArticle.publication_date = new Date().toISOString();
-      /* newArticle.publication_date = moment().format(
-        'YYYY-MM-DD HH:mm:ss.SSSSS'
-      ); */
     } else {
       newArticle.publication_date = new Date(
         newArticle.publication_date

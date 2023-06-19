@@ -26,7 +26,7 @@ export function fetchCalendars(
 }
 
 export function AllFutureCalendars() {
-  const { calendarFutureList, setCalendarFutureList } = useCalendarContext();
+  const { calendarFutureList } = useCalendarContext();
   const calendars = calendarFutureList.map((calendar: CalendarFutureData) => (
     <CardFutureEvents
       key={calendar.id}
