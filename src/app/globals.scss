@@ -158,3 +158,33 @@
     }
   }
 }
+
+// media queries
+@media (min-width: 1024px) {
+  :root {
+    font-size: 70%;// a voir si on change la taille de la police en desk
+
+    .header-menu {
+      //font-size: 1rem; // Taille de la police 
+      ul {
+        flex-direction: row;
+        justify-content: space-between;
+        
+      }
+
+      &.hidden {
+        opacity: 1;
+        visibility: visible;
+        max-height: none;
+        transition: none;
+      }
+    }
+
+    .header-container {
+      .line {
+        display: none; // caché leslines on desktop
+      }
+    }
+
+  }
+}
