@@ -1,0 +1,15 @@
+.event {
+  border: 1px solid white;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+
+  &__teams {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.future .event__name {
+  color: red;
+}
