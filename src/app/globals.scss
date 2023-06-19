@@ -32,6 +32,7 @@
   }
 
   .header-container {
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -162,14 +163,19 @@
 // media queries
 @media (min-width: 1024px) {
   :root {
-    font-size: 70%;// a voir si on change la taille de la police en desk
+    font-size: 60%;// a voir si on change la taille de la police en desk
 
     .header-menu {
       //font-size: 1rem; // Taille de la police 
+      background-color: #123a56;
+      position: absolute;
+      top: 30px;
+      left: 130px;
+      
       ul {
         flex-direction: row;
-        justify-content: space-between;
-        
+        justify-content: center;
+        gap: 70px;
       }
 
       &.hidden {
@@ -181,8 +187,9 @@
     }
 
     .header-container {
+
       .line {
-        display: none; // caché leslines on desktop
+        display: none; // caché lines on desktop
       }
     }
 
