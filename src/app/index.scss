@@ -4,13 +4,17 @@
   position: relative;
 }
 
+.img {
+  object-fit: contain; /*?*/
+}
+
 .article {
   width: 90%;
-  background-color: #123a56; /* couleur de fond de la carte */
-  border-radius: 10px; /* arrondir les coins de la carte */
+  background-color: #123a56; 
+  border-radius: 10px; 
   padding: 20px; /* espace intérieur de la carte */
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
@@ -28,27 +32,21 @@
   transform: scale(1.10); /*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
 }
 
-.img {
-  object-fit: contain;
-}
-
 .article__content {
   background-color: rgb(255, 0, 25);
 }
 
-
-
 @media (min-width: 1024px) {
 
   .article {
-    width: 300px; /* ajuster la largeur de la carte selon vos besoins */
-    height: 350px; /* ajouter un espacement entre les cartes */
+    width: 300px; /* ajuster la largeur de la carte */
+    height: 350px; 
+
   }
 
-  .article__img {
-    width: 130%;
-    right: 40px;
-    height: 250px; /* ajuster la taille de l'image dans la carte en media query */
+  .article__img { // a voir pour le layout 
+    width: 100%;
+    height: 350px; /* ajuster la taille de l'image dans la carte en media query */
   }
 
   .articles__home {
