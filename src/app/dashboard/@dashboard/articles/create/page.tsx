@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
+import { useRouter } from 'next/navigation';
 
 export default function NewArticle() {
   const username = localStorage.getItem('user_name');
+  const router = useRouter();
   const [newArticle, setNewArticle] = useState({
     image: '',
     title: '',
@@ -35,8 +37,8 @@ export default function NewArticle() {
       ).toISOString();
     }
     newArticle.slug = convertToSlug(newArticle.title);
-    console.log(newArticle);
     createNewArticle(newArticle);
+    router.push('/dashboard/articles');
   };
 
   const handleChange = (

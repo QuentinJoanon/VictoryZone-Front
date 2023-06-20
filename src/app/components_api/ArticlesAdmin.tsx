@@ -33,6 +33,24 @@ export function createNewArticle(newArticle: ArticleData) {
     });
 }
 
+export function editArticle(article: ArticleData) {
+  axiosInstance({
+    method: 'patch',
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${article.slug}`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Content-Type': 'application/json',
+    },
+    data: article,
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 export function AllEditableArticles() {
   const { articlesList } = useArticleContext();
   const articles = articlesList.map((article: ArticleData) => (

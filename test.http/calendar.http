@@ -1,0 +1,66 @@
+@endpoint = http://localhost:{{$dotenv PORT}}/api
+@accessToken = {{login.response.body.$.data.accessToken}}
+@refreshToken = {{login.response.body.$.data.refreshToken}}
+
+### Connexion ADMIN
+# @name login
+POST {{endpoint}}/auth/login
+content-type: application/json
+
+{
+    "email": "john@example.com",
+    "password": "secret"
+}
+
+
+### REFRESH TOKEN FIRST TIME
+# @name login
+POST {{endpoint}}/auth/refresh-token
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "refreshToken": "{{refreshToken}}"
+}
+### Récupérer tous les évents/calendrier/match
+GET {{ endpoint }}/calendar
+
+### Récupérer 1 match à venir et 1 passé pour la homepage
+GET {{ endpoint }}/calendar?home=true
+
+### Création d'un évent
+
+POST {{ endpoint }}/calendar
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "event_name": "tournoi-world",
+  "event_date": "2023-06-10 18:00:00",
+  "adversary_name": "Team D",
+  "adversary_name_short": "D",
+  "image": "test",
+  "large_image": "test",
+  "publication_date":"2023-06-10 18:00:00"
+}
+
+### Récupérer un évent
+
+GET  {{ endpoint }}/calendar/1
+
+
+### Modification d'un évent
+PATCH {{ endpoint }}/calendar/1
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+
+{
+  "event_name": "event team wolrd"
+}
+
+### Suppression d'un évent
+
+DELETE {{ endpoint }}/calendar/1
+Authorization: Bearer {{accessToken}}
+

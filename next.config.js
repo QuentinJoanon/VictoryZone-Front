@@ -10,6 +10,12 @@ const nextConfig = {
         //port: '',
         //pathname: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'projet-14-victory-zone-back-production.up.railway.app',
+        //port: '',
+        //pathname: '',
+      },
     ],
   },
 };
