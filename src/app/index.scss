@@ -4,6 +4,7 @@
   position: relative;
 }
 
+teams
 .card-member {
   border: 1px solid white;
   margin: 10px;
@@ -14,8 +15,61 @@
 .card-member__image {
   height: 300px;
   position: relative; // obligation de lui donner une position (next)
+
+.article {
+  width: 90%;
+  background-color: #123a56; /* couleur de fond de la carte */
+  border-radius: 10px; /* arrondir les coins de la carte */
+  padding: 20px; /* espace intérieur de la carte */
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
+
+  box-shadow:
+  0 0 20px #c63575,
+  0 0 15px #354dc6,
+  0 0 10px #c63575,
+  0 0 10px #c63575;
+    /* Ajout des styles pour centrer la carte */
+    margin-left: auto;
+    margin-right: auto;
+}
+.article:hover {
+  transform: scale(1.10); /*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
+
 }
 
 .img {
   object-fit: contain; // Garde ses proportion mais fit avec le container
+}
+
+.article__content {
+  background-color: rgb(255, 0, 25);
+}
+
+
+
+@media (min-width: 1024px) {
+
+  .article {
+    width: 300px; /* ajuster la largeur de la carte selon vos besoins */
+    height: 350px; /* ajouter un espacement entre les cartes */
+  }
+
+  .article__img {
+    width: 130%;
+    right: 40px;
+    height: 250px; /* ajuster la taille de l'image dans la carte en media query */
+  }
+
+  .articles__home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 50px;
+    
+  }
+  
 }

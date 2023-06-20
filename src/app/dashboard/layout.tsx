@@ -1,6 +1,6 @@
 'use client';
 import jwt_decode from 'jwt-decode';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface DashboardLayout {
   id: number;
@@ -12,7 +12,7 @@ export default function DashboardLayout({
   dashboard,
   login,
 }: {
-  dashboard: JSX.Element;
+  dashboard: React.ReactNode;
   login: JSX.Element;
 }) {
   const [isAdmin, setIsAdmin] = useState(false);
