@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArticleData } from '../context/Article';
 import Image from 'next/image';
 
@@ -6,7 +7,7 @@ export default function CardEditableArticle({
   title,
   content,
   author,
-  large_image,
+  image,
   created_at,
   categories,
   figcaption,
@@ -18,7 +19,7 @@ export default function CardEditableArticle({
         <div className="article__img">
           <Image
             className="img"
-            src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {large_image}
+            src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {image}
             fill={true}
             alt={figcaption}
           />
@@ -27,7 +28,9 @@ export default function CardEditableArticle({
         <p className="article__content">{content}</p>
         <p className="article__date">{created_at}</p>
         <p className="article__author">{author}</p>
-        <button>Modifier</button>
+        <Link href={`dashboard/articles/${slug}`}>
+          <button>Modifier</button>
+        </Link>
         <button>Supprimer</button>
       </div>
     </a>

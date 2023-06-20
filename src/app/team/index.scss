@@ -1,0 +1,15 @@
+.card-member {
+  border: 1px solid white;
+  margin: 10px;
+  padding: 5px;
+  background-color: #123a56;
+  text-align: center;
+}
+.card-member__image {
+  height: 300px;
+  position: relative; // obligation de lui donner une position (next)
+}
+
+.img {
+  object-fit: contain; // Garde ses proportion mais fit avec le container
+}

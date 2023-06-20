@@ -1,0 +1,61 @@
+@endpoint = http://localhost:{{$dotenv PORT}}/api
+@accessToken = {{login.response.body.$.data.accessToken}}
+@refreshToken = {{login.response.body.$.data.refreshToken}}
+
+### Connexion NON ADMIN
+# @name login
+POST {{endpoint}}/auth/login
+content-type: application/json
+
+{
+    "email": "john@example.com",
+    "password": "secret"
+}
+
+### REFRESH TOKEN FIRST TIME
+# @name login
+POST {{endpoint}}/auth/refresh-token
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "refreshToken": "{{refreshToken}}"
+}
+### Récupérer toutes les recrutment
+GET {{ endpoint }}/recruitment
+Authorization: Bearer {{accessToken}}
+
+### Envoyer un formulaire de recrutement
+POST {{endpoint}}/recruitment
+Content-Type: multipart/form-data; boundary=boundary_value
+
+--boundary_value
+Content-Disposition: form-data; name="cv"; filename="test.pdf"
+Content-Type: application/pdf
+
+@./test.pdf
+--boundary_value
+Content-Disposition: form-data; name="user_name"
+
+slayerssssss
+--boundary_value
+Content-Disposition: form-data; name="email"
+
+slayer@sssssssexample.com
+--boundary_value
+Content-Disposition: form-data; name="first_name"
+
+roberts
+--boundary_value
+Content-Disposition: form-data; name="last_name"
+
+slayers
+--boundary_value
+Content-Disposition: form-data; name="message"
+
+accepter ma demande je suis chaud
+--boundary_value--
+
+### Suppression d'un recrutement
+DELETE {{ endpoint }}/recruitment/19
+Authorization: Bearer {{accessToken}}
