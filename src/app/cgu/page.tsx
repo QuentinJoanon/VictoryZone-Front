@@ -1,8 +1,10 @@
+import './index.scss';
+
 export default function Cgu() {
   return (
     <main>
+      <h1>CGU</h1>
       <div className="cgu">
-        <h1>CGU</h1>
         <div className="cgu__head">
           <h2>Conditions Générales d'utilisation</h2>
           <p>

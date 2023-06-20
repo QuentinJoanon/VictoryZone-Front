@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+}
+
+.cgu {
+  border: solid 1px white;
+  margin: 20px;
+  padding: 10px;
+
+  &__head {
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+  &__body {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+}
