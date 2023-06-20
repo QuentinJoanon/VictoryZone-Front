@@ -4,17 +4,6 @@
   position: relative;
 }
 
-.teams .card-member {
-  border: 1px solid white;
-  margin: 10px;
-  padding: 5px;
-  background-color: #123a56;
-  text-align: center;
-}
-.card-member__image {
-  height: 300px;
-  position: relative; // obligation de lui donner une position (next)
-}
 
 .article {
   width: 90%;
@@ -27,16 +16,15 @@
   overflow: hidden;
   transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
 
-  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575,
-    0 0 10px #c63575;
+  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
   /* Ajout des styles pour centrer la carte */
   margin-left: auto;
   margin-right: auto;
 }
 .article:hover {
-  transform: scale(
+  transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
     1.1
-  ); /*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
+  ); 
 }
 
 .img {
@@ -44,7 +32,7 @@
 }
 
 .article__content {
-  background-color: rgb(255, 0, 25);
+  background-color: 0;
 }
 
 @media (min-width: 1024px) {
@@ -66,3 +54,48 @@
     gap: 50px;
   }
 }
+
+//**************TEAM**************//
+
+.card-member {
+  border: 1px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 90%; 
+  background-color: #123a56; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
+  margin-bottom: 50px;
+
+
+  &__image {
+    top: 14px;
+    height: 350px;
+    position: relative;    
+  }
+
+  &__username, &__fullname, &__role {
+    font-size: 18px; //  la taille de la police
+    margin-top: 10px; // espace entre le texte et l'image
+  }
+
+}
+
+@media (min-width: 1024px) {
+  
+  .team__home {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-member {
+    display: inline-block;
+    width: calc((100% - 10px) /6); // Divise l'espace en deux pour afficher les cartes côte à côte
+  }
+}
+
+
+
+
