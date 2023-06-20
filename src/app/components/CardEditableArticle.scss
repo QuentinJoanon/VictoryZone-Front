@@ -1,0 +1,37 @@
+.modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #123a56;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .modal-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    .btn {
+      padding: 10px 15px;
+      margin-left: 10px;
+      background-color: #e53935;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #c62828;
+      }
+    }
+  }
+}
