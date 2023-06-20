@@ -1,4 +1,5 @@
 'use client';
+import './index.scss';
 
 import { useEffect } from 'react';
 import { AllMembersTeam, fetchTeam } from '../components_api/TeamList';

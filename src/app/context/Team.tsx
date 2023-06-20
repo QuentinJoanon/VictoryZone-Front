@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
 export interface TeamData {
-  id: number;
+  id?: number;
   user_name: string;
   first_name: string;
   last_name: string;
@@ -17,7 +17,7 @@ export interface TeamData {
   twitter_link: string;
   created_at: string;
   updated_at: string;
-  setup: string;
+  setup?: string;
 }
 
 interface TeamContextType {
