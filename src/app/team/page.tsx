@@ -16,7 +16,7 @@ export default function Team() {
   return (
     <main>
       <h1>TEAM</h1>
-      <div>{membersTeam}</div>
+      <div >{membersTeam}</div>
     </main>
   );
 }
