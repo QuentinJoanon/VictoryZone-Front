@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import './index.scss';
 
 export default function Cgu() {
