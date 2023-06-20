@@ -42,7 +42,7 @@ export function AllArticles() {
       title={article.title}
       content={article.content}
       author={article.author}
-      large_image={article.large_image}
+      image={article.image}
       created_at={article.created_at}
       categories={
         Array.isArray(article.categories)
