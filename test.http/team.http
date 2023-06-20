@@ -1,0 +1,89 @@
+@endpoint = http://localhost:{{$dotenv PORT}}/api
+@accessToken = {{login.response.body.$.data.accessToken}}
+@refreshToken = {{login.response.body.$.data.refreshToken}}
+
+### Connexion ADMIN
+# @name login
+POST {{endpoint}}/auth/login
+content-type: application/json
+
+{
+    "email": "john@example.com",
+    "password": "secret"
+}
+
+### REFRESH TOKEN FIRST TIME
+# @name login
+POST {{endpoint}}/auth/refresh-token
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "refreshToken": "{{refreshToken}}"
+}
+
+
+
+### Récupérer tous les membres
+GET {{ endpoint }}/team
+
+### Création d'un joueur
+
+POST {{ endpoint }}/team/
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "user_name": "slayer_back",
+  "first_name": "slayer",
+  "last_name": "back",
+  "description":"best player of the world",
+  "role": "lead team",
+  "image": "zdzdz"
+
+}
+
+### Récupérer un joueur
+
+GET {{ endpoint }}/team/slayer_back
+
+
+### Modification d'un joueur
+
+PATCH  {{endpoint}}/team/slayer_back
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "user_name": "jack_doe",
+  "first_name": "j",
+  "last_name": "does",
+  "description":"best player of the world",
+  "role": "lead team"
+
+}
+
+### Suppression d'un joueur
+
+DELETE {{ endpoint }}/team/slayer_back
+Authorization: Bearer {{accessToken}}
+
+
+### CREATION D'un lien entre un joueur et un media
+
+POST {{ endpoint }}/team/joueur2/media/2
+Authorization: Bearer {{accessToken}}
+
+### CREATION D'un lien entre un joueur et un media
+
+POST {{ endpoint }}/team/joueur2/setup/2
+Authorization: Bearer {{accessToken}}
+
+### SUPPRESSION D'un lien entre un joueur et un media
+
+DELETE {{ endpoint }}/team/joueur2/media/2
+Authorization: Bearer {{accessToken}}
+
+### SUPPRESSION D'un lien entre un joueur et un setup
+DELETE {{ endpoint }}/team/joueur2/setup/2
+Authorization: Bearer {{accessToken}}

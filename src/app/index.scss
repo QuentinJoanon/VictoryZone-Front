@@ -7,6 +7,17 @@
 .img {
   object-fit: contain; /*?*/
 }
+teams
+.card-member {
+  border: 1px solid white;
+  margin: 10px;
+  padding: 5px;
+  background-color: #123a56;
+  text-align: center;
+}
+.card-member__image {
+  height: 300px;
+  position: relative; // obligation de lui donner une position (next)
 
 .article {
   width: 90%;
@@ -30,6 +41,11 @@
 }
 .article:hover {
   transform: scale(1.10); /*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
+
+}
+
+.img {
+  object-fit: contain; // Garde ses proportion mais fit avec le container
 }
 
 .article__content {
