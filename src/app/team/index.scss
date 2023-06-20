@@ -1,15 +1,38 @@
 .card-member {
-  border: 1px solid white;
-  margin: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: 1px;
+  margin: 10px auto;  // Centré horizontalement pour toutes les tailles d'écran
   padding: 5px;
   background-color: #123a56;
-  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
+  margin-bottom: 30px;
+  width: 90%;  // Largeur initiale de 90%
+  max-width: 600px; // Largeur maximale de 600px
 }
+
 .card-member__image {
-  height: 300px;
-  position: relative; // obligation de lui donner une position (next)
+  height: 120px;
+  width: 120px;
+  margin-right: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
 .img {
-  object-fit: contain; // Garde ses proportion mais fit avec le container
+  border-radius: 60%; 
+  object-fit: cover;
+}
+
+
+@media (min-width: 1024px) {
+  .card-member {
+    width: 90%; // Largeur réduite à 50% pour les grands écrans
+  }
+  .card-member__details {
+    margin-left: 50%;
+  }
 }
