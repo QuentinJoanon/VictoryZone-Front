@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { ArticlesContextProvider } from './context/Article';
 import { CalendarContextProvider } from './context/Calendar';
+import { TeamContextProvider } from './context/Team';
 
 export const metadata = {
   title: 'VictoryZone',
@@ -21,7 +22,9 @@ export default function RootLayout({
           <Header />
           <ArticlesContextProvider>
             <CalendarContextProvider>
-              <main className="content">{children}</main>
+              <TeamContextProvider>
+                <main className="content">{children}</main>
+              </TeamContextProvider>
             </CalendarContextProvider>
           </ArticlesContextProvider>
           <Footer />
