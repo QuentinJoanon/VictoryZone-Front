@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import './dashboardMenu.scss';
+
 
 /**
  * Renders the dashboard menu component.

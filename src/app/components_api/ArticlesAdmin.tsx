@@ -51,6 +51,23 @@ export function editArticle(article: ArticleData) {
     });
 }
 
+export function deleteArticle(slug: string) {
+  axiosInstance({
+    method: 'delete',
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${slug}`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 export function AllEditableArticles() {
   const { articlesList } = useArticleContext();
   const articles = articlesList.map((article: ArticleData) => (
@@ -60,7 +77,7 @@ export function AllEditableArticles() {
       title={article.title}
       content={article.content}
       author={article.author}
-      large_image={article.large_image}
+      image={article.image}
       created_at={article.created_at}
       categories={
         Array.isArray(article.categories)

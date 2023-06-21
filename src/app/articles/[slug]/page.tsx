@@ -18,7 +18,7 @@ export default function Article({ params }: { params: { slug: string } }) {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, [setArticle, params.slug]);
 
   const labels = Array.isArray(article.categories)
     ? article.categories.map((categorie: string | any) => categorie.label)
