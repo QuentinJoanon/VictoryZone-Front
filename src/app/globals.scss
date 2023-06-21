@@ -17,7 +17,6 @@
 
   // ***** HEADER *****
   .header-menu {
-    
     opacity: 1;
     height: auto;
     background-color: #142e4a;
@@ -121,7 +120,6 @@
   }
   // --     --
   .footer {
-    
     width: 100%;
     font-size: 1.6rem;
     bottom: 0;
@@ -140,7 +138,6 @@
       align-items: center;
     }
 
-    
     &__links {
       display: flex;
       width: 33.33%;
@@ -175,16 +172,16 @@
 // media queries
 @media (min-width: 1024px) {
   :root {
-    font-size: 60%;// a voir si on change la taille de la police en desk
+    font-size: 60%; // a voir si on change la taille de la police en desk
 
     .header-menu {
-      //font-size: 1rem; // Taille de la police 
+      //font-size: 1rem; // Taille de la police
       background-color: #123a56;
       position: absolute;
       top: 30px;
       left: 50%;
       transform: translateX(-50%);
-      
+
       ul {
         flex-direction: row;
         justify-content: center;
@@ -204,14 +201,12 @@
         display: none; // caché lines on desktop
       }
     }
-
   }
 
   // ***** FOOTER *****
-  
-  .footer {
 
-   /* &__logo {
+  .footer {
+    /* &__logo {
       width: 70px; 
       height: auto; // keep aspect ratio
       
@@ -219,21 +214,21 @@
 
     &__links {
       flex-direction: column;
-      align-self: flex-end; 
+      align-self: flex-end;
     }
 
     &__links-list {
-      column-count: 2; 
+      column-count: 2;
       column-gap: 10px; // Adjust the gap between columns as needed
     }
-    
+
     &__additional-links {
       display: flex;
       justify-content: flex-end;
       gap: 20px;
       margin-top: 50px;
     }
-    
+
     &__social {
       margin-left: auto;
     }
