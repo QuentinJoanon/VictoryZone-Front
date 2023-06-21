@@ -36,7 +36,7 @@ Authorization: Bearer {{accessToken}}
 
 {
   "event_name": "tournoi-world",
-  "event_date": "2023-06-10 18:00:00",
+  "event_date": "2023-06-22 18:00:00",
   "adversary_name": "Team D",
   "adversary_name_short": "D",
   "image": "test",

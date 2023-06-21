@@ -26,8 +26,8 @@ export default function CardEditableArticle({
   };
 
   return (
-    <>
-      <a href={`/articles/${slug}`}>
+    <div className={slug}>
+      <Link href={`/articles/${slug}`}>
         <div className="article">
           <h2 className="article__title">{title}</h2>
           <div className="article__img">
@@ -46,13 +46,13 @@ export default function CardEditableArticle({
             <button>Modifier</button>
           </Link>
         </div>
-      </a>
+      </Link>
       <button onClick={handleDeleteClick}>Supprimer</button>
       {isModalVisible && (
         <div id="deleteArticleModal">
           <DeleteArticleModal slug={slug} closeModal={closeModal} />
         </div>
       )}
-    </>
+    </div>
   );
 }

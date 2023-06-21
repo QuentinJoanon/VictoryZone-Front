@@ -19,7 +19,7 @@ export default function DeleteArticleModal({
     // Fermer la modal après la suppression
     closeModal();
 
-    router.refresh();
+    document.querySelector(`.${slug}`)?.remove();
   };
   return (
     <div className="modal-box">
