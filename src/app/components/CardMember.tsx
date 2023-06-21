@@ -34,6 +34,7 @@ TeamData) {
       </div>
     </Link>
     </div>
+  
 
     // <div className="card-member">
     //   <div className="card-member__user-name">{user_name}</div>
