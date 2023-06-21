@@ -15,10 +15,8 @@
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
-
   box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
-  /* Ajout des styles pour centrer la carte */
-  margin-left: auto;
+  margin-left: auto;/* Ajout des styles pour centrer la carte */
   margin-right: auto;
 }
 .article:hover {
@@ -93,9 +91,9 @@
   .card-member {
     display: inline-block;
     width: calc((100% - 10px) /6); // Divise l'espace en deux pour afficher les cartes côte à côte
+    transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
+  }
+  .card-member:hover {
+    transform: scale(1.1);
   }
 }
-
-
-
-
