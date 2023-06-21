@@ -67,12 +67,12 @@ export default function TeamMember({
         </p>
         <p className="member__infos__role">{teamMember.role}</p>
       </div>
-      <h1>VIDEOS RECENTES</h1>
+      {/*       <h1>VIDEOS RECENTES</h1>
       <div className="member__videos">{teamMember.media_video}</div>
       <h1>STATS</h1>
       <div className="member__stats">{teamMember.statistics}</div>
       <h1>PALMARES</h1>
-      <div className="member__achievements">{teamMember.achievements}</div>
+      <div className="member__achievements">{teamMember.achievements}</div> */}
       <h1>SETUP</h1>
       <div className="member__setup">{setupList}</div>
     </div>
