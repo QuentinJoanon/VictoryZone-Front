@@ -1,4 +1,44 @@
 .card-member {
-  color: white;
-  text-decoration: none;
+  border: 1px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 90%; 
+  background-color: #123a56; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
+  margin-bottom: 50px;
+
+
+  &__image {
+    top: 14px;
+    height: 350px;
+    position: relative;    
+  }
+
+  &__username, &__fullname, &__role {
+    color: white;
+    text-decoration: none;
+    font-size: 18px; //  la taille de la police
+    margin-top: 10px; // espace entre le texte et l'image
+  }
+
+}
+
+@media (min-width: 1024px) {
+  
+  .team__home {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-member {
+    display: inline-block;
+    width: calc((100% - 10px) /6); // Divise l'espace en deux pour afficher les cartes côte à côte
+    transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
+  }
+  .card-member:hover {
+    transform: scale(1.1);
+  }
 }
