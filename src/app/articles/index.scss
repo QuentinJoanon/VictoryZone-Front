@@ -4,10 +4,27 @@
   position: relative;
 }
 
+
+.article {
+  width: 90%;
+  background-color: #123a56;
+  border-radius: 10px;
+  padding: 20px; /* espace intérieur de la carte */
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
+  margin-left: auto;/* Ajout des styles pour centrer la carte */
+  margin-right: auto;
+}
+
 .img {
-  object-fit: contain;
+  width: 90px;
+  object-fit: contain; // Garde ses proportion mais fit avec le container
 }
 
 .article__content {
-  background-color: rgb(0, 230, 46);
+  background-color: 0;
 }
+
