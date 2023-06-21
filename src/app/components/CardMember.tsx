@@ -1,6 +1,7 @@
 import { TeamData } from '../context/Team';
 import Image from 'next/image';
 import Link from 'next/link';
+import './CardMember.scss';
 
 export default function CardMember({
   user_name,
@@ -20,17 +21,15 @@ export default function CardMember({
 TeamData) {
   return (
     <Link href={`/team/${user_name}`} className="card-member">
-      <div>
-        <div className="card-member__image">
-          <Image className="img" src={image} fill={true} alt={user_name} />
-        </div>
-        <div className="card-member__details">
-          <p className="card-member__username">{user_name}</p>
-          <p className="card-member__fullname">
-            {first_name} {last_name}
-          </p>
-          <p className="card-member__role">{role}</p>
-        </div>
+      <div className="card-member__image">
+        <Image className="img" src={image} fill={true} alt={user_name} />
+      </div>
+      <div className="card-member__details">
+        <p className="card-member__username">{user_name}</p>
+        <p className="card-member__fullname">
+          {first_name} {last_name}
+        </p>
+        <p className="card-member__role">{role}</p>
       </div>
     </Link>
 
