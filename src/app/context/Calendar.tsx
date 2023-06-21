@@ -7,9 +7,9 @@ import { createContext, useContext, useState } from 'react';
 
 export interface CalendarFutureData {
   // Mettre ? pour les types facultatifs
-  id: number;
+  id?: number;
   event_name: string;
-  event_date: number;
+  event_date: string;
   adversary_name_short: string;
   live_link?: string;
   score?: string;

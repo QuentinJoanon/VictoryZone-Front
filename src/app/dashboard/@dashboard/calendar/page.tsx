@@ -21,18 +21,18 @@ export default function DashboardCalandar() {
     fetchAdminCalendar(setCalendarFutureList, setCalendarPastList);
   }, [setCalendarFutureList, setCalendarPastList]);
 
-  const futureArticles = AllEditableFutureCalendars();
-  const pastArticles = AllEditablePastCalendars();
+  const futureCalendar = AllEditableFutureCalendars();
+  const pastCalendar = AllEditablePastCalendars();
 
   return (
     <main>
       <h1>Calendrier</h1>
-      <Link href="/dashboard/articles/create">
+      <Link href="/dashboard/calendar/create">
         <button>Ajouter un évenement</button>
       </Link>
 
-      <div>{futureArticles}</div>
-      <div>{pastArticles}</div>
+      <div>{futureCalendar}</div>
+      <div>{pastCalendar}</div>
     </main>
   );
 }

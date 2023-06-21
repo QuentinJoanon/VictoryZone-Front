@@ -26,15 +26,15 @@ export function fetchAdminCalendar(
     });
 }
 
-export function createNewArticle(newArticle: ArticleData) {
+export function createNewEvent(newEvent: CalendarFutureData) {
   axiosInstance({
     method: 'post',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/calendar`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     },
-    data: newArticle,
+    data: newEvent,
   })
     .then((response) => {
       console.log(response);

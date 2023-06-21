@@ -3,6 +3,8 @@ import { CalendarFutureData } from '../context/Calendar';
 import { useState } from 'react';
 import './CardCalendar.scss';
 import DeleteCalendarModal from './DeleteCalendarModal';
+import Image from 'next/image';
+import logo from '../../assets/logo.webp';
 
 export default function CardEditableFutureEvents({
   id,
@@ -32,14 +34,30 @@ export default function CardEditableFutureEvents({
       <div className="event__teams">
         <div className="event__teams__home">
           <p className="event__teams__home__short-name">VZ</p>
-          <div className="event__teams__home__logo"></div>
+          <div className="event__teams__home__logo">
+            <Image
+              className="logo"
+              src={logo}
+              fill={true}
+              alt="Logo VictoryZone"
+              priority={true}
+            />
+          </div>
         </div>
         <p>Vs</p>
         <div className="event__teams__away">
           <p className="event__teams__away__short-name">
             {adversary_name_short}
           </p>
-          <div className="event__teams__logo__away"></div>
+          <div className="event__teams__logo__away">
+            <Image
+              className="logo"
+              src={logo}
+              fill={true}
+              alt="Logo VictoryZone"
+              priority={true}
+            />
+          </div>
         </div>
       </div>
       <button className="event__button" type="button">
