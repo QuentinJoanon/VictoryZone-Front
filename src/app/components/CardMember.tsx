@@ -1,7 +1,7 @@
 import { TeamData } from '../context/Team';
 import Image from 'next/image';
 import Link from 'next/link';
-import './CardMember.scss';
+//import './CardMember.scss';
 
 export default function CardMember({
   user_name,

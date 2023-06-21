@@ -53,3 +53,79 @@
   }
 }
 
+
+.card-member {
+  border: 1px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 90%; 
+  background-color: #123a56; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  margin-bottom: 50px;
+  position: relative;
+
+  --border-size: 3px;  // Taille de la bordure animée
+  --border-angle: 0turn;  // Angle initial de l'animation de la bordure
+  
+  // Image de fond pour l'animation de la bordure
+  background-image: conic-gradient( 
+      from var(--border-angle),
+      #123a56,
+      #112 50%,
+      #123a56,
+    ),
+    conic-gradient(from var(--border-angle), transparent 20%, #c63575, #354dc6, #c63575, #c63575);
+  background-size: calc(100% - (var(--border-size) * 2)) // Taille de l'image de fond pour l'animation de la bordure
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat; // Pour éviter que l'image de fond pour l'animation de la bordure ne se répète
+  animation: bg-spin 7s linear infinite;  // Appliquer l'animation de la bordure et vitesse animation
+
+  &__image {
+    height: 390px;
+    position: relative;
+  }
+
+  &__username, &__fullname, &__role {
+    color: white;
+    text-decoration: none;
+    font-size: 18px; 
+    margin-top: 10px; 
+  }
+}
+
+@property --border-angle { // Propriété personnalisée pour l'animation de la bordure
+  syntax: '<angle>'; // La syntaxe de la propriété est un angle
+  inherits: false;  // La propriété n'est pas héritée par les enfants de la carte
+  initial-value: 0turn; // Valeur initiale de la propriété
+}
+
+@keyframes bg-spin {  // Définition de l'animation de la bordure
+  to {
+    --border-angle: 1turn; // A la fin de l'animation, l'angle de la bordure a fait un tour complet
+  }
+}
+
+.card-member:hover { // Lorsque la souris est sur la carte
+  animation-play-state: paused;
+}
+
+@media (min-width: 1024px) {
+  
+  .team__home {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-member {
+    display: inline-block;
+    width: calc((100% - 10px) /6); 
+    transition: transform 0.3s ease; 
+  }
+  .card-member:hover {
+    transform: scale(1.1);
+  }
+}
