@@ -79,7 +79,7 @@ export default function Cgu() {
                 résidence. Tout litige relatif à l'utilisation de ce site sera
                 soumis à la juridiction compétente de votre pays. En utilisant
                 ce site, vous acceptez de respecter ces CGU. Si vous ne les
-                acceptez pas, veuillez ne pas utiliser ce site.
+                acceptez pas, veuillez ne pas utiliser ce site...
               </p>
             </li>
           </ul>
