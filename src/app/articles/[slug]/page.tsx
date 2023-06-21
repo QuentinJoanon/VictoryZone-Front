@@ -30,7 +30,7 @@ export default function Article({ params }: { params: { slug: string } }) {
       <div className="article__img">
         <Image
           className="img"
-          src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {article.large_image}
+          src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {article.image}
           fill={true}
           alt={article.figcaption}
         />

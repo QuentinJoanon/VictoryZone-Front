@@ -6,7 +6,7 @@ export default function CardArticle({
   title,
   content,
   author,
-  large_image,
+  image,
   created_at,
   categories,
   figcaption,
