@@ -1,5 +1,3 @@
-import { ArticleData, useArticleContext } from '../context/Article';
-import CardEditableArticle from '../components/CardEditableArticle';
 import axiosInstance from './axiosInstance';
 import { TeamData, useTeamContext } from '../context/Team';
 import CardEditableMember from '../components/CardEditableMember';
@@ -17,15 +15,15 @@ export function fetchAdminTeam(
     });
 }
 
-export function createNewArticle(newArticle: ArticleData) {
+export function createNewMember(newMember: TeamData) {
   axiosInstance({
     method: 'post',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/team`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     },
-    data: newArticle,
+    data: newMember,
   })
     .then((response) => {
       console.log(response);

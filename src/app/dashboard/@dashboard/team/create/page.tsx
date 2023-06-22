@@ -3,118 +3,127 @@
 import { useState } from 'react';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
+import { createNewMember } from '@/app/components_api/TeamAdmin';
 
 export default function NewMember() {
-  const username = localStorage.getItem('user_name');
   const router = useRouter();
-  const [newArticle, setNewArticle] = useState({
+  const [newMember, setNewMember] = useState({
+    user_name: '',
+    first_name: '',
+    last_name: '',
+    description: '',
+    role: '',
     image: '',
-    title: '',
-    content: '',
-    /*     categories: [] as string[], */
-    publication_date: '',
-    author: username,
-    slug: '',
-    figcaption: '',
+    youtube_link: '',
+    twitch_link: '',
+    twitter_link: '',
   });
-  /*   const [categorie1, setCategorie1] = useState('');
-  const [categorie2, setCategorie2] = useState(''); */
-
-  function convertToSlug(title: string) {
-    return title
-      .toLowerCase()
-      .replace(/ /g, '-')
-      .replace(/[^\w-]+/g, '');
-  }
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (newArticle.publication_date === '') {
-      newArticle.publication_date = new Date().toISOString();
-    } else {
-      newArticle.publication_date = new Date(
-        newArticle.publication_date
-      ).toISOString();
-    }
-    newArticle.slug = convertToSlug(newArticle.title);
-    createNewArticle(newArticle);
-    router.push('/dashboard/articles');
+    createNewMember(newMember);
+    router.push('/dashboard/team');
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setNewArticle({
-      ...newArticle,
+    setNewMember({
+      ...newMember,
       [e.target.name]: e.target.value,
     });
   };
 
   return (
     <main>
-      <h1>Nouvel article</h1>
+      <h1>Nouveau membre</h1>
       <form onSubmit={handleSubmitForm}>
-        <label htmlFor="image">Image</label>
+        <label htmlFor="image">Photo</label>
         <input
           type="text"
           name="image"
           id="image"
           onChange={handleChange}
-          value={newArticle.image}
+          value={newMember.image}
           required
         />
 
-        <label htmlFor="figcaption">Légende de l &apos;image</label>
+        <label htmlFor="last_name">Nom</label>
         <input
           type="text"
-          name="figcaption"
-          id="figcaption"
+          name="last_name"
+          id="last_name"
           onChange={handleChange}
-          value={newArticle.figcaption}
-        />
-
-        <label htmlFor="title">Titre</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          onChange={handleChange}
-          value={newArticle.title}
+          value={newMember.last_name}
           required
         />
 
-        <label htmlFor="content">Contenu</label>
+        <label htmlFor="first_name">Prénom</label>
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          onChange={handleChange}
+          value={newMember.first_name}
+          required
+        />
+
+        <label htmlFor="user_name">Pseudo</label>
+        <input
+          type="text"
+          name="user_name"
+          id="user_name"
+          onChange={handleChange}
+          value={newMember.user_name}
+          required
+        />
+
+        <label htmlFor="role">Rôle</label>
+        <input
+          type="text"
+          name="role"
+          id="role"
+          onChange={handleChange}
+          value={newMember.role}
+          required
+        />
+
+        <label htmlFor="description">Description</label>
         <textarea
-          name="content"
-          id="content"
+          name="description"
+          id="description"
           onChange={handleChange}
-          value={newArticle.content}
+          value={newMember.description}
           required
         />
 
-        {/*         <label htmlFor="categorie1">Catégories 1</label>
+        <label htmlFor="youtube_link">Youtube</label>
         <input
           type="text"
-          name="categorie1"
-          id="categorie1"
-          onChange={(e) => setCategorie1(e.target.value)}
+          name="youtube_link"
+          id="youtube_link"
+          onChange={handleChange}
+          value={newMember.youtube_link}
         />
 
-        <label htmlFor="categorie2">Catégories 2</label>
+        <label htmlFor="twitch_link">Twitch</label>
         <input
           type="text"
-          name="categorie2"
-          id="categorie2"
-          onChange={(e) => setCategorie2(e.target.value)}
-        /> */}
-
-        <label htmlFor="publication_date">Date de publication</label>
-        <input
-          type="date"
-          name="publication_date"
-          id="publication_date"
+          name="twitch_link"
+          id="twitch_link"
           onChange={handleChange}
-          value={newArticle.publication_date}
+          value={newMember.twitch_link}
+          required
+        />
+
+        <label htmlFor="twitter_link">Twitter</label>
+        <input
+          type="text"
+          name="twitter_link"
+          id="twitter_link"
+          onChange={handleChange}
+          value={newMember.twitter_link}
+          required
         />
 
         <input type="submit" value="Envoyer" />
