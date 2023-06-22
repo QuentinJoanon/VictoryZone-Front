@@ -1,15 +1,8 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
 .event {
-  border: 1px;
-  margin: 20px;
-  padding: 10px;
-  text-align: center;
-  width: 90%;
-  background-color: #123a56;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
-    0 0 10px #c63575;
-  margin-bottom: 50px; //a verif
+  @include m.card-styles;
 
   &__teams {
     display: flex;
