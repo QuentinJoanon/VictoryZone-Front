@@ -10,13 +10,13 @@ export interface TeamData {
   description: string;
   role: string;
   image: string;
-  statistics: string;
-  achievements: string;
+  statistics?: string;
+  achievements?: string;
   youtube_link: string;
   twitch_link: string;
   twitter_link: string;
-  created_at: string;
-  updated_at: string;
+  created_at?: string;
+  updated_at?: string;
   setup?: string;
 }
 

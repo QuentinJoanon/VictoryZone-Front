@@ -16,8 +16,14 @@ export function fetchAdminCalendar(
   >,
   setCalendarPastList: React.Dispatch<React.SetStateAction<CalendarPastData[]>>
 ) {
-  axiosInstance
-    .get(`${process.env.NEXT_PUBLIC_API_URL}api/calendar`)
+  axiosInstance({
+    method: 'get',
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/calendar`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => {
       setCalendarFutureList(response.data.data.future_event);
       setCalendarPastList(response.data.data.past_event);
