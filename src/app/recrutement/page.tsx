@@ -101,7 +101,7 @@ export default function Recrutement() {
             <div className="recrutement__form__form-group">
               {/* Champ pour le fichier CV */}
               <input
-                type="file" //                                                                        | Permet  l'user de selectionner un fichier
+                type="file" //                                                                        | Permet à l'user de selectionner un fichier
                 className="form-control-file" //                                                      | classe css
                 name="cv" //                                                                          | nom du champ du fichier.
                 onChange={handleChange} //                                                            | Gestionnaire d'evenement qui sera appelé lorsque la valeur du champ du fichier cv change. Dans ce cas, 'handleChange' est la fonction qui met a jour l'etat local du formulaire avec la nouvelle valeur du champ.
