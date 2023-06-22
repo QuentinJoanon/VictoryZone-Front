@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import './dashboardMenu.scss';
 
-
 /**
  * Renders the dashboard menu component.
  *
@@ -15,13 +14,23 @@ export default function DashboardMenu() {
     localStorage.removeItem('refreshToken');
   };
   return (
-    <div className={'dashboard-menu'}>
+    <nav className={'dashboard-menu'}>
       {/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
       <ul>
         <li>
-          <a className="header-link" href="/dashboard/articles">
+          <Link className="header-link" href="/dashboard/articles">
             Modifier les articles
-          </a>
+          </Link>
+        </li>
+        <li>
+          <Link className="header-link" href="/dashboard/team">
+            Modifier la team
+          </Link>
+        </li>
+        <li>
+          <Link className="header-link" href="/dashboard/calendar">
+            Modifier le calendrier
+          </Link>
         </li>
         <li>
           <a className="header-link" href="/dashboard" onClick={handleSubmit}>
@@ -29,6 +38,6 @@ export default function DashboardMenu() {
           </a>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }
