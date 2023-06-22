@@ -35,7 +35,7 @@ export default function CardEditableArticle({
               className="img"
               src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {image}
               fill={true}
-              alt={figcaption}
+              alt="" // {figcaption}
             />
           </div>
           <p className="article__category">{categories}</p>

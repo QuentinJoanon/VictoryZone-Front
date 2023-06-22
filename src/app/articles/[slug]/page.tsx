@@ -32,7 +32,7 @@ export default function Article({ params }: { params: { slug: string } }) {
           className="img"
           src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {article.image}
           fill={true}
-          alt={article.figcaption}
+          alt="" // {article.figcaption}
         />
       </div>
       <p className="article__category">{labels}</p>

@@ -1,5 +1,8 @@
 'use client';
 
+
+import Slider from "react-slick";
+import { settings } from './components/Carousel'; 
 import { useEffect } from 'react';
 import { AllArticles, fetchHomeArticles } from './components_api/ArticlesList';
 import {
@@ -36,10 +39,17 @@ export default function Home() {
   return (
     <main>
       <h1>Accueil</h1>
-      <div className= "team__home" >{team}</div>
+      <div style={{ maxWidth: '90%', margin: '0 auto' }}>
+      <Slider {...settings} className= "carousel">
+        {team.map((teamMember, index) => (
+          <div key={index} className="team__home">
+            {teamMember}
+          </div>
+        ))}
+      </Slider>
+      </div>
       <div>{calendars}</div>
       <div className= "articles__home" >{articles}</div>
-
     </main>
   );
 }

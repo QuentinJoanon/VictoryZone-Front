@@ -1,0 +1,25 @@
+@use '../styles/variables' as v;
+
+
+/****carte*****/
+
+@mixin card-styles {
+    width: 90%;
+    background-color: v.$secondary;
+    border-radius: 10px;
+    padding: 20px; /* espace intérieur de la carte */
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: v.$color-shadow;/* Ajout des styles pour centrer la carte */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+@mixin hover {
+  transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
+      1.1
+    ); 
+  transition: transform 0.7s ease; 
+}
