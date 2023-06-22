@@ -33,10 +33,10 @@ export function createNewArticle(newArticle: ArticleData) {
     });
 }
 
-export function editArticle(article: ArticleData) {
+export function editArticle(article: ArticleData, articleId: number) {
   axiosInstance({
     method: 'patch',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${article.slug}`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${articleId}`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',

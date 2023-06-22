@@ -30,6 +30,7 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    let articleId = article.id;
     delete article.id;
     delete article.created_at;
     delete article.updated_at;
@@ -37,7 +38,7 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
     delete article.categories;
     article.publication_date = new Date(article.publication_date).toISOString();
     console.log(article);
-    editArticle(article);
+    editArticle(article, articleId);
     router.push('/dashboard/articles');
   };
 
