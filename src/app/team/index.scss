@@ -1,19 +1,13 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
 .card-member {
-  border: 1px;
-  margin: 10px auto;  // Centré horizontalement pour toutes les tailles d'écran
-  padding: 5px;
-  background-color: #123a56;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
-  margin-bottom: 30px;
-  width: 90%;  // Largeur initiale de 90%
-  max-width: 600px; // Largeur maximale de 600px
+  @include m.card-styles;
+  min-width: 90%;
 
   &__image {
-    height: 120px;
-    width: 120px;
-    margin-right: 20px;
+    height: 100px;
+    width: 100px;
     position: relative;
   }
 
@@ -21,30 +15,21 @@
     border-radius: 60%; 
     object-fit: cover;
   }
+  
 
   &__details {
     display: flex;
-    flex-direction: column; // Alignement vertical des éléments
-    align-items: flex-start; // Alignement à gauche
-    margin-left: 100px;
-  }
-
-  &__username, &__fullname, &__role {
+    flex-direction: column;
+    margin-right: -200px;
+    justify-content: center;
+    margin-top: -81px;
     color: white;
     text-decoration: none;
-    font-size: 15px; 
-    margin-top: 10px; 
-    margin-left: 90px;
+    font-size: 15px;
 
   }
 
-  @media (min-width: 1024px) {
-    
-    width: 90%; // Largeur réduite à 50% pour les grands écrans
-    
-    &__details {
-      margin-left: 50%;
-    }
-    
+   &__fullname {
+   display: none;
   }
 }
