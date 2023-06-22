@@ -1,44 +1,24 @@
-.article__img {
-  // width: 500px;
-  height: 150px;
-  position: relative;
-}
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
 
 
 .article {
-  width: 90%;
-  background-color: #123a56;
-  border-radius: 10px;
-  padding: 20px; /* espace intérieur de la carte */
-  margin-top: 20px;
-  margin-bottom: 40px;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
-  box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #c63575, 0 0 10px #c63575;
-  margin-left: auto;/* Ajout des styles pour centrer la carte */
-  margin-right: auto;
-}
-.article:hover {
-  transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
-    1.1
-  ); 
-}
-
-.img {
-  object-fit: contain; // Garde ses proportion mais fit avec le container
-}
-
-.article__content {
-  background-color: 0;
+  @include m.card-styles;
+ /* &__img{
+    width: 490px;
+  }*/
 }
 
 @media (min-width: 1024px) {
   .article {
     width: 300px; /* ajuster la largeur de la carte */
     height: 350px;
-  }
+    transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
 
+    &:hover {
+    @include m.hover;
+   }
+  }
   .article__img {
     // a voir pour le layout
     width: 100%;
@@ -53,7 +33,7 @@
   }
 }
 
-
+/*******TEAM***********/
 
 
 .card-member {
@@ -62,7 +42,6 @@
   padding: 10px;
   text-align: center;
   width: 90%; 
-  background-color: #123a56; 
   border-radius: 10px; 
   overflow: hidden; 
   margin-bottom: 50px;
@@ -74,9 +53,9 @@
   // Image de fond pour l'animation de la bordure
   background-image: conic-gradient( 
       from var(--border-angle),
-      #123a56,
+      v.$secondary,
       #112 50%,
-      #123a56,
+      v.$secondary,
     ),
     conic-gradient(from var(--border-angle), transparent 20%, #c63575, #354dc6, #c63575, #c63575);
   background-size: calc(100% - (var(--border-size) * 2)) // Taille de l'image de fond pour l'animation de la bordure
@@ -116,6 +95,8 @@
 }
 
 @media (min-width: 1024px) {
+
+
   
   .team__home {
     display: flex;
@@ -125,9 +106,9 @@
   .card-member {
     display: inline-block;
     width: calc((100% - 10px) /6); 
-    transition: transform 0.3s ease; 
-  }
-  .card-member:hover {
-    transform: scale(1.1);
+    
+    &:hover {
+      @include m.hover;
+    }
   }
 }
