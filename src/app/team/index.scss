@@ -30,16 +30,16 @@
   }
 
 @media (min-width: 1024px) {
-  min-width: 50%; // Ajustez la largeur minimale pour les écrans plus grands
+  min-width: 50%;
 
   &__image {
-    height: 200px; // Ajustez la hauteur de l'image pour les écrans plus grands
-    width: 200px;  // Ajustez la largeur de l'image pour les écrans plus grands
+    height: 200px;
+    width: 200px;
   }
 
   &__details {
-    margin-right: 0; // Réinitialisez la marge à droite pour les écrans plus grands
-    font-size: 18px; // Ajustez la taille de la police pour les écrans plus grands
+    margin-right: 0; 
+    font-size: 18px; 
   }
 }
 }

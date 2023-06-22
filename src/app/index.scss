@@ -90,25 +90,70 @@
   }
 }
 
-.card-member:hover { // Lorsque la souris est sur la carte
+/*.card-member:hover { // Lorsque la souris est sur la carte
   animation-play-state: paused;
+}*/
+
+/***carousel*///
+.slick-dots {
+  bottom: 10px;
 }
+
+.slick-dots li {
+  margin: 0;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: v.$color;
+  opacity: 0.75;
+  content: "•";
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff47e3;
+  opacity: 1;
+}
+
+.slick-next, .slick-prev {
+  display: none;  // cache les flèches sur mobile
+}
+
+/*.slick-slide {
+  margin-right: 20px;
+}
+.slick-list {
+  overflow: hidden;
+}*/
 
 @media (min-width: 1024px) {
 
-
-  
   .team__home {
     display: flex;
     justify-content: center;
   }
 
   .card-member {
-    display: inline-block;
-    width: calc((100% - 10px) /6); 
     
     &:hover {
       @include m.hover;
+      transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
+      1.1
+    ); 
     }
+  }
+
+  /******fleche-carousel********/
+
+  .slick-next {
+    right: -10px;
+  }
+  
+  .slick-prev {
+    left: -10px;  
+  }
+  
+  .slick-next:before, .slick-prev:before {
+    font-size: 20px;  //  ajuster la taille des flèches ici
   }
 }
