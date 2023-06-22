@@ -68,7 +68,7 @@ export default function Recrutement() {
     axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}api/recruitment`, form) //         | Envoie de la requete POST avec Axios. form = new FormData() qui contient les données du formulaire
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           //                                         | Le code de statut HTTP 200 signifie "OK" et indique que la requete a été traitée avec succès par le serveur.
           setIsFormSubmitted(true); //                                            | Mise à jour de l'etat local pour indiquer que le formulaire a été soumis avec succès
         } else {
