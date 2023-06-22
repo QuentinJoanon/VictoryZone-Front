@@ -2,121 +2,108 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ArticleData } from '@/app/context/Article';
-import { editArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
+import { CalendarData } from '@/app/context/Calendar';
+import { editEvent } from '@/app/components_api/CalendarAdmin';
 
-export default function EditArticle({ params }: { params: { slug: string } }) {
-  const [article, setArticle] = useState<ArticleData | any>({});
+export default function EditCalendar({ params }: { params: { id: number } }) {
+  const [event, setEvent] = useState<CalendarData | any>({});
   const router = useRouter();
 
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles/${params.slug}`)
+      .get(`${process.env.NEXT_PUBLIC_API_URL}api/calendar/${params.id}`)
       .then((response) => {
-        setArticle(response.data.data);
+        setEvent(response.data.data);
+        console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [params.slug]);
-
-  /*   const [categorie1, setCategorie1] = useState('');
-  const [categorie2, setCategorie2] = useState(''); */
-
-  /*   const labels = Array.isArray(article.categories)
-    ? article.categories.map((categorie: string | any) => categorie.label)
-    : []; */
+  }, [params.id]);
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    delete article.id;
-    delete article.created_at;
-    delete article.updated_at;
-    delete article.events;
-    delete article.categories;
-    article.publication_date = new Date(article.publication_date).toISOString();
-    console.log(article);
-    editArticle(article);
-    router.push('/dashboard/articles');
+    if (event.live_link === null) {
+      delete event.live_link;
+    }
+    if (event.replay_link === null) {
+      delete event.replay_link;
+    }
+    if (event.score === null) {
+      delete event.score;
+    }
+    delete event.created_at;
+    delete event.updated_at;
+    event.publication_date = new Date(event.publication_date).toISOString();
+    event.event_date = new Date(event.event_date).toISOString();
+    console.log(event);
+    editEvent(event);
+    router.push('/dashboard/calendar');
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setArticle({
-      ...article,
+    setEvent({
+      ...event,
       [e.target.name]: e.target.value,
     });
   };
 
   return (
     <main>
-      <h1>Nouvel article</h1>
+      <h1>Nouvel évenement</h1>
       <form onSubmit={handleSubmitForm}>
-        <label htmlFor="image">Image</label>
+        <label htmlFor="event_name">Nom de l &apos;évenement</label>
+        <input
+          type="text"
+          name="event_name"
+          id="event_name"
+          onChange={handleChange}
+          value={event.event_name}
+        />
+
+        <label htmlFor="adversary_name">Adversaire</label>
+        <input
+          type="text"
+          name="adversary_name"
+          id="adversary_name"
+          onChange={handleChange}
+          value={event.adversary_name}
+          required
+        />
+
+        <label htmlFor="adversary_name_short">
+          Initiales de l &apos;adversaire
+        </label>
+        <input
+          type="text"
+          name="adversary_name_short"
+          id="adversary_name_short"
+          onChange={handleChange}
+          value={event.adversary_name_short}
+          required
+        />
+
+        <label htmlFor="image">Logo de l &apos;adversaire</label>
         <input
           type="text"
           name="image"
           id="image"
           onChange={handleChange}
-          value={article.image}
+          value={event.image}
           required
         />
 
-        <label htmlFor="figcaption">Légende de l &apos;image</label>
+        <label htmlFor="publication_date">Date de l &apos;évenement</label>
         <input
-          type="text"
-          name="figcaption"
-          id="figcaption"
+          type="date"
+          name="event_date"
+          id="event_date"
           onChange={handleChange}
-          value={article.figcaption}
+          value={event.event_date}
         />
-
-        <label htmlFor="title">Titre</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          onChange={handleChange}
-          value={article.title}
-          required
-        />
-
-        <label htmlFor="content">Contenu</label>
-        <textarea
-          name="content"
-          id="content"
-          onChange={handleChange}
-          value={article.content}
-          required
-        />
-
-        <label htmlFor="author">Auteur</label>
-        <input
-          type="text"
-          name="author"
-          id="author"
-          onChange={handleChange}
-          value={article.author}
-          required
-        />
-
-        {/*         <label htmlFor="categorie1">Catégories 1</label>
-          <input
-            type="text"
-            name="categorie1"
-            id="categorie1"
-            onChange={(e) => setCategorie1(e.target.value)}
-          />
-  
-          <label htmlFor="categorie2">Catégories 2</label>
-          <input
-            type="text"
-            name="categorie2"
-            id="categorie2"
-            onChange={(e) => setCategorie2(e.target.value)}
-          /> */}
 
         <label htmlFor="publication_date">Date de publication</label>
         <input
@@ -124,7 +111,34 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
           name="publication_date"
           id="publication_date"
           onChange={handleChange}
-          // value={article.publication_date}
+          value={event.publication_date}
+        />
+
+        <label htmlFor="live_link">Lien de l &apos;évenement</label>
+        <input
+          type="text"
+          name="live_link"
+          id="live_link"
+          onChange={handleChange}
+          value={event.live_link}
+        />
+
+        <label htmlFor="live_link">Lien du replay</label>
+        <input
+          type="text"
+          name="replay_link"
+          id="replay_link"
+          onChange={handleChange}
+          value={event.replay_link}
+        />
+
+        <label htmlFor="live_link">Score</label>
+        <input
+          type="text"
+          name="score"
+          id="score"
+          onChange={handleChange}
+          value={event.score}
         />
 
         <input type="submit" value="Envoyer" />

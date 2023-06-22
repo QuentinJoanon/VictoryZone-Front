@@ -45,15 +45,15 @@ export function createNewEvent(newEvent: CalendarData) {
     });
 }
 
-export function editArticle(article: ArticleData) {
+export function editEvent(event: CalendarFutureData) {
   axiosInstance({
     method: 'patch',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${article.slug}`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/calendar/${event.id}`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     },
-    data: article,
+    data: event,
   })
     .then((response) => {
       console.log(response);
