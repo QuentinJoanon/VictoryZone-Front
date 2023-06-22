@@ -5,8 +5,14 @@ import axiosInstance from './axiosInstance';
 export function fetchAdminArticles(
   setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
 ) {
-  axiosInstance
-    .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles/admin`)
+  axiosInstance({
+    method: 'get',
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/admin`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => {
       setArticlesList(response.data.data);
     })

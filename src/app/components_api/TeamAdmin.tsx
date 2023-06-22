@@ -5,7 +5,6 @@ import CardEditableMember from '../components/CardEditableMember';
 export function fetchAdminTeam(
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
 ) {
-  axiosInstance;
   axiosInstance({
     method: 'get',
     url: `${process.env.NEXT_PUBLIC_API_URL}api/team`,
