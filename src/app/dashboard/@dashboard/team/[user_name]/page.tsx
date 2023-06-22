@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ArticleData } from '@/app/context/Article';
-import { editArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
 import { TeamData } from '@/app/context/Team';
+import { editMember } from '@/app/components_api/TeamAdmin';
 
 export default function EditMember({
   params,
@@ -17,7 +16,7 @@ export default function EditMember({
 
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles/${params.user_name}`)
+      .get(`${process.env.NEXT_PUBLIC_API_URL}api/team/${params.user_name}`)
       .then((response) => {
         setMember(response.data.data);
       })
@@ -34,6 +33,9 @@ export default function EditMember({
     delete member.updated_at;
     delete member.statistics;
     delete member.achievements;
+    delete member.setup;
+    delete member.media_video;
+    delete member.media_photo;
     console.log(member);
     editMember(member, memberId);
     router.push('/dashboard/team');
@@ -52,77 +54,84 @@ export default function EditMember({
     <main>
       <h1>Nouveau membre</h1>
       <form onSubmit={handleSubmitForm}>
-        <label htmlFor="image">Image</label>
+        <label htmlFor="image">Photo</label>
         <input
           type="text"
           name="image"
           id="image"
           onChange={handleChange}
-          value={article.image}
-          required
+          value={member.image}
         />
 
-        <label htmlFor="figcaption">Légende de l &apos;image</label>
+        <label htmlFor="last_name">Nom</label>
         <input
           type="text"
-          name="figcaption"
-          id="figcaption"
+          name="last_name"
+          id="last_name"
           onChange={handleChange}
-          value={article.figcaption}
+          value={member.last_name}
         />
 
-        <label htmlFor="title">Titre</label>
+        <label htmlFor="first_name">Prénom</label>
         <input
           type="text"
-          name="title"
-          id="title"
+          name="first_name"
+          id="first_name"
           onChange={handleChange}
-          value={article.title}
-          required
+          value={member.first_name}
         />
 
-        <label htmlFor="content">Contenu</label>
+        <label htmlFor="user_name">Pseudo</label>
+        <input
+          type="text"
+          name="user_name"
+          id="user_name"
+          onChange={handleChange}
+          value={member.user_name}
+        />
+
+        <label htmlFor="role">Rôle</label>
+        <input
+          type="text"
+          name="role"
+          id="role"
+          onChange={handleChange}
+          value={member.role}
+        />
+
+        <label htmlFor="description">Description</label>
         <textarea
-          name="content"
-          id="content"
+          name="description"
+          id="description"
           onChange={handleChange}
-          value={article.content}
-          required
+          value={member.description}
         />
 
-        <label htmlFor="author">Auteur</label>
+        <label htmlFor="youtube_link">Youtube</label>
         <input
           type="text"
-          name="author"
-          id="author"
+          name="youtube_link"
+          id="youtube_link"
           onChange={handleChange}
-          value={article.author}
-          required
+          value={member.youtube_link}
         />
 
-        {/*         <label htmlFor="categorie1">Catégories 1</label>
-          <input
-            type="text"
-            name="categorie1"
-            id="categorie1"
-            onChange={(e) => setCategorie1(e.target.value)}
-          />
-  
-          <label htmlFor="categorie2">Catégories 2</label>
-          <input
-            type="text"
-            name="categorie2"
-            id="categorie2"
-            onChange={(e) => setCategorie2(e.target.value)}
-          /> */}
-
-        <label htmlFor="publication_date">Date de publication</label>
+        <label htmlFor="twitch_link">Twitch</label>
         <input
-          type="date"
-          name="publication_date"
-          id="publication_date"
+          type="text"
+          name="twitch_link"
+          id="twitch_link"
           onChange={handleChange}
-          // value={article.publication_date}
+          value={member.twitch_link}
+        />
+
+        <label htmlFor="twitter_link">Twitter</label>
+        <input
+          type="text"
+          name="twitter_link"
+          id="twitter_link"
+          onChange={handleChange}
+          value={member.twitter_link}
         />
 
         <input type="submit" value="Envoyer" />

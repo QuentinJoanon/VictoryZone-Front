@@ -5,8 +5,15 @@ import CardEditableMember from '../components/CardEditableMember';
 export function fetchAdminTeam(
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
 ) {
-  axiosInstance
-    .get(`${process.env.NEXT_PUBLIC_API_URL}api/team`)
+  axiosInstance;
+  axiosInstance({
+    method: 'get',
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/team`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => {
       setTeamList(response.data.data);
     })
@@ -33,15 +40,15 @@ export function createNewMember(newMember: TeamData) {
     });
 }
 
-export function editArticle(article: ArticleData, articleId: number) {
+export function editMember(member: TeamData, memberId: number) {
   axiosInstance({
     method: 'patch',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${articleId}`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/team/${memberId}`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     },
-    data: article,
+    data: member,
   })
     .then((response) => {
       console.log(response);
