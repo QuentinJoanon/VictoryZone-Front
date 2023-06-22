@@ -5,11 +5,24 @@
 
 import { createContext, useContext, useState } from 'react';
 
+export interface CalendarData {
+  // Mettre ? pour les types facultatifs
+  event_name: string;
+  event_date: string;
+  adversary_name_short: string;
+  live_link?: string;
+  score?: string;
+  image: string;
+  publication_date?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
 export interface CalendarFutureData {
   // Mettre ? pour les types facultatifs
   id: number;
   event_name: string;
-  event_date: number;
+  event_date: string;
   adversary_name_short: string;
   live_link?: string;
   score?: string;
