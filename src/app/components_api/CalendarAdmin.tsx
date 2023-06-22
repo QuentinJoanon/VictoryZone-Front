@@ -2,6 +2,7 @@ import { ArticleData, useArticleContext } from '../context/Article';
 import CardEditableArticle from '../components/CardEditableArticle';
 import axiosInstance from './axiosInstance';
 import {
+  CalendarData,
   CalendarFutureData,
   CalendarPastData,
   useCalendarContext,
@@ -26,7 +27,7 @@ export function fetchAdminCalendar(
     });
 }
 
-export function createNewEvent(newEvent: CalendarFutureData) {
+export function createNewEvent(newEvent: CalendarData) {
   axiosInstance({
     method: 'post',
     url: `${process.env.NEXT_PUBLIC_API_URL}api/calendar`,
