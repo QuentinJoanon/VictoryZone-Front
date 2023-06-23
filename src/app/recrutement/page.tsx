@@ -12,6 +12,7 @@ export default function Recrutement() {
     first_name: '',
     last_name: '',
     message: '',
+    external_link: '',
     cv: null as File | null, //                                                  | Fichier CV (initialisé à null)
   });
 
@@ -50,7 +51,15 @@ export default function Recrutement() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); //                                                    | Empeche le comportement par defaut de l'evénement de soumission du formulaire
 
-    const { user_name, email, first_name, last_name, message, cv } = formData; // | Récupération des valeurs du formulaire
+    const {
+      user_name,
+      email,
+      first_name,
+      last_name,
+      message,
+      external_link,
+      cv,
+    } = formData; // | Récupération des valeurs du formulaire
 
     if (!cv) {
       console.error('Veuillez télécharger votre CV.');
@@ -63,6 +72,8 @@ export default function Recrutement() {
     form.append('first_name', first_name);
     form.append('last_name', last_name);
     form.append('message', message);
+    form.append('external_link', external_link);
+    form.append('cv', cv);
 
     // * Envoi du form au backend en utilisant axios
     axios
@@ -162,6 +173,16 @@ export default function Recrutement() {
                 onChange={handleTextAreaChange}
                 required
               ></textarea>
+
+              {/* Champ pour le lien externe */}
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Lien vers vos Highlights (facultatif)"
+                name="external_link"
+                value={formData.external_link}
+                onChange={handleChange}
+              />
 
               {/* Bouton de soumission du formulaire */}
               <input
