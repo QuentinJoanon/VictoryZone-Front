@@ -7,11 +7,7 @@ export default function CardFutureEvents({
   event_date,
   adversary_name_short,
   live_link,
-  score,
   image,
-  publication_date,
-  created_at,
-  updated_at,
 }: CalendarFutureData) {
   return (
     <div className="future event">

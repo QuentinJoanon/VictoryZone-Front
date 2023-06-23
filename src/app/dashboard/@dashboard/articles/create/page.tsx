@@ -11,14 +11,11 @@ export default function NewArticle() {
     image: '',
     title: '',
     content: '',
-    /*     categories: [] as string[], */
     publication_date: '',
     author: username,
     slug: '',
     figcaption: '',
   });
-  /*   const [categorie1, setCategorie1] = useState('');
-  const [categorie2, setCategorie2] = useState(''); */
 
   function convertToSlug(title: string) {
     return title
@@ -91,22 +88,6 @@ export default function NewArticle() {
           value={newArticle.content}
           required
         />
-
-        {/*         <label htmlFor="categorie1">Catégories 1</label>
-        <input
-          type="text"
-          name="categorie1"
-          id="categorie1"
-          onChange={(e) => setCategorie1(e.target.value)}
-        />
-
-        <label htmlFor="categorie2">Catégories 2</label>
-        <input
-          type="text"
-          name="categorie2"
-          id="categorie2"
-          onChange={(e) => setCategorie2(e.target.value)}
-        /> */}
 
         <label htmlFor="publication_date">Date de publication</label>
         <input

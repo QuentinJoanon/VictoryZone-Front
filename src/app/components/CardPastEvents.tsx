@@ -8,9 +8,6 @@ export default function CardPastEvents({
   replay_link,
   score,
   image,
-  publication_date,
-  created_at,
-  updated_at,
 }: CalendarPastData) {
   return (
     <div className="past event">

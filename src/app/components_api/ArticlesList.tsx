@@ -2,11 +2,6 @@ import axios from 'axios';
 import { ArticleData, useArticleContext } from '../context/Article';
 import CardArticle from '../components/CardArticle';
 
-/**
- * Fetches articles from the API and updates the state with the response data.
- *
- * @param {React.Dispatch<React.SetStateAction<ArticleData[]>>} setArticlesList - A React state setter function that updates the articles list.
- */
 export function fetchArticles(
   setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
 ) {

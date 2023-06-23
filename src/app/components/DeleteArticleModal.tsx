@@ -1,7 +1,6 @@
 'use client';
 
 import { deleteArticle } from '../components_api/ArticlesAdmin';
-import { useRouter } from 'next/navigation';
 
 export default function DeleteArticleModal({
   slug,
@@ -10,15 +9,10 @@ export default function DeleteArticleModal({
   slug: string;
   closeModal: () => void;
 }) {
-  const router = useRouter();
   const handleDeleteSubmit = (e: React.FormEvent, slug: string) => {
     e.preventDefault();
-
     deleteArticle(slug);
-
-    // Fermer la modal après la suppression
     closeModal();
-
     document.querySelector(`.${slug}`)?.remove();
   };
   return (
