@@ -18,6 +18,8 @@ export default function Recrutement() {
   });
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); //              | Etat local pour suivre si le formulaire a été soumis avec succès ou non. False indique que par default le formulaire n'a pas encore été soumis
+  //Nouvelle variable d'etat pour stocker le nom du fichier selectionné:
+  const [fileName, setFileName] = useState('');
 
   // *Gestionnaire de changement de champ:
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +31,8 @@ export default function Recrutement() {
         ...formData, //                                                          | Copie de l'état existant
         cv: files && files.length > 0 ? files[0] : null, //                      | Stockage du fichier CV sélectionné (ou null s'il n'y en a pas)
       });
+      // on met a jour le nom du fichier lorsque l'utilisateur selectionne un fichier
+      setFileName(files && files.length > 0 ? files[0].name : '');
     } else {
       //                                                                         | Si le champ n'est pas le champ du fichier CV
       setFormData({
@@ -97,6 +101,14 @@ export default function Recrutement() {
           error
         );
       });
+  };
+
+  const handleRemoveFile = () => {
+    setFormData({
+      ...formData,
+      cv: null,
+    });
+    setFileName('');
   };
 
   return (
@@ -177,18 +189,36 @@ export default function Recrutement() {
               value={formData.external_link}
               onChange={handleChange}
             />
-            <div className="recrutement__form__btn">
-              {/* Champ pour le fichier CV */}
+
+            {/* Champ pour le fichier CV */}
+
+            <div className="recrutement__form__file">
+              {fileName && (
+                <div className="file-info">
+                  <p className="file-name">{fileName}</p>
+                  <button className="remove-file" onClick={handleRemoveFile}>
+                    X
+                  </button>
+                </div>
+              )}
+              <label className="label_coule" htmlFor="cv">
+                choisir un fichier
+              </label>
+
               <input
-                type="file" //                                                                        | Permet à l'user de selectionner un fichier
-                className="recrutement__form__btn__add-file" //                                                      | classe css
-                name="cv" //                                                                          | nom du champ du fichier.
-                onChange={handleChange} //                                                            | Gestionnaire d'evenement qui sera appelé lorsque la valeur du champ du fichier cv change. Dans ce cas, 'handleChange' est la fonction qui met a jour l'etat local du formulaire avec la nouvelle valeur du champ.
+                type="file"
+                className="recrutement__form__btn__add-file"
+                name="cv"
+                id="cv"
+                onChange={handleChange}
                 accept=".pdf, .doc, .docx"
                 required
               />
+            </div>
 
-              {/* Bouton de soumission du formulaire */}
+            {/* Bouton de soumission du formulaire */}
+
+            <div className="recrutement__form__btn">
               <input
                 type="submit"
                 value="Envoyer"
