@@ -16,6 +16,19 @@ export function fetchTeam(
     });
 }
 
+export function fetchTeamHome(
+  setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
+) {
+  axios
+    .get(`${process.env.NEXT_PUBLIC_API_URL}api/team?home=true`)
+    .then((response) => {
+      setTeamList(response.data.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 export function AllMembersTeam() {
   const { teamList } = useTeamContext();
   const teamMembers = teamList.map((team: TeamData) => (

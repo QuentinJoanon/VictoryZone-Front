@@ -9,7 +9,7 @@ import {
   AllPastCalendars,
   fetchHomeCalendars,
 } from './components_api/CalendarList';
-import { AllMembersTeam, fetchTeam } from './components_api/TeamList';
+import { AllMembersTeam, fetchTeamHome } from './components_api/TeamList';
 
 import { useArticleContext } from './context/Article';
 import { useCalendarContext } from './context/Calendar';
@@ -24,7 +24,7 @@ export default function Home() {
   useEffect(() => {
     fetchHomeArticles(setArticlesList);
     fetchHomeCalendars(setCalendarFutureList, setCalendarPastList);
-    fetchTeam(setTeamList);
+    fetchTeamHome(setTeamList);
   }, [
     setArticlesList,
     setCalendarFutureList,
