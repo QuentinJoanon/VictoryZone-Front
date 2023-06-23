@@ -4,15 +4,55 @@
 
 .article {
   @include m.card-styles;
- /* &__img{
-    width: 490px;
-  }*/
+
+  --img-scale: 1.001;
+  --title-color: white; 
+  position: relative;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  padding: 38px;
+
+  
+  &__title {
+    margin: 0 0 18px 0;
+    font-family: 'Righteous', sans-serif;
+    color: var(--title-color);
+    text-transform: uppercase;
+    font-size: 2.1rem;
+  }
+
+  &__img {
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255, 0.255);
+  }
+
+  &__category,
+  &__content,
+  &__date,
+  &__update,
+  &__author {
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 150%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 }
 
+.article:hover {
+  --img-scale: 1.1;
+  --title-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
+}
 @media (min-width: 1024px) {
   .article {
     width: 300px; /* ajuster la largeur de la carte */
-    height: 350px;
     transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
 
     &:hover {
@@ -37,15 +77,14 @@
 
 
 .card-member {
-  border: 1px;
-  margin: 20px;
-  padding: 10px;
+  margin: auto;
   text-align: center;
   width: 90%; 
-  border-radius: 10px; 
+  border-radius: 15px; 
   overflow: hidden; 
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   position: relative;
+  
 
   --border-size: 3px;  // Taille de la bordure animée
   --border-angle: 0turn;  // Angle initial de l'animation de la bordure
@@ -66,12 +105,21 @@
   animation: bg-spin 7s linear infinite;  // Appliquer l'animation de la bordure et vitesse animation
 
   &__image {
-    height: 390px;
-    position: relative;
+    height: 370px;
+    position:relative;
+  }
+
+  &__details {
+    position: absolute; /* positionner absolument les détails par rapport à la carte du membre */
+    bottom: 0; /* positionnez les détails en bas de la carte du membre */
+    left: 0; /* aligner les détails à gauche de la carte du membre */
+    right: 0; /* aligner les détails à droite de la carte du membre */
+    background-color: rgba(0,0,0,0.6); /* arrière-plan semi-transparent pour les détails */
+    color: #fff; 
+    padding: 10px; /* espacement intérieur pour les détails */
   }
 
   &__username, &__fullname, &__role {
-    color: white;
     text-decoration: none;
     font-size: 18px; 
     margin-top: 10px; 
@@ -134,7 +182,8 @@
   }
 
   .card-member {
-    
+
+   
     &:hover {
       @include m.hover;
       transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
