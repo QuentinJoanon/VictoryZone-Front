@@ -13,7 +13,6 @@ export default function Recrutement() {
     last_name: '',
     message: '',
     cv: null as File | null, //                                                  | Fichier CV (initialisé à null)
-    external_links: [''],
   });
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); //              | Etat local pour suivre si le formulaire a été soumis avec succès ou non. False indique que par default le formulaire n'a pas encore été soumis
@@ -28,14 +27,6 @@ export default function Recrutement() {
         ...formData, //                                                          | Copie de l'état existant
         cv: files && files.length > 0 ? files[0] : null, //                      | Stockage du fichier CV sélectionné (ou null s'il n'y en a pas)
       });
-    } else if (name.includes('external_link')) {
-      const linkIndex = parseInt(name.split('-')[1], 10); //                     | Recupération de l'index du lien externe
-      const updatedLinks = [...formData.external_links];
-      updatedLinks[linkIndex] = value;
-      setFormData({
-        ...formData,
-        external_links: updatedLinks,
-      });
     } else {
       //                                                                         | Si le champ n'est pas le champ du fichier CV
       setFormData({
@@ -43,22 +34,6 @@ export default function Recrutement() {
         [name]: value, //                                                        | Mise à jour de la valeur du champ correspondant dans l'état local.
       });
     }
-  };
-
-  const handleAddLink = () => {
-    setFormData({
-      ...formData,
-      external_links: [...formData.external_links, ''],
-    });
-  };
-
-  const handleRemoveLink = (index: number) => {
-    const updatedLinks = [...formData.external_links];
-    updatedLinks.splice(index, 1);
-    setFormData({
-      ...formData,
-      external_links: updatedLinks,
-    });
   };
 
   //* Gestionnaire de changement pour le chammp de zone de texte:
@@ -75,15 +50,7 @@ export default function Recrutement() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); //                                                    | Empeche le comportement par defaut de l'evénement de soumission du formulaire
 
-    const {
-      user_name,
-      email,
-      first_name,
-      last_name,
-      message,
-      cv,
-      external_links,
-    } = formData; // | Récupération des valeurs du formulaire
+    const { user_name, email, first_name, last_name, message, cv } = formData; // | Récupération des valeurs du formulaire
 
     if (!cv) {
       console.error('Veuillez télécharger votre CV.');
@@ -97,27 +64,23 @@ export default function Recrutement() {
     form.append('last_name', last_name);
     form.append('message', message);
 
-    external_links.forEach((link, index) => {
-      form.append(`external_link_${index}`, link);
-    });
-
     // * Envoi du form au backend en utilisant axios
     axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}api/recruitment`, form) //         | Envoie de la requete POST avec Axios. form = new FormData() qui contient les données du formulaire
       .then((response) => {
         if (response.status === 201) {
-          //                                         | Le code de statut HTTP 200 signifie "OK" et indique que la requete a été traitée avec succès par le serveur.
+          //                                                                      | Le code de statut HTTP 200 signifie "OK" et indique que la requete a été traitée avec succès par le serveur.
           setIsFormSubmitted(true); //                                            | Mise à jour de l'etat local pour indiquer que le formulaire a été soumis avec succès
         } else {
           console.error(
-            //                                                       | Gére l'erreur spécifique au traitement du formulaire du coté du serveur .Si la requete POST a été effectuée avec succés mais que le code n'est pas égale a 200 = Une erreur coté serveur. On envoie l'erreur au back.
+            //                                                                    | Gére l'erreur spécifique au traitement du formulaire du coté du serveur .Si la requete POST a été effectuée avec succés mais que le code n'est pas égale a 200 = Une erreur coté serveur. On envoie l'erreur au back.
             "Une erreur s'est produite lors d'envoi du formulaire."
           );
         }
       })
       .catch((error) => {
         console.error(
-          //                                                        | Gère les erreurs liées a l'envoi de la requete (comme les problemes de co...)
+          //                                                                      | Gère les erreurs liées a l'envoi de la requete (comme les problemes de co...)
           "Une erreur s'est produite lors d'envoi du formulaire.",
           error
         );
@@ -200,34 +163,6 @@ export default function Recrutement() {
                 required
               ></textarea>
 
-              {/* Champ pour les liens externes */}
-              {formData.external_links.map((link, index) => (
-                <div key={index} className="external-link-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="lien externe"
-                    name={`external_link_${index}`}
-                    value={link}
-                    onChange={handleChange}
-                    required
-                  />
-                  {index > 0 && (
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveLink(index)}
-                    >
-                      {' '}
-                      Supprimer{' '}
-                    </button>
-                  )}
-                </div>
-              ))}
-              <button type="button" onClick={handleAddLink}>
-                {' '}
-                Ajouter un lien externe
-              </button>
-
               {/* Bouton de soumission du formulaire */}
               <input
                 type="submit"
@@ -240,10 +175,10 @@ export default function Recrutement() {
         </div>
         <p className="recrutement__description">
           Bienvenue sur la page de recrutement de la Team VictoryZone. Si vous
-          êtes un joueur talentueux, passionné par League of Legends et prêt à
-          repousser vos limites, vous êtes au bon endroit. Rejoignez-nous dans
-          notre quête de l'excellence compétitive et de la domination sur la
-          scène de l'esport.
+          êtes un joueur talentueux, passionné par WarZone et prêt à repousser
+          vos limites, vous êtes au bon endroit. Rejoignez-nous dans notre quête
+          de l'excellence compétitive et de la domination sur la scène de
+          l'esport.
         </p>
       </div>
     </main>
