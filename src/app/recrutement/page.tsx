@@ -2,6 +2,7 @@
 'use client';
 import axios from 'axios';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import './index.scss';
 /* eslint-disable react/no-unescaped-entities */
 
 export default function Recrutement() {
