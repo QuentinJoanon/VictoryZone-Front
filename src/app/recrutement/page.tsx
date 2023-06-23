@@ -103,6 +103,14 @@ export default function Recrutement() {
       });
   };
 
+  const handleRemoveFile = () => {
+    setFormData({
+      ...formData,
+      cv: null,
+    });
+    setFileName('');
+  };
+
   return (
     <main>
       <div className="recrutement">
@@ -185,7 +193,14 @@ export default function Recrutement() {
             {/* Champ pour le fichier CV */}
 
             <div className="recrutement__form__file">
-              {fileName && <p className="file-name">{fileName}</p>}
+              {fileName && (
+                <div className="file-info">
+                  <p className="file-name">{fileName}</p>
+                  <button className="remove-file" onClick={handleRemoveFile}>
+                    X
+                  </button>
+                </div>
+              )}
               <label className="label_coule" htmlFor="cv">
                 choisir un fichier
               </label>
