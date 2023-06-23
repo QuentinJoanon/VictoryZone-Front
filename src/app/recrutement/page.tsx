@@ -101,8 +101,9 @@ export default function Recrutement() {
 
   return (
     <main>
-      <h1>RECRUTEMENT</h1>
       <div className="recrutement">
+        <h1 className="recrutement__h1">RECRUTEMENT</h1>
+
         <p className="recrutement__description">
           Bienvenue sur la page de recrutement de la Team VictoryZone. Si vous
           êtes un joueur talentueux, passionné par WarZone et prêt à repousser
@@ -118,69 +119,69 @@ export default function Recrutement() {
             method="post" //                                                                          | indique que le form doit etre envoyé avec la methode post.
             onSubmit={handleSubmit} //                                                                | ONSUBMIT=HANDLESUBMIT = gestionnaire d'evenement qui sera appelé lorsue le formulaire sera soumis. HandleSubmit est la fonction qui gére la soumission du formulaire.
           >
-            <div className="recrutement__form__form-group">
-              {/* Champ pour le nom d'utilisateur */}
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Nom d'utilisateur"
-                name="user_name"
-                value={formData.user_name}
-                onChange={handleChange}
-                required
-              />
-              {/* Champ pour le nom de famille */}
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Nom de famille"
-                name="last_name"
-                value={formData.last_name}
-                onChange={handleChange}
-                required
-              />
-              {/* Champ pour le prénom */}
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Prénom"
-                name="first_name"
-                value={formData.first_name}
-                onChange={handleChange}
-                required
-              />
-              {/* Champ pour l'adresse e-mail */}
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Adresse e-mail"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              {/* Champ pour le message */}
-              <textarea
-                className="form-control"
-                placeholder="Message"
-                name="message"
-                value={formData.message}
-                onChange={handleTextAreaChange}
-                required
-              ></textarea>
-              {/* Champ pour le lien externe */}
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Lien vers vos Highlights (facultatif)"
-                name="external_link"
-                value={formData.external_link}
-                onChange={handleChange}
-              />
+            {/* Champ pour le nom d'utilisateur */}
+            <input
+              type="text"
+              className="recrutement__form__fields"
+              placeholder="Nom d'utilisateur"
+              name="user_name"
+              value={formData.user_name}
+              onChange={handleChange}
+              required
+            />
+            {/* Champ pour le nom de famille */}
+            <input
+              type="text"
+              className="recrutement__form__fields"
+              placeholder="Nom de famille"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+              required
+            />
+            {/* Champ pour le prénom */}
+            <input
+              type="text"
+              className="recrutement__form__fields"
+              placeholder="Prénom"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+              required
+            />
+            {/* Champ pour l'adresse e-mail */}
+            <input
+              type="email"
+              className="recrutement__form__fields"
+              placeholder="Adresse e-mail"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            {/* Champ pour le message */}
+            <textarea
+              className="recrutement__form__fields"
+              placeholder="Message"
+              name="message"
+              value={formData.message}
+              onChange={handleTextAreaChange}
+              required
+            ></textarea>
+            {/* Champ pour le lien externe */}
+            <input
+              type="text"
+              className="recrutement__form__fields"
+              placeholder="Lien vers vos Highlights (facultatif)"
+              name="external_link"
+              value={formData.external_link}
+              onChange={handleChange}
+            />
+            <div className="recrutement__form__btn">
               {/* Champ pour le fichier CV */}
               <input
                 type="file" //                                                                        | Permet à l'user de selectionner un fichier
-                className="form-control-file" //                                                      | classe css
+                className="recrutement__form__btn__add-file" //                                                      | classe css
                 name="cv" //                                                                          | nom du champ du fichier.
                 onChange={handleChange} //                                                            | Gestionnaire d'evenement qui sera appelé lorsque la valeur du champ du fichier cv change. Dans ce cas, 'handleChange' est la fonction qui met a jour l'etat local du formulaire avec la nouvelle valeur du champ.
                 accept=".pdf, .doc, .docx"
@@ -191,7 +192,7 @@ export default function Recrutement() {
               <input
                 type="submit"
                 value="Envoyer"
-                className="btn btn-default"
+                className="recrutement__form__btn__send"
               />
             </div>
           </form>
