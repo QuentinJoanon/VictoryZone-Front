@@ -1,7 +1,6 @@
 @use '../styles/variables' as v;
 @import '../styles/reset.scss';
 
-
 :root {
   font-size: 62.5%; // Règle des 62.5% (ex: 23px = 2.3rem)
   background-color: v.$primary;
@@ -13,9 +12,7 @@
     position: relative;
   }
 
- 
-
- /*  .img {
+  /*  .img {
     object-fit: contain;
   } */
 
