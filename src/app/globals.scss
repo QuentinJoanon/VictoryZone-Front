@@ -1,8 +1,10 @@
+@use '../styles/variables' as v;
 @import '../styles/reset.scss';
+
 
 :root {
   font-size: 62.5%; // Règle des 62.5% (ex: 23px = 2.3rem)
-  background-color: #142e4a;
+  background-color: v.$primary;
   color: white;
 
   .article__img {
@@ -11,9 +13,11 @@
     position: relative;
   }
 
-  .img {
+ 
+
+ /*  .img {
     object-fit: contain;
-  }
+  } */
 
   // ***** HEADER *****
   .header-menu {
