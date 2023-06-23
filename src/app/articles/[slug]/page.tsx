@@ -25,21 +25,23 @@ export default function Article({ params }: { params: { slug: string } }) {
     : [];
 
   return (
-    <div className="article">
+    <div className="article container">
+    <div className="article__img banner-image">
+      <Image
+        className="img"
+        src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {article.image}
+        fill={true}
+        alt="" // {article.figcaption}
+      />
+    </div>
+    <div className="wrapper">
       <h2 className="article__title">{article.title}</h2>
-      <div className="article__img">
-        <Image
-          className="img"
-          src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {article.image}
-          fill={true}
-          alt="" // {article.figcaption}
-        />
-      </div>
       <p className="article__category">{labels}</p>
       <p className="article__content">{article.content}</p>
       <p className="article__date">{article.created_at}</p>
       <p className="article__update">{article.updated_at}</p>
       <p className="article__author">{article.author}</p>
     </div>
+  </div>
   );
 }

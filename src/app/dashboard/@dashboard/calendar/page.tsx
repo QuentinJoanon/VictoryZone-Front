@@ -9,11 +9,6 @@ import {
   fetchAdminCalendar,
 } from '@/app/components_api/CalendarAdmin';
 
-/**
- * Renders a list of articles fetched from the server and displays them on the screen.
- *
- * @return {JSX.Element} The main component with a list of articles.
- */
 export default function DashboardCalandar() {
   const { setCalendarFutureList, setCalendarPastList } = useCalendarContext();
 

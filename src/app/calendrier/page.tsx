@@ -9,9 +9,6 @@ import {
 } from '../components_api/CalendarList';
 import './index.scss';
 
-const API_URL =
-  'https://projet-14-victory-zone-back-production.up.railway.app/';
-
 export default function Calendar() {
   const { setCalendarFutureList, setCalendarPastList } = useCalendarContext();
 

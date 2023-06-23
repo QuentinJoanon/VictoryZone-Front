@@ -8,11 +8,6 @@ import {
   fetchAdminTeam,
 } from '@/app/components_api/TeamAdmin';
 
-/**
- * Renders a list of articles fetched from the server and displays them on the screen.
- *
- * @return {JSX.Element} The main component with a list of articles.
- */
 export default function DashboardTeam() {
   const { setTeamList } = useTeamContext();
 

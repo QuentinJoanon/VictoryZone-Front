@@ -47,7 +47,6 @@ export function AllMembersTeam() {
       twitter_link={team.twitter_link}
       created_at={team.created_at}
       updated_at={team.updated_at}
-      // setup={}
     />
   ));
   return teamMembers;

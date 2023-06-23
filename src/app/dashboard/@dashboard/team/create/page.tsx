@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
 import { createNewMember } from '@/app/components_api/TeamAdmin';
 

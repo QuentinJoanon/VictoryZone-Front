@@ -9,18 +9,9 @@ export default function CardEditableMember({
   user_name,
   first_name,
   last_name,
-  // description,
   role,
   image,
-}: // statistics,
-// achievements,
-// youtube_link,
-// twitch_link,
-// twitter_link,
-// created_at,
-// updated_at,
-// setup,
-TeamData) {
+}: TeamData) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleDeleteClick = () => {

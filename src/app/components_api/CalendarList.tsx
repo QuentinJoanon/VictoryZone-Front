@@ -19,7 +19,6 @@ export function fetchCalendars(
     .then((response) => {
       setCalendarFutureList(response.data.data.future_event);
       setCalendarPastList(response.data.data.past_event);
-      console.log(response.data.data);
     })
     .catch((error) => {
       console.log(error);

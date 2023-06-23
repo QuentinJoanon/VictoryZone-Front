@@ -21,13 +21,6 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
       });
   }, [params.slug]);
 
-  /*   const [categorie1, setCategorie1] = useState('');
-  const [categorie2, setCategorie2] = useState(''); */
-
-  /*   const labels = Array.isArray(article.categories)
-    ? article.categories.map((categorie: string | any) => categorie.label)
-    : []; */
-
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let articleId = article.id;
@@ -103,29 +96,12 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
           required
         />
 
-        {/*         <label htmlFor="categorie1">Catégories 1</label>
-          <input
-            type="text"
-            name="categorie1"
-            id="categorie1"
-            onChange={(e) => setCategorie1(e.target.value)}
-          />
-  
-          <label htmlFor="categorie2">Catégories 2</label>
-          <input
-            type="text"
-            name="categorie2"
-            id="categorie2"
-            onChange={(e) => setCategorie2(e.target.value)}
-          /> */}
-
         <label htmlFor="publication_date">Date de publication</label>
         <input
           type="date"
           name="publication_date"
           id="publication_date"
           onChange={handleChange}
-          // value={article.publication_date}
         />
 
         <input type="submit" value="Envoyer" />

@@ -48,7 +48,8 @@ export default function Home() {
         </Slider>
       </div>
       <div>{calendars}</div>
-      <div className="articles__home">{articles}</div>
+      <h2>Articles</h2>
+      <div className= "articles__home" >{articles}</div>
     </main>
   );
 }
