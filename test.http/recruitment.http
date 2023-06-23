@@ -1,4 +1,4 @@
-@endpoint = http://localhost:{{$dotenv PORT}}/api
+@endpoint = https://projet-14-victory-zone-back-production.up.railway.app/api
 @accessToken = {{login.response.body.$.data.accessToken}}
 @refreshToken = {{login.response.body.$.data.refreshToken}}
 
@@ -57,5 +57,5 @@ accepter ma demande je suis chaud
 --boundary_value--
 
 ### Suppression d'un recrutement
-DELETE {{ endpoint }}/recruitment/19
+DELETE {{ endpoint }}/recruitment/3
 Authorization: Bearer {{accessToken}}
