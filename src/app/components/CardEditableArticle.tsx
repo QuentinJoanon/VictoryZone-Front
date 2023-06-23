@@ -43,9 +43,9 @@ export default function CardEditableArticle({
           <p className="article__date">{created_at}</p>
           <p className="article__author">{author}</p>
         </div>
-        <Link href={`dashboard/articles/${slug}`}>
-          <button>Modifier</button>
-        </Link>
+      </Link>
+      <Link href={`dashboard/articles/${slug}`}>
+        <button>Modifier</button>
       </Link>
       <button onClick={handleDeleteClick}>Supprimer</button>
       {isModalVisible && (

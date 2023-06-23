@@ -11,12 +11,8 @@ export default function DeleteCalendarModal({
 }) {
   const handleDeleteSubmit = (e: React.FormEvent, id: number) => {
     e.preventDefault();
-
     deleteCalendar(id);
-
-    // Fermer la modal après la suppression
     closeModal();
-
     document.querySelector(`.event-${id}`)?.remove();
   };
   return (

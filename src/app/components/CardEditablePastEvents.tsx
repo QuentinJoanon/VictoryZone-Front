@@ -11,9 +11,6 @@ export default function CardEditablePastEvents({
   replay_link,
   score,
   image,
-  publication_date,
-  created_at,
-  updated_at,
 }: CalendarPastData) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 

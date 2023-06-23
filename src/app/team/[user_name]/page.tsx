@@ -27,7 +27,6 @@ export default function TeamMember({
       .get(`${process.env.NEXT_PUBLIC_API_URL}api/team/${params.user_name}`)
       .then((response) => {
         setTeamMember(response.data.data);
-        // console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -48,7 +47,6 @@ export default function TeamMember({
         );
       })
     : [];
-  // console.log(setupList);
 
   return (
     <div className="member">
@@ -67,34 +65,8 @@ export default function TeamMember({
         </p>
         <p className="member__infos__role">{teamMember.role}</p>
       </div>
-      {/*       <h1>VIDEOS RECENTES</h1>
-      <div className="member__videos">{teamMember.media_video}</div>
-      <h1>STATS</h1>
-      <div className="member__stats">{teamMember.statistics}</div>
-      <h1>PALMARES</h1>
-      <div className="member__achievements">{teamMember.achievements}</div> */}
       <h1>SETUP</h1>
       <div className="member__setup">{setupList}</div>
     </div>
-
-    // <div>
-    //   <div className="user_name">{teamMember.user_name}</div>
-    //   <div className="first_name">
-    //     {teamMember.first_name} {teamMember.last_name}
-    //   </div>
-    //   {setupList}
-    //   <div className="img">
-    //     <Image
-    //       className="img"
-    //       src={teamMember.image}
-    //       fill={true}
-    //       alt={teamMember.user_name}
-    //     />
-    //   </div>
-    //   <div className="description">{teamMember.description}</div>
-    //   <div className="media_video"></div>
-    //   <div className="stats">{teamMember.statistics}</div>
-    //   <div className="palmares">{teamMember.achievements}</div>
-    // </div>
   );
 }

@@ -13,12 +13,8 @@ export default function DeleteMemberModal({
   const router = useRouter();
   const handleDeleteSubmit = (e: React.FormEvent, user_name: string) => {
     e.preventDefault();
-
     deleteMember(user_name);
-
-    // Fermer la modal après la suppression
     closeModal();
-
     document.querySelector(`.${user_name}`)?.remove();
   };
   return (
