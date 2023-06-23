@@ -1,0 +1,97 @@
+.recrutement {
+  // Conteneur general
+  border: 1px solid white;
+  margin: 0;
+  padding: 20px;
+
+  &__h1 {
+    border: 1px solid green;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &__description {
+    border: 1px solid greenyellow;
+    margin-bottom: 20px;
+  }
+}
+
+.recrutement__form {
+  // conteneur du formulaire
+  border: 1px solid yellow;
+  box-sizing: border-box;
+  // padding: 10px;
+
+  &__fields {
+    border: 1px solid red;
+
+    // margin-bottom: 10px; // Espace entre chaques champs
+    margin-top: 10px;
+    width: 100%; // Remplit la largeur du conteneur
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
+      0 0 10px #c63575;
+  }
+
+  &__btn {
+    // Conteneur des boutons selection fichier + envoyer
+    border: 1px solid orange;
+    display: flex;
+    justify-content: center; // centre les elements horizontalement
+    flex-direction: column; // affiche les elements en colonne
+
+    &__add-file {
+      // border: 1px solid #b0b;
+      // border-radius: 10px;
+      // background-color: #d9d9d9;
+      // max-width: 100px;
+      height: 0px;
+    }
+    &__send {
+      border: 1px solid cyan;
+      align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
+      margin: 20px;
+      padding: 5px 15px;
+      border-radius: 10px;
+      background-color: #c63575;
+      color: white;
+      box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
+        0 0 10px #c63575;
+    }
+  }
+}
+.label_coule {
+  border: 1px solid cyan;
+  // align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
+  // margin: 20px;
+  // padding: 5px 15px;
+  border-radius: 10px;
+  // background-color: #c63575;
+  color: white;
+  // box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
+  //   0 0 10px #c63575;
+  // position: relative; // Permet de positionner l'icome de suppression relative a ce conteneur
+  // display: inline-block; // Permet de specifier une largeur en fonction du contenu
+  // padding-right: 20px;
+}
+
+.recrutement__form__file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.file-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+}
+.remove-file {
+  border: none;
+  background: none;
+  color: red;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}

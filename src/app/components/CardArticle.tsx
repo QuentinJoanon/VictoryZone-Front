@@ -18,7 +18,7 @@ export default function CardArticle({
         <div className="article__img">
           <Image
             className="img"
-            src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {large_image}
+            src={image}
             fill={true}
             alt="" // {figcaption}
           />

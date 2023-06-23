@@ -3,11 +3,6 @@
 import Link from 'next/link';
 import './dashboardMenu.scss';
 
-/**
- * Renders the dashboard menu component.
- *
- * @return {JSX.Element} The dashboard menu component.
- */
 export default function DashboardMenu() {
   const handleSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     localStorage.removeItem('accessToken');
@@ -15,7 +10,6 @@ export default function DashboardMenu() {
   };
   return (
     <nav className={'dashboard-menu'}>
-      {/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
       <ul>
         <li>
           <Link className="header-link" href="/dashboard/articles">

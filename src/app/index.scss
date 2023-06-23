@@ -1,23 +1,61 @@
 @use '../styles/variables' as v;
 @use '../styles/mixins' as m;
 
-
 .article {
   @include m.card-styles;
- /* &__img{
-    width: 490px;
-  }*/
+
+  --img-scale: 1.001;
+  --title-color: white;
+  position: relative;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  padding: 38px;
+
+  &__title {
+    margin: 0 0 18px 0;
+    font-family: 'Righteous', sans-serif;
+    color: var(--title-color);
+    text-transform: uppercase;
+    font-size: 2.1rem;
+  }
+
+  &__img {
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.255);
+  }
+
+  &__category,
+  &__content,
+  &__date,
+  &__update,
+  &__author {
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 150%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 }
 
+.article:hover {
+  --img-scale: 1.1;
+  --title-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+}
 @media (min-width: 1024px) {
   .article {
     width: 300px; /* ajuster la largeur de la carte */
-    height: 350px;
     transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
 
     &:hover {
-    @include m.hover;
-   }
+      @include m.hover;
+    }
   }
   .article__img {
     // a voir pour le layout
@@ -30,61 +68,99 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 
 /*******TEAM***********/
 
-
 .card-member {
-  border: 1px;
-  margin: 20px;
-  padding: 10px;
-  text-align: center;
-  width: 90%; 
-  border-radius: 10px; 
-  overflow: hidden; 
-  margin-bottom: 50px;
+  margin: auto;
+  margin-top: 40px;
+  width: 90%;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 40px;
   position: relative;
+  max-width: 280px;
 
-  --border-size: 3px;  // Taille de la bordure animée
-  --border-angle: 0turn;  // Angle initial de l'animation de la bordure
-  
+  --border-size: 3px; // Taille de la bordure animée
+  --border-angle: 0turn; // Angle initial de l'animation de la bordure
+
   // Image de fond pour l'animation de la bordure
-  background-image: conic-gradient( 
+  background-image: conic-gradient(
       from var(--border-angle),
-      v.$secondary,
+      transparent 100%,
+      #123a56,
       #112 50%,
-      v.$secondary,
+      #123a56
     ),
-    conic-gradient(from var(--border-angle), transparent 20%, #c63575, #354dc6, #c63575, #c63575);
-  background-size: calc(100% - (var(--border-size) * 2)) // Taille de l'image de fond pour l'animation de la bordure
-      calc(100% - (var(--border-size) * 2)),
+    conic-gradient(
+      from var(--border-angle),
+      transparent 20%,
+      #ffffff,
+      #fd7eb5,
+      #ff006f,
+      #142e4a
+    );
+  background-size: calc(100% - (var(--border-size) * 2))
+      // Taille de l'image de fond pour l'animation de la bordure
+    calc(100% - (var(--border-size) * 2)),
     cover;
   background-position: center center;
   background-repeat: no-repeat; // Pour éviter que l'image de fond pour l'animation de la bordure ne se répète
-  animation: bg-spin 7s linear infinite;  // Appliquer l'animation de la bordure et vitesse animation
+  animation: bg-spin 7s linear infinite; // Appliquer l'animation de la bordure et vitesse animation
 
   &__image {
-    height: 390px;
+    height: 370px;
     position: relative;
+    margin: 3px;
+    border-radius: 15px;
+  }
+  &__image img {
+    object-fit: cover;
+    object-position: top;
+    border-radius: 15px;
   }
 
-  &__username, &__fullname, &__role {
-    color: white;
+  &__details {
+    position: absolute; /* positionner absolument les détails par rapport à la carte du membre */
+    bottom: 0; /* positionnez les détails en bas de la carte du membre */
+    left: 0; /* aligner les détails à gauche de la carte du membre */
+    right: 0; /* aligner les détails à droite de la carte du membre */
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.6
+    ); /* arrière-plan semi-transparent pour les détails */
+    color: #fff;
+    padding: 10px; /* espacement intérieur pour les détails */
+    margin: 3px;
+    border-radius: 0 0 15px 15px;
+  }
+
+  &__username,
+  &__fullname,
+  &__role {
     text-decoration: none;
-    font-size: 18px; 
-    margin-top: 10px; 
+    font-size: 18px;
+    margin-top: 10px;
   }
 }
 
-@property --border-angle { // Propriété personnalisée pour l'animation de la bordure
+@property --border-angle {
+  // Propriété personnalisée pour l'animation de la bordure
   syntax: '<angle>'; // La syntaxe de la propriété est un angle
-  inherits: false;  // La propriété n'est pas héritée par les enfants de la carte
+  inherits: false; // La propriété n'est pas héritée par les enfants de la carte
   initial-value: 0turn; // Valeur initiale de la propriété
 }
 
-@keyframes bg-spin {  // Définition de l'animation de la bordure
+@keyframes bg-spin {
+  // Définition de l'animation de la bordure
   to {
     --border-angle: 1turn; // A la fin de l'animation, l'angle de la bordure a fait un tour complet
   }
@@ -94,7 +170,7 @@
   animation-play-state: paused;
 }*/
 
-/***carousel*///
+/***carousel*/ //
 .slick-dots {
   bottom: 10px;
 }
@@ -107,7 +183,7 @@
   font-size: 12px;
   color: v.$color;
   opacity: 0.75;
-  content: "•";
+  content: '•';
 }
 
 .slick-dots li.slick-active button:before {
@@ -115,8 +191,9 @@
   opacity: 1;
 }
 
-.slick-next, .slick-prev {
-  display: none;  // cache les flèches sur mobile
+.slick-next,
+.slick-prev {
+  display: none; // cache les flèches sur mobile
 }
 
 /*.slick-slide {
@@ -127,19 +204,18 @@
 }*/
 
 @media (min-width: 1024px) {
-
   .team__home {
     display: flex;
     justify-content: center;
   }
 
   .card-member {
-    
     &:hover {
       @include m.hover;
-      transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
-      1.1
-    ); 
+      transform: scale(
+        /*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
+          1.1
+      );
     }
   }
 
@@ -149,10 +225,11 @@
     right: -10px;
   }
   .slick-prev {
-    left: -10px;  
+    left: -10px;
   }
-  
-  .slick-next:before, .slick-prev:before {
-    font-size: 20px;  //  ajuster la taille des flèches ici
+
+  .slick-next:before,
+  .slick-prev:before {
+    font-size: 20px; //  ajuster la taille des flèches ici
   }
 }

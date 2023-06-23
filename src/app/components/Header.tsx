@@ -14,7 +14,6 @@ export default function Header() {
         <a href="/">
           <Image
             src={logo}
-            // width={100}
             height={100}
             alt="Logo VictoryZone"
             priority={true}
@@ -23,19 +22,13 @@ export default function Header() {
         <div
           className={`burger-menu ${navOpen ? 'active cross' : ''}`}
           onClick={handleToggle}
-          //className={navOpen ? 'burger-menu__cross' : 'burger-menu__line'}
-          //onClick={handleToggle}
         >
-          {/* toggle class for switch icon burger to cross */}
-          {/* BurgerMenu */}
           <span className="line"></span>
           <span className="line"></span>
           <span className="line"></span>
         </div>
       </div>
       <div className={`header-menu ${navOpen ? '' : 'hidden'} `}>
-        {/* <div className={navOpen ? 'header-menu' : 'header-menu hidden'}> */}
-        {/* toggle class for hide menu */}
         <ul>
           <li>
             <a className="header-link" href="/">

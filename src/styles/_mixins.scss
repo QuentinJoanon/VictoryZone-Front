@@ -4,18 +4,19 @@
 /****carte*****/
 
 @mixin card-styles {
-    width: 90%;
-    background-color: v.$secondary;
-    border-radius: 10px;
-    padding: 20px; /* espace intérieur de la carte */
-    margin-top: 20px;
-    margin-bottom: 40px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: v.$color-shadow;/* Ajout des styles pour centrer la carte */
-    margin-left: auto;
-    margin-right: auto;
-  }
+  width: 90%;
+  background-color: v.$secondary;  /* Couleur d'arrière-plan semi-transparente */
+  border-radius: 10px;
+  padding: 20px; 
+  margin-top: 20px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: v.$color-shadow;
+  margin-left: auto;
+  margin-right: auto;
+  backdrop-filter: blur(10px); /* Flou d'arrière-plan */
+}
 
 @mixin hover {
   transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
