@@ -49,7 +49,7 @@ export default function Recrutement() {
 
   // *Gestionnaire de soumission du formulaire
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); //                                                    | Empeche le comportement par defaut de l'evénement de soumission du formulaire
+    event.preventDefault(); //                                                   | Empeche le comportement par defaut de l'evénement de soumission du formulaire
 
     const {
       user_name,
@@ -59,7 +59,7 @@ export default function Recrutement() {
       message,
       external_link,
       cv,
-    } = formData; // | Récupération des valeurs du formulaire
+    } = formData; //                                                              | Récupération des valeurs du formulaire
 
     if (!cv) {
       console.error('Veuillez télécharger votre CV.');
@@ -102,6 +102,14 @@ export default function Recrutement() {
     <main>
       <h1>RECRUTEMENT</h1>
       <div className="recrutement">
+        <p className="recrutement__description">
+          Bienvenue sur la page de recrutement de la Team VictoryZone. Si vous
+          êtes un joueur talentueux, passionné par WarZone et prêt à repousser
+          vos limites, vous êtes au bon endroit. Rejoignez-nous dans notre quête
+          de l'excellence compétitive et de la domination sur la scène de
+          l'esport.
+        </p>
+
         <div className="recrutement__form">
           <form
             action="https://projet-14-victory-zone-back-production.up.railway.app/api/recruitment" // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
@@ -110,16 +118,6 @@ export default function Recrutement() {
             onSubmit={handleSubmit} //                                                                | ONSUBMIT=HANDLESUBMIT = gestionnaire d'evenement qui sera appelé lorsue le formulaire sera soumis. HandleSubmit est la fonction qui gére la soumission du formulaire.
           >
             <div className="recrutement__form__form-group">
-              {/* Champ pour le fichier CV */}
-              <input
-                type="file" //                                                                        | Permet à l'user de selectionner un fichier
-                className="form-control-file" //                                                      | classe css
-                name="cv" //                                                                          | nom du champ du fichier.
-                onChange={handleChange} //                                                            | Gestionnaire d'evenement qui sera appelé lorsque la valeur du champ du fichier cv change. Dans ce cas, 'handleChange' est la fonction qui met a jour l'etat local du formulaire avec la nouvelle valeur du champ.
-                accept=".pdf, .doc, .docx"
-                required
-              />
-
               {/* Champ pour le nom d'utilisateur */}
               <input
                 type="text"
@@ -130,29 +128,6 @@ export default function Recrutement() {
                 onChange={handleChange}
                 required
               />
-
-              {/* Champ pour l'adresse e-mail */}
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Adresse e-mail"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-
-              {/* Champ pour le prénom */}
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Prénom"
-                name="first_name"
-                value={formData.first_name}
-                onChange={handleChange}
-                required
-              />
-
               {/* Champ pour le nom de famille */}
               <input
                 type="text"
@@ -163,7 +138,26 @@ export default function Recrutement() {
                 onChange={handleChange}
                 required
               />
-
+              {/* Champ pour le prénom */}
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Prénom"
+                name="first_name"
+                value={formData.first_name}
+                onChange={handleChange}
+                required
+              />
+              {/* Champ pour l'adresse e-mail */}
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Adresse e-mail"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
               {/* Champ pour le message */}
               <textarea
                 className="form-control"
@@ -173,7 +167,6 @@ export default function Recrutement() {
                 onChange={handleTextAreaChange}
                 required
               ></textarea>
-
               {/* Champ pour le lien externe */}
               <input
                 type="text"
@@ -182,6 +175,15 @@ export default function Recrutement() {
                 name="external_link"
                 value={formData.external_link}
                 onChange={handleChange}
+              />
+              {/* Champ pour le fichier CV */}
+              <input
+                type="file" //                                                                        | Permet à l'user de selectionner un fichier
+                className="form-control-file" //                                                      | classe css
+                name="cv" //                                                                          | nom du champ du fichier.
+                onChange={handleChange} //                                                            | Gestionnaire d'evenement qui sera appelé lorsque la valeur du champ du fichier cv change. Dans ce cas, 'handleChange' est la fonction qui met a jour l'etat local du formulaire avec la nouvelle valeur du champ.
+                accept=".pdf, .doc, .docx"
+                required
               />
 
               {/* Bouton de soumission du formulaire */}
@@ -194,13 +196,6 @@ export default function Recrutement() {
           </form>
           {isFormSubmitted && <p>Le formulaire a été envoyé avec succès !</p>}
         </div>
-        <p className="recrutement__description">
-          Bienvenue sur la page de recrutement de la Team VictoryZone. Si vous
-          êtes un joueur talentueux, passionné par WarZone et prêt à repousser
-          vos limites, vous êtes au bon endroit. Rejoignez-nous dans notre quête
-          de l'excellence compétitive et de la domination sur la scène de
-          l'esport.
-        </p>
       </div>
     </main>
   );
