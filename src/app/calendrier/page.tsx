@@ -13,11 +13,11 @@ export default function Calendar() {
   const { setCalendarFutureList, setCalendarPastList } = useCalendarContext();
 
   useEffect(() => {
-    fetchCalendars(setCalendarFutureList, setCalendarPastList);
+    fetchCalendars(setCalendarFutureList, setCalendarPastList); // Fetch calendars and update the future and past calendars lists in the context
   }, [setCalendarFutureList, setCalendarPastList]);
 
-  const futureCalendars = AllFutureCalendars();
-  const pastCalendars = AllPastCalendars();
+  const futureCalendars = AllFutureCalendars(); // Get all future calendars from the context
+  const pastCalendars = AllPastCalendars(); // Get all past calendars from the context
 
   return (
     <main>

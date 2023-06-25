@@ -1,5 +1,3 @@
-import { ArticleData, useArticleContext } from '../context/Article';
-import CardEditableArticle from '../components/CardEditableArticle';
 import axiosInstance from './axiosInstance';
 import {
   CalendarData,
@@ -10,6 +8,7 @@ import {
 import CardEditableFutureEvents from '../components/CardEditableFutureEvents';
 import CardEditablePastEvents from '../components/CardEditablePastEvents';
 
+// Fetches the admin calendar data from the API
 export function fetchAdminCalendar(
   setCalendarFutureList: React.Dispatch<
     React.SetStateAction<CalendarFutureData[]>
@@ -33,6 +32,7 @@ export function fetchAdminCalendar(
     });
 }
 
+// Creates a new event in the calendar
 export function createNewEvent(newEvent: CalendarData) {
   axiosInstance({
     method: 'post',
@@ -51,6 +51,7 @@ export function createNewEvent(newEvent: CalendarData) {
     });
 }
 
+// Edits an existing future event in the calendar
 export function editEvent(event: CalendarFutureData) {
   axiosInstance({
     method: 'patch',
@@ -69,6 +70,7 @@ export function editEvent(event: CalendarFutureData) {
     });
 }
 
+// Deletes a calendar event by ID
 export function deleteCalendar(id: number) {
   axiosInstance({
     method: 'delete',
@@ -86,6 +88,7 @@ export function deleteCalendar(id: number) {
     });
 }
 
+// Renders all editable future calendars based on the calendar context
 export function AllEditableFutureCalendars() {
   const { calendarFutureList } = useCalendarContext();
   const calendars = calendarFutureList.map((calendar: CalendarFutureData) => (
@@ -102,6 +105,7 @@ export function AllEditableFutureCalendars() {
   return calendars;
 }
 
+// Renders all editable past calendars based on the calendar context
 export function AllEditablePastCalendars() {
   const { calendarPastList } = useCalendarContext();
   const calendars = calendarPastList.map((calendar: CalendarPastData) => (

@@ -8,7 +8,7 @@ export function fetchArticles(
   axios
     .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles`)
     .then((response) => {
-      setArticlesList(response.data.data);
+      setArticlesList(response.data.data); // Set the fetched articles list in the state
     })
     .catch((error) => {
       console.log(error);
@@ -21,7 +21,7 @@ export function fetchHomeArticles(
   axios
     .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles?home=true`)
     .then((response) => {
-      setArticlesList(response.data.data);
+      setArticlesList(response.data.data); // Set the fetched home articles list in the state
     })
     .catch((error) => {
       console.log(error);
@@ -29,7 +29,7 @@ export function fetchHomeArticles(
 }
 
 export function AllArticles() {
-  const { articlesList } = useArticleContext();
+  const { articlesList } = useArticleContext(); // Access the article context and retrieve the articles list
   const articles = articlesList.map((article: ArticleData) => (
     <CardArticle
       key={article.id}
@@ -46,5 +46,5 @@ export function AllArticles() {
       }
     />
   ));
-  return articles;
+  return articles; // Return the rendered list of articles
 }
