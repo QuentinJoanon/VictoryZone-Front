@@ -20,16 +20,19 @@ export interface TeamData {
   setup?: string;
 }
 
+// Define the type for the team context
 interface TeamContextType {
   teamList: TeamData[];
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>;
 }
 
+// Create the context for the team
 const TeamContext = createContext<TeamContextType>({
   teamList: [],
   setTeamList: () => {},
 });
 
+// Provider component for the team context
 export const TeamContextProvider = ({ children }: any) => {
   const [teamList, setTeamList] = useState<TeamData[]>([]);
 
@@ -40,4 +43,5 @@ export const TeamContextProvider = ({ children }: any) => {
   );
 };
 
+// Custom hook to access the team context
 export const useTeamContext = () => useContext(TeamContext);
