@@ -29,7 +29,7 @@ export function createNewArticle(newArticle: ArticleData) {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     },
-    data: newArticle,
+    data: newArticle, // Send the new article data in the request body
   })
     .then((response) => {
       console.log(response);
