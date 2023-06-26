@@ -1,6 +1,9 @@
 @use '../styles/variables' as v;
 @use '../styles/mixins' as m;
 
+
+
+
 .article {
   @include m.card-styles;
 

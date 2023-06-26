@@ -37,6 +37,7 @@ export default function Home() {
   const team = AllMembersTeam();
   return (
     <main>
+      
       <div style={{ maxWidth: '90%', margin: '0 auto' }}>
         <Slider {...settings} className="carousel">
           {team.map((teamMember, index) => (

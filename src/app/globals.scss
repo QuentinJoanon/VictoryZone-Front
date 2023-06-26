@@ -23,13 +23,15 @@
 
   // ***** HEADER *****
   .header-menu {
+    
     opacity: 1;
     height: auto;
-    background-color: #142e4a;
+    background-color: v.$secondary;
     visibility: visible;
     max-height: 100vh;
     transition: max-height 0.3s ease;
     font-size: 1.6rem;
+    
 
     ul {
       padding: 0;
@@ -53,7 +55,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #123a56;
+    background-color: v.$secondary;
+
 
     .line {
       display: block;
@@ -115,6 +118,51 @@
       }
     }
   }
+
+  .custom-shape-divider-top-1687786405 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1687786405 svg {
+    position: relative;
+    display: block;
+    width: calc(177% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1687786405 .shape-fill1 {
+    fill: #63ADF2;
+
+}
+.custom-shape-divider-top-1687786405 .shape-fill2 {
+  fill: #A7CCED;
+  
+}
+.custom-shape-divider-top-1687786405 .shape-fill3 {
+  fill: #123a56;
+}
+
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-top-1687786405 svg {
+        width: calc(150% + 0.9px);
+        height: 70px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-top-1687786405 svg {
+        width: calc(100% + 1.3px);
+        height: 50px;
+    }
+}
 
   // ***** FOOTER *****
   // -- Wrapper pour la position sticky du footer --
