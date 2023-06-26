@@ -20,7 +20,7 @@ export default function Recrutement() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); //              | Etat local pour suivre si le formulaire a été soumis avec succès ou non. False indique que par default le formulaire n'a pas encore été soumis
   //Nouvelle variable d'etat pour stocker le nom du fichier selectionné:
   const [fileName, setFileName] = useState('');
-  const fileInputRef = useRef(null); // Ajout de la reference au champ de fichier
+  const fileInputRef = useRef<HTMLInputElement | null>(null); // Reference vers l'element input de type 'file'
 
   // *Gestionnaire de changement de champ:
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -110,7 +110,10 @@ export default function Recrutement() {
       cv: null,
     });
     setFileName('');
-    fileInputRef.current.value = null; // Réinitialise la valeur du champ de fichier
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''; // reinitialise la valeur du champ du fichier en utilisant une chaine de caractére vide
+    }
   };
 
   return (
