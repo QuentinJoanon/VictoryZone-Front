@@ -22,28 +22,34 @@ export default function CardEditableMember({
     setIsModalVisible(false);
   };
   return (
-    <div className={`card-member ${user_name}`}>
-      <Link href={`/team/${user_name}`}>
-        <div className="card-member__image">
-          <Image className="img" src={image} fill={true} alt={user_name} />
-        </div>
-        <div className="card-member__details">
-          <p className="card-member__username">{user_name}</p>
-          <p className="card-member__fullname">
-            {first_name} {last_name}
-          </p>
-          <p className="card-member__role">{role}</p>
-        </div>
-      </Link>
+    <>
+      <div className={`card-container ${user_name}`}>
+        <Link href={`/team/${user_name}`}>
+          <div className="card-member">
+            <div className="card-member__image">
+              <Image className="img" src={image} fill={true} alt={user_name} />
+            </div>
+            <div className="card-member__details">
+              <p className="card-member__username">{user_name}</p>
+              <p className="card-member__fullname">
+                {first_name} {last_name}
+              </p>
+              <p className="card-member__role">{role}</p>
+            </div>
+          </div>
+        </Link>
+      </div>
       <Link href={`dashboard/team/${user_name}`}>
-        <button>Modifier</button>
+        <button className="button-edit">Modifier</button>
       </Link>
-      <button onClick={handleDeleteClick}>Supprimer</button>
+      <button className="button-delete" onClick={handleDeleteClick}>
+        Supprimer
+      </button>
       {isModalVisible && (
         <div id="deleteMemberModal">
           <DeleteMemberModal user_name={user_name} closeModal={closeModal} />
         </div>
       )}
-    </div>
+    </>
   );
 }

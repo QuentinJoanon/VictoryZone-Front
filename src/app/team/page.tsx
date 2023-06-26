@@ -23,24 +23,20 @@ export default function Team() {
     <iframe
       className="video"
       key={video.id}
-      width="1268"
-      height="713"
       src={video.link}
-      title="UNE PARTIE, 100.000$ : CHAMPION D&#39;EUROPE 🏆 (WSOW SOLO)"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
+      style={{ border: 0 }}
+      title="Youtube video"
     ></iframe>
   ));
 
   return (
-    <main>
+    <>
       <div className="team">
         <h1>TEAM</h1>
         {membersTeam}
       </div>
       <h2>Nos dernières vidéos</h2>
       <div className="videos-container">{videos}</div>
-    </main>
+    </>
   );
 }
