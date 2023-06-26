@@ -43,24 +43,25 @@
   }
 }
 
-
 @media (min-width: 1024px) {
   .article {
-    max-width: 700px; /* ajuster la largeur de la carte */
+    width: 300px; /* ajuster la largeur de la carte */
     transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
 
     &:hover {
       @include m.hover;
     }
   }
- 
+  .article__img {
+    // a voir pour le layout
+    width: 100%;
+    height: 350px; 
+  }
 
   .articles__home {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 50px;
-
-   
+    gap: 30px;
   }
 }
