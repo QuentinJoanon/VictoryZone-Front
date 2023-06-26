@@ -1,9 +1,6 @@
 import { TeamData } from '../context/Team';
 import Image from 'next/image';
 import Link from 'next/link';
-import twitch from '../../../public/twitch.svg';
-import youtube from '../../../public/youtube.svg';
-import twitter from '../../../public/twitter.svg';
 
 export default function CardMember({
   user_name,
@@ -11,9 +8,6 @@ export default function CardMember({
   last_name,
   role,
   image,
-  youtube_link,
-  twitch_link,
-  twitter_link,
 }: TeamData) {
   return (
     <div className="card-container">

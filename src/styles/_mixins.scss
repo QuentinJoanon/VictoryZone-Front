@@ -1,13 +1,12 @@
 @use '../styles/variables' as v;
 
-
 /****carte*****/
 
 @mixin card-styles {
   width: 90%;
-  background-color: v.$secondary;  /* Couleur d'arrière-plan semi-transparente */
+  background-color: v.$secondary; /* Couleur d'arrière-plan semi-transparente */
   border-radius: 10px;
-  padding: 20px; 
+  padding: 20px;
   margin-top: 20px;
   margin-bottom: 40px;
   overflow: hidden;
@@ -18,9 +17,14 @@
   backdrop-filter: blur(10px); /* Flou d'arrière-plan */
 }
 
+@mixin shadow-styles {
+  box-shadow: v.$color-shadow;
+  backdrop-filter: blur(10px); /* Flou d'arrière-plan */
+}
+
 @mixin hover {
-  transform: scale(/*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
-      1.1
-    ); 
-  transition: transform 0.7s ease; 
+  transform: scale(
+    /*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */ 1.1
+  );
+  transition: transform 0.7s ease;
 }

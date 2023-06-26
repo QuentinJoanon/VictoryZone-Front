@@ -1,4 +1,14 @@
 @use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.team {
+  margin-top: 2em;
+  margin-bottom: 5em;
+
+  h1 {
+    font-size: 5em;
+  }
+}
 
 .card-container {
   height: 150px;
@@ -80,10 +90,14 @@ a {
     //border: 1px solid rgba(255, 255, 255, 0.18);
   }
 
-  &__details p {
-    text-align: left;
-    color: white;
-    margin-top: 0.5em;
+  &__details {
+    width: 100%;
+
+    p {
+      text-align: center;
+      color: white;
+      margin-top: 0.5em;
+    }
   }
 
   &__username {
@@ -98,6 +112,27 @@ a {
   &__role {
     font-size: 1.6em;
   }
+}
+
+h2 {
+  font-size: 3em;
+  margin-bottom: 2em;
+}
+
+.videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.video {
+  @include m.shadow-styles;
+  aspect-ratio: 16/9;
+  width: 45%;
+  height: auto;
+  min-width: 400px;
+  margin-right: 2em;
+  margin-bottom: 3em;
 }
 
 @media (min-width: 600px) {
