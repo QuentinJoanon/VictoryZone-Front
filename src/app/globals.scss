@@ -47,7 +47,7 @@
       opacity: 0;
       visibility: hidden;
       max-height: 0;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.01s linear;
     }
   }
 
