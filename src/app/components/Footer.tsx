@@ -52,13 +52,13 @@ export default function Footer() {
         <div className="footer__additional-links">
           <ul className="footer__additional-links-list">
             <li>
-              <a href="/dashboard" className="footer__link">
-                Dashboard
+            <a href="/cgu" className="footer__link">
+                CGU
               </a>
             </li>
             <li>
-              <a href="/cgu" className="footer__link">
-                CGU
+            <a href="/dashboard" className="footer__link">
+                Dashboard
               </a>
             </li>
           </ul>
