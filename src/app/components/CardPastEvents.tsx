@@ -26,8 +26,9 @@ export default function CardPastEvents({
           <div className="event__teams__logo__away"></div>
         </div>
       </div>
+      <a href={replay_link}></a>
       <button className="event__button" type="button">
-        {replay_link}
+        Replay
       </button>
     </div>
   );

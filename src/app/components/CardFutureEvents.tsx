@@ -26,8 +26,9 @@ export default function CardFutureEvents({
           <div className="event__teams__logo__away"></div>
         </div>
       </div>
+      <a href={live_link}></a>
       <button className="event__button" type="button">
-        {live_link}
+        Live
       </button>
     </div>
   );
