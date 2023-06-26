@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const axiosInstance = axios.create();
 
+// Add the interceptors to the axios instance
 axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem('accessToken');
@@ -22,7 +23,7 @@ axiosInstance.interceptors.response.use(
   (error) => {
     const originalRequest = error.config;
 
-    // Vérifiez si l'erreur est due à un token expiré
+    // Check if the error is due to an expired token
     if (
       error.response &&
       error.response.status === 401 &&
@@ -35,7 +36,7 @@ axiosInstance.interceptors.response.use(
           refreshToken: localStorage.getItem('refreshToken'),
         })
         .then((response) => {
-          // Vérifiez si la requête de rafraîchissement du token a réussi
+          // Check if the token refresh request is successful
           if (response.status === 200) {
             const newAccessToken = response.data.data.accessToken;
             const refreshToken = response.data.data.refreshToken;
@@ -47,14 +48,14 @@ axiosInstance.interceptors.response.use(
             ] = `Bearer ${newAccessToken}`;
             return axiosInstance(originalRequest);
           } else {
-            // Gérer l'erreur de rafraîchissement du token ici
-            // Vous pouvez rediriger vers la page de connexion ou effectuer toute autre action nécessaire
-            console.log('Erreur lors du rafraîchissement du token');
+            // Handle token refresh error here
+            // You can redirect to the login page or perform any other necessary action
+            console.log('Error refreshing token');
           }
         })
         .catch((error) => {
-          // Gérer l'erreur de rafraîchissement du token (par exemple, déconnexion de l'utilisateur)
-          // Vous pouvez rediriger vers la page de connexion ou effectuer toute autre action nécessaire
+          // Handle token refresh error (e.g., user logout)
+          // You can redirect to the login page or perform any other necessary action
           console.log(error);
         });
     }

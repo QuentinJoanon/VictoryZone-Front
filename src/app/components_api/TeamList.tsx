@@ -3,6 +3,7 @@ import React from 'react';
 import CardMember from '../components/CardMember';
 import { TeamData, useTeamContext } from '../context/Team';
 
+// Fetches the team data
 export function fetchTeam(
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
 ) {
@@ -16,6 +17,7 @@ export function fetchTeam(
     });
 }
 
+// Fetches the team data for the home page
 export function fetchTeamHome(
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
 ) {
@@ -29,6 +31,7 @@ export function fetchTeamHome(
     });
 }
 
+// Renders all team members
 export function AllMembersTeam() {
   const { teamList } = useTeamContext();
   const teamMembers = teamList.map((team: TeamData) => (
