@@ -17,7 +17,7 @@ export default function Articles() {
   return (
     <main>
       <h1>Articles</h1>
-      <div>{articles}</div>
+      <div className= "articles__home">{articles}</div>
     </main>
   );
 }
