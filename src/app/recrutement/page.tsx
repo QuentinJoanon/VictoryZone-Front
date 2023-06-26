@@ -1,7 +1,7 @@
 // Ce code permet de créer un formulaire de recrutement et ensuite envoyer les données saisie dans le formulaire vers le backend pour un traitement ultérieur. Lorsque l'user remplit le formulaire et le soumet, les données sont colléectées, stocker dans un objet FormData, puis envoyées au backend en utilisant la methode pOST.
 'use client';
 import axios from 'axios';
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useRef } from 'react';
 import './index.scss';
 /* eslint-disable react/no-unescaped-entities */
 
@@ -20,6 +20,7 @@ export default function Recrutement() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); //              | Etat local pour suivre si le formulaire a été soumis avec succès ou non. False indique que par default le formulaire n'a pas encore été soumis
   //Nouvelle variable d'etat pour stocker le nom du fichier selectionné:
   const [fileName, setFileName] = useState('');
+  const fileInputRef = useRef(null); // Ajout de la reference au champ de fichier
 
   // *Gestionnaire de changement de champ:
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -109,6 +110,7 @@ export default function Recrutement() {
       cv: null,
     });
     setFileName('');
+    fileInputRef.current.value = null; // Réinitialise la valeur du champ de fichier
   };
 
   return (
@@ -216,6 +218,7 @@ export default function Recrutement() {
                   id="cv"
                   onChange={handleChange}
                   accept=".pdf, .doc, .docx"
+                  ref={fileInputRef} // Ajout de la référence au champ de fichier
                   required
                 />
               </label>
