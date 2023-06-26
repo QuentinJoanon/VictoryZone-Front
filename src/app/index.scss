@@ -1,9 +1,6 @@
 @use '../styles/variables' as v;
 @use '../styles/mixins' as m;
 
-
-
-
 .article {
   @include m.card-styles;
 
@@ -63,7 +60,7 @@
   .article__img {
     // a voir pour le layout
     width: 100%;
-    height: 350px; 
+    height: 350px;
   }
 
   .articles__home {
@@ -71,8 +68,6 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
-
-   
   }
 }
 
