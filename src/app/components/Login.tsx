@@ -23,32 +23,39 @@ export default function Login() {
     setErrMsg('');
   }, [email, password]);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}api/auth/login`,
-        {
-          email: email,
-          password: password,
+    axios({
+      method: 'post',
+      url: `${process.env.NEXT_PUBLIC_API_URL}api/auth/login`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        'Content-Type': 'application/json',
+      },
+      data: {
+        email: email,
+        password: password,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem('accessToken', response.data.data.accessToken);
+        localStorage.setItem('refreshToken', response.data.data.refreshToken);
+        localStorage.setItem('user_name', response.data.data.user_name);
+        setSuccess(true);
+      })
+      .catch((error) => {
+        if (!error?.response) {
+          setErrMsg('Le serveur ne répond pas');
+        } else if (error.response?.status === 400) {
+          setErrMsg('Email ou mot de passe incorrect');
+        } else if (error.response?.status === 401) {
+          setErrMsg('Email ou mot de passe incorrect');
+        } else {
+          setErrMsg('Email ou mot de passe incorrect');
         }
-      );
-      localStorage.setItem('accessToken', response.data.data.accessToken);
-      localStorage.setItem('refreshToken', response.data.data.refreshToken);
-      localStorage.setItem('user_name', response.data.data.user_name);
-      setSuccess(true);
-    } catch (error: AxiosError | any) {
-      if (!error?.response) {
-        setErrMsg('Le serveur ne répond pas');
-      } else if (error.response?.status === 400) {
-        setErrMsg('Email ou mot de passe incorrect');
-      } else if (error.response?.status === 401) {
-        setErrMsg('Email ou mot de passe incorrect');
-      } else {
-        setErrMsg('Email ou mot de passe incorrect');
-      }
-      errRef.current!.focus();
-    }
+        errRef.current!.focus();
+      });
   }
 
   return (
