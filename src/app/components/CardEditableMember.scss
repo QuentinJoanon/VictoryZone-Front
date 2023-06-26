@@ -1,8 +1,181 @@
-.card-member__image {
-  position: relative;
-  height: 300px;
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+@use '../../styles/mixins-button' as mb;
 
-  & img {
-    object-fit: contain;
+.team {
+  margin-top: 2em;
+  margin-bottom: 5em;
+
+  h1 {
+    font-size: 5em;
+  }
+}
+
+.button {
+  @include mb.button;
+}
+
+.button-edit {
+  @include mb.button-edit;
+}
+
+.button-delete {
+  @include mb.button-delete;
+}
+
+.card-container {
+  height: 150px;
+  min-width: 350px;
+  padding: 3px;
+  background-color: v.$secondary; /* Couleur d'arrière-plan semi-transparente */
+  border-radius: 15px;
+  margin: 20px;
+  box-shadow: v.$color-shadow;
+  backdrop-filter: blur(10px); /* Flou d'arrière-plan */
+  --border-size: 3px; // Taille de la bordure animée
+  --border-angle: 0turn; // Angle initial de l'animation de la bordure
+
+  // Image de fond pour l'animation de la bordure
+  background-image: conic-gradient(
+      from var(--border-angle),
+      transparent 100%,
+      #123a56,
+      #112 50%,
+      #123a56
+    ),
+    conic-gradient(
+      from var(--border-angle),
+      transparent 20%,
+      #ffffff,
+      #fd7eb5,
+      #ff006f,
+      #142e4a
+    );
+  background-size: calc(100% - (var(--border-size) * 2))
+      // Taille de l'image de fond pour l'animation de la bordure
+    calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat; // Pour éviter que l'image de fond pour l'animation de la bordure ne se répète
+  animation: bg-spin 7s linear infinite; // Appliquer l'animation de la bordure et vitesse animation
+}
+@property --border-angle {
+  // Propriété personnalisée pour l'animation de la bordure
+  syntax: '<angle>'; // La syntaxe de la propriété est un angle
+  inherits: false; // La propriété n'est pas héritée par les enfants de la carte
+  initial-value: 0turn; // Valeur initiale de la propriété
+}
+
+@keyframes bg-spin {
+  // Définition de l'animation de la bordure
+  to {
+    --border-angle: 1turn; // A la fin de l'animation, l'angle de la bordure a fait un tour complet
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-member {
+  background-color: v.$secondary; /* Couleur d'arrière-plan semi-transparente */
+  border-radius: 10px;
+  height: 100%;
+  display: flex;
+
+  &__image {
+    position: relative;
+    top: 10%;
+    left: 1.6em;
+    height: 80%;
+    aspect-ratio: 1/1;
+    margin-right: 5em;
+  }
+
+  .img {
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(255, 59, 239, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    //border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  &__details {
+    width: 100%;
+
+    p {
+      text-align: center;
+      color: white;
+      margin-top: 0.5em;
+    }
+  }
+
+  &__username {
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+
+  &__fullname {
+    font-size: 2em;
+  }
+
+  &__role {
+    font-size: 1.6em;
+  }
+}
+
+h2 {
+  font-size: 3em;
+  margin-bottom: 2em;
+}
+
+@media (min-width: 600px) {
+  .card-container {
+    height: 200px;
+
+    &__details p {
+      margin-top: 1em;
+    }
+  }
+}
+
+.modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #123a56;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .modal-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    .btn {
+      padding: 10px 15px;
+      margin-left: 10px;
+      background-color: #e53935;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #c62828;
+      }
+    }
   }
 }

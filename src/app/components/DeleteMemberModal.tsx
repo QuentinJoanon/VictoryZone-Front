@@ -24,10 +24,10 @@ export default function DeleteMemberModal({
         className="modal-action"
         onSubmit={(e) => handleDeleteSubmit(e, user_name)}
       >
-        <button type="button" className="btn" onClick={closeModal}>
+        <button type="button" className="button" onClick={closeModal}>
           Fermer
         </button>
-        <button type="submit" className="btn">
+        <button type="submit" className="button-delete">
           Supprimer
         </button>
       </form>

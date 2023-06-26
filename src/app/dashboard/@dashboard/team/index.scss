@@ -1,0 +1,10 @@
+@use '../../../../styles/mixins-button' as m;
+
+.new-member {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  @include m.button;
+}

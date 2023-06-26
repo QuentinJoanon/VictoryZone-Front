@@ -11,6 +11,7 @@ export function fetchTeam(
     .get(`${process.env.NEXT_PUBLIC_API_URL}api/team`)
     .then((response) => {
       setTeamList(response.data.data);
+      console.log(response.data.data);
     })
     .catch((error) => {
       console.log(error);

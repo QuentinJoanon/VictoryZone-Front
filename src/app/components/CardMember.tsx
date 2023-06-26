@@ -10,17 +10,19 @@ export default function CardMember({
   image,
 }: TeamData) {
   return (
-    <div className="card-member">
+    <div className="card-container">
       <Link href={`/team/${user_name}`}>
-        <div className="card-member__image">
-          <Image className="img" src={image} fill={true} alt={user_name} />
-        </div>
-        <div className="card-member__details">
-          <p className="card-member__username">{user_name}</p>
-          <p className="card-member__fullname">
-            {first_name} {last_name}
-          </p>
-          <p className="card-member__role">{role}</p>
+        <div className="card-member">
+          <div className="card-member__image">
+            <Image className="img" src={image} fill={true} alt={user_name} />
+          </div>
+          <div className="card-member__details">
+            <p className="card-member__username">{user_name}</p>
+            <p className="card-member__fullname">
+              {first_name} {last_name}
+            </p>
+            <p className="card-member__role">{role}</p>
+          </div>
         </div>
       </Link>
     </div>
