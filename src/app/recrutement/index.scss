@@ -17,12 +17,15 @@
   border: 1px solid yellow;
 
   &__fields {
-    border: 1px solid red;
+    border: 2px solid #c63575;
     width: 100%;
     padding-top: 8px;
     margin-top: 10px;
     border-radius: 10px;
     background-color: #123a56;
+    &::placeholder {
+      color: white;
+    }
   }
 
   &__btn {
