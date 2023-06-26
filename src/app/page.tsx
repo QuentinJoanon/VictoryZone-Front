@@ -37,7 +37,6 @@ export default function Home() {
   const team = AllMembersTeam();
   return (
     <main>
-      <h1>Accueil</h1>
       <div style={{ maxWidth: '90%', margin: '0 auto' }}>
         <Slider {...settings} className="carousel">
           {team.map((teamMember, index) => (
@@ -48,7 +47,7 @@ export default function Home() {
         </Slider>
       </div>
       <div>{calendars}</div>
-      <h2>Articles</h2>
+      <h1>Articles</h1>
       <div className= "articles__home" >{articles}</div>
     </main>
   );

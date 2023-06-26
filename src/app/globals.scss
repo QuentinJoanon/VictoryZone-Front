@@ -12,6 +12,11 @@
     position: relative;
   }
 
+  a {
+    text-decoration: none;
+    
+  }
+
   /*  .img {
     object-fit: contain;
   } */
@@ -32,6 +37,7 @@
       align-items: center;
       justify-content: center;
       list-style-type: none;
+      font-family: 'Righteous', sans-serif;
     }
 
     &.hidden {
