@@ -22,6 +22,7 @@ export default function DashboardLayout({
       const token = localStorage.getItem('accessToken')!;
       const decoded: { data: DashboardLayout } = jwt_decode(token);
       console.log(decoded.data.permission_level);
+      localStorage.setItem('user_name', decoded.data.user_name);
       setIsAdmin(decoded.data.permission_level === 1);
     }
   }, []);
