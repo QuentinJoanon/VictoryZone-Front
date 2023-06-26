@@ -115,7 +115,6 @@ export default function Recrutement() {
     <main>
       <div className="recrutement">
         <h1 className="recrutement__h1">RECRUTEMENT</h1>
-
         <p className="recrutement__description">
           Bienvenue sur la page de recrutement de la Team VictoryZone. Si vous
           êtes un joueur talentueux, passionné par WarZone et prêt à repousser
@@ -123,7 +122,6 @@ export default function Recrutement() {
           de l'excellence compétitive et de la domination sur la scène de
           l'esport.
         </p>
-
         <div className="recrutement__form">
           <form
             action="https://projet-14-victory-zone-back-production.up.railway.app/api/recruitment" // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
@@ -193,27 +191,34 @@ export default function Recrutement() {
             {/* Champ pour le fichier CV */}
 
             <div className="recrutement__form__file">
-              {fileName && (
-                <div className="file-info">
-                  <p className="file-name">{fileName}</p>
-                  <button className="remove-file" onClick={handleRemoveFile}>
-                    X
+              {fileName && ( // Lorsque fileName existe (lorsqu'un fichier a été selectionné) =
+                <div className="recrutement__form__file__file-info">
+                  {/* On affiche la div file-info*/}
+                  <p className="recrutement__form__file__file-info__file-name">
+                    {fileName}
+                  </p>
+                  {/* Qui contient le nom du fichier*/}
+                  <button
+                    className="recrutement__form__file__file-info__remove-file"
+                    onClick={handleRemoveFile}
+                  >
+                    {/* et un bouton pour le supprimer*/}X
                   </button>
                 </div>
               )}
-              <label className="label_coule" htmlFor="cv">
-                choisir un fichier
+              <label className="recrutement__form__file__label" htmlFor="cv">
+                {/* Label pour le champ du fichier*/}+ Attacher votre CV
+                {/* </label> */}
+                <input
+                  type="file"
+                  className="recrutement__form__file__input" // output pour le champ du fichier
+                  name="cv"
+                  id="cv"
+                  onChange={handleChange}
+                  accept=".pdf, .doc, .docx"
+                  required
+                />
               </label>
-
-              <input
-                type="file"
-                className="recrutement__form__btn__add-file"
-                name="cv"
-                id="cv"
-                onChange={handleChange}
-                accept=".pdf, .doc, .docx"
-                required
-              />
             </div>
 
             {/* Bouton de soumission du formulaire */}
@@ -222,7 +227,7 @@ export default function Recrutement() {
               <input
                 type="submit"
                 value="Envoyer"
-                className="recrutement__form__btn__send"
+                className="recrutement__form__btn__submit"
               />
             </div>
           </form>

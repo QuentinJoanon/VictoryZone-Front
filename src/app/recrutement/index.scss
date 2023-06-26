@@ -1,56 +1,42 @@
 .recrutement {
-  // Conteneur general
+  // conteneur globale
   border: 1px solid white;
-  margin: 0;
-  padding: 20px;
+  padding: 10% 20%;
 
   &__h1 {
     border: 1px solid green;
-    text-align: center;
-    margin-bottom: 20px;
   }
   &__description {
     border: 1px solid greenyellow;
-    margin-bottom: 20px;
+    padding: 10px;
   }
 }
 
 .recrutement__form {
   // conteneur du formulaire
   border: 1px solid yellow;
-  box-sizing: border-box;
-  // padding: 10px;
 
   &__fields {
     border: 1px solid red;
-
-    // margin-bottom: 10px; // Espace entre chaques champs
+    width: 100%;
+    padding-top: 8px;
     margin-top: 10px;
-    width: 100%; // Remplit la largeur du conteneur
+
     border-radius: 10px;
-    background-color: #d9d9d9;
-    box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
-      0 0 10px #c63575;
   }
 
   &__btn {
-    // Conteneur des boutons selection fichier + envoyer
+    // btn soumission du formulaire
+
     border: 1px solid orange;
     display: flex;
-    justify-content: center; // centre les elements horizontalement
-    flex-direction: column; // affiche les elements en colonne
 
-    &__add-file {
-      // border: 1px solid #b0b;
-      // border-radius: 10px;
-      // background-color: #d9d9d9;
-      // max-width: 100px;
-      height: 0px;
-    }
-    &__send {
+    &__submit {
+      // &__send
       border: 1px solid cyan;
+
       align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
-      margin: 20px;
+      margin: 20px auto;
       padding: 5px 15px;
       border-radius: 10px;
       background-color: #c63575;
@@ -60,38 +46,136 @@
     }
   }
 }
-.label_coule {
-  border: 1px solid cyan;
-  // align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
-  // margin: 20px;
-  // padding: 5px 15px;
-  border-radius: 10px;
-  // background-color: #c63575;
-  color: white;
-  // box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
-  //   0 0 10px #c63575;
-  // position: relative; // Permet de positionner l'icome de suppression relative a ce conteneur
-  // display: inline-block; // Permet de specifier une largeur en fonction du contenu
-  // padding-right: 20px;
-}
 
 .recrutement__form__file {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
+  // Pour le fichier CV
+  border: 1px solid blueviolet;
+
+  &__input {
+    border: 1px solid #b0b;
+    height: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
+    width: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
+    opacity: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
+    pointer-events: none; // desactiver les interactions du champ
+  }
+  &__label {
+    border: solid 1px blue;
+    display: inline-block; //?
+    margin-left: 10px;
+
+    padding: 8px 12px; //?
+    cursor: pointer; //?
+  }
+  &__file-info {
+    display: flex; // Pour aligner correctement le nom du fichier et la croix de suppression
+    align-items: center; // Pour aligner correctement le nom du fichier et la croix de suppression
+
+    &__file-name {
+      border: 1px solid orangered;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+    &__remove-file {
+      border: solid 1px yellow;
+      margin-left: 5px;
+    }
+  }
 }
 
-.file-name {
-  margin-top: 10px;
-  font-size: 14px;
-  color: gray;
-}
-.remove-file {
-  border: none;
-  background: none;
-  color: red;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-}
+// .recrutement {
+//   // Conteneur general
+//   border: 1px solid white;
+//   margin: 0;
+//   padding: 20px;
+
+//   &__h1 {
+//     border: 1px solid green;
+//     text-align: center;
+//     margin-bottom: 20px;
+//   }
+//   &__description {
+//     border: 1px solid greenyellow;
+//     margin-bottom: 20px;
+//   }
+// }
+
+// .recrutement__form {
+//   // conteneur du formulaire
+//   border: 1px solid yellow;
+//   box-sizing: border-box;
+//   // padding: 10px;
+
+//   &__fields {
+//     border: 1px solid red;
+
+//     // margin-bottom: 10px; // Espace entre chaques champs
+//     margin-top: 10px;
+//     width: 100%; // Remplit la largeur du conteneur
+//     border-radius: 10px;
+//     background-color: #d9d9d9;
+//     box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
+//       0 0 10px #c63575;
+//   }
+
+//   &__btn {
+//     // Conteneur des boutons selection fichier + envoyer
+//     border: 1px solid orange;
+//     display: flex;
+//     justify-content: center; // centre les elements horizontalement
+//     flex-direction: column; // affiche les elements en colonne
+
+//     &__add-file {
+//       // border: 1px solid #b0b;
+//       // border-radius: 10px;
+//       // background-color: #d9d9d9;
+//       // max-width: 100px;
+//       height: 0px;
+//     }
+//     &__send {
+//       border: 1px solid cyan;
+//       align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
+//       margin: 20px;
+//       padding: 5px 15px;
+//       border-radius: 10px;
+//       background-color: #c63575;
+//       color: white;
+//       box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
+//         0 0 10px #c63575;
+//     }
+//   }
+// }
+// .label_coule {
+//   border: 1px solid cyan;
+//   // align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
+//   // margin: 20px;
+//   // padding: 5px 15px;
+//   border-radius: 10px;
+//   // background-color: #c63575;
+//   color: white;
+//   // box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
+//   //   0 0 10px #c63575;
+//   // position: relative; // Permet de positionner l'icome de suppression relative a ce conteneur
+//   // display: inline-block; // Permet de specifier une largeur en fonction du contenu
+//   // padding-right: 20px;
+// }
+
+// .recrutement__form__file {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-bottom: 10px;
+// }
+
+// .file-name {
+//   margin-top: 10px;
+//   font-size: 14px;
+//   color: gray;
+// }
+// .remove-file {
+//   border: none;
+//   background: none;
+//   color: red;
+//   cursor: pointer;
+//   font-size: 14px;
+//   font-weight: bold;
+// }
