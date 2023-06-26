@@ -4,9 +4,6 @@ import axios, { AxiosError } from 'axios';
 import DashboardMenu from './DashboardMenu';
 import '../dashboard/@login/login.scss';
 
-const API_URL =
-  'https://projet-14-victory-zone-back-production.up.railway.app/';
-
 export default function Login() {
   const userRef = useRef<HTMLInputElement>(null);
   const errRef = useRef<HTMLParagraphElement>(null);
@@ -29,10 +26,13 @@ export default function Login() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}api/auth/login`, {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}api/auth/login`,
+        {
+          email: email,
+          password: password,
+        }
+      );
       localStorage.setItem('accessToken', response.data.data.accessToken);
       localStorage.setItem('refreshToken', response.data.data.refreshToken);
       localStorage.setItem('user_name', response.data.data.user_name);
