@@ -49,7 +49,7 @@ export default function Home() {
       </div>
       <div>{calendars}</div>
       <h2>Articles</h2>
-      <div className= "articles__home" >{articles}</div>
+      <div className="articles__home">{articles}</div>
     </main>
   );
 }
