@@ -70,3 +70,39 @@ export default function TeamMember({
     </div>
   );
 }
+{
+  /* <div>
+              {' '}
+              <Link
+                href={youtube_link}
+                className="footer__social-link"
+                target="_blank"
+              >
+                <Image
+                  src={youtube}
+                  width={20}
+                  height={20}
+                  alt="Logo Youtube"
+                />
+              </Link>
+              <Link
+                href={twitch_link}
+                className="footer__social-link"
+                target="_blank"
+              >
+                <Image src={twitch} width={20} height={20} alt="Logo Twitch" />
+              </Link>
+              <Link
+                href={twitter_link}
+                className="footer__social-link"
+                target="_blank"
+              >
+                <Image
+                  src={twitter}
+                  width={20}
+                  height={20}
+                  alt="Logo Twitter"
+                />
+              </Link>
+            </div> */
+}

@@ -12,26 +12,35 @@
     position: relative;
   }
 
+  a {
+    text-decoration: none;
+    
+  }
+
   /*  .img {
     object-fit: contain;
   } */
 
   // ***** HEADER *****
   .header-menu {
+    
     opacity: 1;
     height: auto;
-    background-color: #142e4a;
+    background-color: v.$secondary;
     visibility: visible;
     max-height: 100vh;
     transition: max-height 0.3s ease;
     font-size: 1.6rem;
+    
 
     ul {
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       list-style-type: none;
+      font-family: 'Righteous', sans-serif;
     }
 
     &.hidden {
@@ -46,7 +55,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #123a56;
+    background-color: v.$secondary;
+
 
     .line {
       display: block;
@@ -109,6 +119,51 @@
     }
   }
 
+  .custom-shape-divider-top-1687786405 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1687786405 svg {
+    position: relative;
+    display: block;
+    width: calc(177% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1687786405 .shape-fill1 {
+    fill: #63ADF2;
+
+}
+.custom-shape-divider-top-1687786405 .shape-fill2 {
+  fill: #A7CCED;
+  
+}
+.custom-shape-divider-top-1687786405 .shape-fill3 {
+  fill: #123a56;
+}
+
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-top-1687786405 svg {
+        width: calc(150% + 0.9px);
+        height: 70px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-top-1687786405 svg {
+        width: calc(100% + 1.3px);
+        height: 50px;
+    }
+}
+
   // ***** FOOTER *****
   // -- Wrapper pour la position sticky du footer --
   .wrapper {
@@ -131,6 +186,10 @@
       justify-content: space-between;
       background-color: #123a56;
       padding: 20px;
+      gap: 20px;
+      padding-right: 40px;
+
+ 
     }
     &__image {
       width: 33.33%;
@@ -142,18 +201,27 @@
     &__links {
       display: flex;
       width: 33.33%;
-      padding-left: 20px;
+      
+
     }
     &__link {
       text-decoration: none;
       color: white;
+      font-family: 'Righteous', sans-serif;
+      
+
     }
     &__links-list {
       list-style-type: none;
       padding: 0px;
+      
+      
+      
     }
     &__additional-links {
       width: 33.33%;
+      margin-top: auto;
+
     }
     &__additional-links-list {
       padding: 0 20px;
@@ -163,8 +231,10 @@
       display: flex;
       padding-left: 20px;
       flex-direction: row;
+
       &-link {
         margin-right: 10px;
+        
       }
     }
   }

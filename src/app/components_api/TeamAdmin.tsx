@@ -2,6 +2,7 @@ import axiosInstance from './axiosInstance';
 import { TeamData, useTeamContext } from '../context/Team';
 import CardEditableMember from '../components/CardEditableMember';
 
+// Fetches the team data for admin purposes
 export function fetchAdminTeam(
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
 ) {
@@ -21,6 +22,7 @@ export function fetchAdminTeam(
     });
 }
 
+// Creates a new team member
 export function createNewMember(newMember: TeamData) {
   axiosInstance({
     method: 'post',
@@ -39,6 +41,7 @@ export function createNewMember(newMember: TeamData) {
     });
 }
 
+// Edits an existing team member
 export function editMember(member: TeamData, memberId: number) {
   axiosInstance({
     method: 'patch',
@@ -57,6 +60,7 @@ export function editMember(member: TeamData, memberId: number) {
     });
 }
 
+// Deletes a team member
 export function deleteMember(user_name: string) {
   axiosInstance({
     method: 'delete',
@@ -74,6 +78,7 @@ export function deleteMember(user_name: string) {
     });
 }
 
+// Renders all team members with edit functionality
 export function AllEditableMembers() {
   const { teamList } = useTeamContext();
   const members = teamList.map((team: TeamData) => (

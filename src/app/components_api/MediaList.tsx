@@ -2,33 +2,18 @@ import axios from 'axios';
 import { ArticleData, useArticleContext } from '../context/Article';
 import CardArticle from '../components/CardArticle';
 
-export function fetchArticles(
-  setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
-) {
+export function fetchMedias(setMediaList: any) {
   axios
-    .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles`)
+    .get(`${process.env.NEXT_PUBLIC_API_URL}api/media`)
     .then((response) => {
-      setArticlesList(response.data.data); // Set the fetched articles list in the state
+      setMediaList(response.data.data);
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
-export function fetchHomeArticles(
-  setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
-) {
-  axios
-    .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles?home=true`)
-    .then((response) => {
-      setArticlesList(response.data.data); // Set the fetched home articles list in the state
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-export function AllArticles() {
+export function AllVideos() {
   const { articlesList } = useArticleContext(); // Access the article context and retrieve the articles list
   const articles = articlesList.map((article: ArticleData) => (
     <CardArticle

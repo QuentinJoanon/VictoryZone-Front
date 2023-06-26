@@ -8,6 +8,7 @@ import CardFutureEvents from '../components/CardFutureEvents';
 import React from 'react';
 import CardPastEvents from '../components/CardPastEvents';
 
+// Fetches all calendars data from the API
 export function fetchCalendars(
   setCalendarFutureList: React.Dispatch<
     React.SetStateAction<CalendarFutureData[]>
@@ -25,7 +26,7 @@ export function fetchCalendars(
     });
 }
 
-// Appel API pour afficher 1 futurevent et 1pastevent sur la home page
+// Fetches specific calendars data for the home page from the API
 export function fetchHomeCalendars(
   setCalendarFutureList: React.Dispatch<
     React.SetStateAction<CalendarFutureData[]>
@@ -42,6 +43,8 @@ export function fetchHomeCalendars(
       console.log(error);
     });
 }
+
+// Renders all future calendars based on the calendar context
 export function AllFutureCalendars() {
   const { calendarFutureList } = useCalendarContext();
   const calendars = calendarFutureList.map((calendar: CalendarFutureData) => (
@@ -58,6 +61,7 @@ export function AllFutureCalendars() {
   return calendars;
 }
 
+// Renders all past calendars based on the calendar context
 export function AllPastCalendars() {
   const { calendarPastList } = useCalendarContext();
   const calendars = calendarPastList.map((calendar: CalendarPastData) => (

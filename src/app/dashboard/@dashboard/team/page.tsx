@@ -7,6 +7,7 @@ import {
   AllEditableMembers,
   fetchAdminTeam,
 } from '@/app/components_api/TeamAdmin';
+import './index.scss';
 
 export default function DashboardTeam() {
   const { setTeamList } = useTeamContext();
@@ -18,13 +19,17 @@ export default function DashboardTeam() {
   const members = AllEditableMembers();
 
   return (
-    <main>
-      <h1>Team</h1>
-      <Link href="/dashboard/team/create">
-        <button>Ajouter un membre</button>
-      </Link>
+    <>
+      <div className="team">
+        <h1>TEAM</h1>
+        <div className="new-member">
+          <Link href="/dashboard/team/create">
+            <button className="button">Ajouter un membre</button>
+          </Link>
+        </div>
 
-      <div>{members}</div>
-    </main>
+        <div>{members}</div>
+      </div>
+    </>
   );
 }

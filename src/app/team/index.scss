@@ -1,45 +1,146 @@
 @use '../../styles/variables' as v;
 @use '../../styles/mixins' as m;
 
+.team {
+  margin-top: 2em;
+  margin-bottom: 5em;
+
+  h1 {
+    font-size: 5em;
+  }
+}
+
+.card-container {
+  height: 150px;
+  min-width: 350px;
+  padding: 3px;
+  background-color: v.$secondary; /* Couleur d'arrière-plan semi-transparente */
+  border-radius: 15px;
+  margin: 20px;
+  box-shadow: v.$color-shadow;
+  backdrop-filter: blur(10px); /* Flou d'arrière-plan */
+  --border-size: 3px; // Taille de la bordure animée
+  --border-angle: 0turn; // Angle initial de l'animation de la bordure
+
+  // Image de fond pour l'animation de la bordure
+  background-image: conic-gradient(
+      from var(--border-angle),
+      transparent 100%,
+      #123a56,
+      #112 50%,
+      #123a56
+    ),
+    conic-gradient(
+      from var(--border-angle),
+      transparent 20%,
+      #ffffff,
+      #fd7eb5,
+      #ff006f,
+      #142e4a
+    );
+  background-size: calc(100% - (var(--border-size) * 2))
+      // Taille de l'image de fond pour l'animation de la bordure
+    calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat; // Pour éviter que l'image de fond pour l'animation de la bordure ne se répète
+  animation: bg-spin 7s linear infinite; // Appliquer l'animation de la bordure et vitesse animation
+}
+@property --border-angle {
+  // Propriété personnalisée pour l'animation de la bordure
+  syntax: '<angle>'; // La syntaxe de la propriété est un angle
+  inherits: false; // La propriété n'est pas héritée par les enfants de la carte
+  initial-value: 0turn; // Valeur initiale de la propriété
+}
+
+@keyframes bg-spin {
+  // Définition de l'animation de la bordure
+  to {
+    --border-angle: 1turn; // A la fin de l'animation, l'angle de la bordure a fait un tour complet
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
 .card-member {
-  @include m.card-styles;
-  min-width: 90%;
+  background-color: v.$secondary; /* Couleur d'arrière-plan semi-transparente */
+  border-radius: 10px;
+  height: 100%;
+  display: flex;
 
   &__image {
-    height: 100px;
-    width: 100px;
     position: relative;
+    top: 10%;
+    left: 1.6em;
+    height: 80%;
+    aspect-ratio: 1/1;
+    margin-right: 5em;
   }
 
   .img {
-    border-radius: 60%; 
     object-fit: cover;
-  }
-  
-
-  &__details {
-    display: flex;
-    flex-direction: column;
-    margin-right: -200px;
-    justify-content: center;
-    margin-top: -81px;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-
-  }
-
-@media (min-width: 1024px) {
-  min-width: 50%;
-
-  &__image {
-    height: 200px;
-    width: 200px;
+    object-position: top;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(255, 59, 239, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    //border: 1px solid rgba(255, 255, 255, 0.18);
   }
 
   &__details {
-    margin-right: 0; 
-    font-size: 18px; 
+    width: 100%;
+
+    p {
+      text-align: center;
+      color: white;
+      margin-top: 0.5em;
+    }
+  }
+
+  &__username {
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+
+  &__fullname {
+    font-size: 2em;
+  }
+
+  &__role {
+    font-size: 1.6em;
   }
 }
+
+h2 {
+  font-size: 3em;
+  margin-bottom: 2em;
+}
+
+.videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.video {
+  @include m.shadow-styles;
+  aspect-ratio: 16/9;
+  width: 45%;
+  height: auto;
+  min-width: 400px;
+  margin-right: 2em;
+  margin-bottom: 3em;
+}
+
+@media (min-width: 600px) {
+  .card-container {
+    height: 200px;
+
+    &__details p {
+      margin-top: 1em;
+    }
+  }
 }

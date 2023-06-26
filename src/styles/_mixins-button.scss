@@ -1,0 +1,138 @@
+@use '../styles/variables' as v;
+
+/****button*****/
+
+@mixin button {
+  background-image: linear-gradient(
+    to right top,
+    #184b6f,
+    #18486c,
+    #194468,
+    #194165,
+    #193e61,
+    #193e62,
+    #193d64,
+    #193d65,
+    #1a3f6b,
+    #1d4172,
+    #204278,
+    #25447e
+  );
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: 'Inter UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 1.6em;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 150px -7px;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.7s ease;
+  }
+}
+
+@mixin button-edit {
+  background-image: linear-gradient(
+    to right top,
+    #00ff2c,
+    #01f729,
+    #01ee25,
+    #01e622,
+    #01de1f,
+    #0ede23,
+    #17de27,
+    #1ede2b,
+    #2be635,
+    #36ee3e,
+    #3ff747,
+    #48ff50
+  );
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: 'Inter UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 1.6em;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 150px -7px;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.7s ease;
+  }
+}
+
+@mixin button-delete {
+  background-image: linear-gradient(
+    to right top,
+    #ff0000,
+    #f70000,
+    #ee0000,
+    #e60000,
+    #de0000,
+    #de0b08,
+    #df1410,
+    #df1b17,
+    #e72824,
+    #ef3431,
+    #f73e3c,
+    #ff4848
+  );
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: 'Inter UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 1.6em;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 150px -7px;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.7s ease;
+  }
+}

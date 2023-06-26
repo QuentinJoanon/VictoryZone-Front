@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArticleData } from '../context/Article';
 import Image from 'next/image';
 
@@ -12,7 +13,7 @@ export default function CardArticle({
   figcaption,
 }: ArticleData | any) {
   return (
-    <a href={`/articles/${slug}`}>
+    <Link href={`/articles/${slug}`}>
       <div className="article">
         <h2 className="article__title">{title}</h2>
         <div className="article__img">
@@ -28,6 +29,6 @@ export default function CardArticle({
         <p className="article__date">{created_at}</p>
         <p className="article__author">{author}</p>
       </div>
-    </a>
+    </Link>
   );
 }

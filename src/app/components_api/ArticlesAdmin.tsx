@@ -14,7 +14,7 @@ export function fetchAdminArticles(
     },
   })
     .then((response) => {
-      setArticlesList(response.data.data);
+      setArticlesList(response.data.data); // Set the fetched articles list in the state
     })
     .catch((error) => {
       console.log(error);
@@ -29,7 +29,7 @@ export function createNewArticle(newArticle: ArticleData) {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     },
-    data: newArticle,
+    data: newArticle, // Send the new article data in the request body
   })
     .then((response) => {
       console.log(response);
@@ -47,7 +47,7 @@ export function editArticle(article: ArticleData, articleId: number) {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     },
-    data: article,
+    data: article, // Send the updated article data in the request body
   })
     .then((response) => {
       console.log(response);
@@ -75,7 +75,7 @@ export function deleteArticle(slug: string) {
 }
 
 export function AllEditableArticles() {
-  const { articlesList } = useArticleContext();
+  const { articlesList } = useArticleContext(); // Access the article context and retrieve the articles list
   const articles = articlesList.map((article: ArticleData) => (
     <CardEditableArticle
       key={article.id}
@@ -92,5 +92,5 @@ export function AllEditableArticles() {
       }
     />
   ));
-  return articles;
+  return articles; // Return the rendered list of editable articles
 }

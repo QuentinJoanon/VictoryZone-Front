@@ -3,6 +3,7 @@ import React from 'react';
 import CardMember from '../components/CardMember';
 import { TeamData, useTeamContext } from '../context/Team';
 
+// Fetches the team data
 export function fetchTeam(
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
 ) {
@@ -10,12 +11,14 @@ export function fetchTeam(
     .get(`${process.env.NEXT_PUBLIC_API_URL}api/team`)
     .then((response) => {
       setTeamList(response.data.data);
+      console.log(response.data.data);
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
+// Fetches the team data for the home page
 export function fetchTeamHome(
   setTeamList: React.Dispatch<React.SetStateAction<TeamData[]>>
 ) {
@@ -29,6 +32,7 @@ export function fetchTeamHome(
     });
 }
 
+// Renders all team members
 export function AllMembersTeam() {
   const { teamList } = useTeamContext();
   const teamMembers = teamList.map((team: TeamData) => (

@@ -6,18 +6,18 @@ import { AllArticles, fetchArticles } from '../components_api/ArticlesList';
 import './index.scss';
 
 export default function Articles() {
-  const { setArticlesList } = useArticleContext();
+  const { setArticlesList } = useArticleContext(); // Access the article context and retrieve the setArticlesList function
 
   useEffect(() => {
-    fetchArticles(setArticlesList);
+    fetchArticles(setArticlesList); // Fetch articles and update the articles list in the context
   }, [setArticlesList]);
 
-  const articles = AllArticles();
+  const articles = AllArticles(); // Get all articles from the context
 
   return (
     <main>
       <h1>Articles</h1>
-      <div>{articles}</div>
+      <div className= "articles__home">{articles}</div>
     </main>
   );
 }
