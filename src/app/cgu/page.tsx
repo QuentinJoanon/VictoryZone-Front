@@ -17,7 +17,7 @@ export default function Cgu() {
           </p>
         </div>
         <div className="cgu__section">
-          <h3 className="cgu__section__h3">Propriété intellectuelle</h3>
+          <h3 className="cgu__section__h3">Propriété intellectuelle:</h3>
           <p className="cgu__section__content">
             Tous les contenus présents sur ce site, tels que les textes, les
             images, les graphiques, les logos et les vidéos, sont la propriété
