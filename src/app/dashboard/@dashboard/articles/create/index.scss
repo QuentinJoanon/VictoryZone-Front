@@ -1,0 +1,25 @@
+@use '../../../../../styles/mixins' as m;
+@use '../../../../../styles/mixins-button' as mb;
+
+.new-article {
+  // conteneur globale
+  @include m.card-styles;
+  max-width: 800px;
+
+  &__form {
+    // conteneur du formulaire
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+
+    &__label {
+      grid-column: 1;
+      margin: 5px;
+      font-size: 1.6rem;
+    }
+    &__input {
+      grid-column: 2;
+      font-size: 1.6rem;
+    }
+  }
+}

@@ -48,7 +48,7 @@ export default function CardEditableFutureEvents({
           <div className="event__teams__logo__away">
             <Image
               className="logo"
-              src={logo}
+              src={image}
               fill={true}
               alt="Logo VictoryZone"
               priority={true}
@@ -56,9 +56,11 @@ export default function CardEditableFutureEvents({
           </div>
         </div>
       </div>
-      <button className="event__button" type="button">
-        {live_link}
-      </button>
+      <a href={live_link} target="_blank">
+        <button className="event__button" type="button">
+          Live
+        </button>
+      </a>
       <Link href={`dashboard/calendar/${id}`}>
         <button>Modifier</button>
       </Link>

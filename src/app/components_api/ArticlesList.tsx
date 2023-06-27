@@ -39,6 +39,7 @@ export function AllArticles() {
       author={article.author}
       image={article.image}
       created_at={article.created_at}
+      publication_date={article.publication_date}
       categories={
         Array.isArray(article.categories)
           ? article.categories.map((category) => category.label)

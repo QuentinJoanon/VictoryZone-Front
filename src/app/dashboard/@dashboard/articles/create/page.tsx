@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
+import './index.scss';
 
 export default function NewArticle() {
   const username = localStorage.getItem('user_name');
@@ -50,56 +51,80 @@ export default function NewArticle() {
   return (
     <main>
       <h1>Nouvel article</h1>
-      <form onSubmit={handleSubmitForm}>
-        <label htmlFor="image">Image</label>
-        <input
-          type="text"
-          name="image"
-          id="image"
-          onChange={handleChange}
-          value={newArticle.image}
-          required
-        />
+      <div className="new-article">
+        <form className="new-article__form" onSubmit={handleSubmitForm}>
+          <label className="new-article__form__label" htmlFor="image">
+            Image
+          </label>
+          <input
+            className="new-article__form__input"
+            type="text"
+            name="image"
+            id="image"
+            onChange={handleChange}
+            value={newArticle.image}
+            required
+          />
 
-        <label htmlFor="figcaption">Légende de l &apos;image</label>
-        <input
-          type="text"
-          name="figcaption"
-          id="figcaption"
-          onChange={handleChange}
-          value={newArticle.figcaption}
-        />
+          <label className="new-article__form__label" htmlFor="figcaption">
+            Légende de l &apos;image
+          </label>
+          <input
+            className="new-article__form__input"
+            type="text"
+            name="figcaption"
+            id="figcaption"
+            onChange={handleChange}
+            value={newArticle.figcaption}
+          />
 
-        <label htmlFor="title">Titre</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          onChange={handleChange}
-          value={newArticle.title}
-          required
-        />
+          <label className="new-article__form__label" htmlFor="title">
+            Titre
+          </label>
+          <input
+            className="new-article__form__input"
+            type="text"
+            name="title"
+            id="title"
+            onChange={handleChange}
+            value={newArticle.title}
+            required
+          />
 
-        <label htmlFor="content">Contenu</label>
-        <textarea
-          name="content"
-          id="content"
-          onChange={handleChange}
-          value={newArticle.content}
-          required
-        />
+          <label className="new-article__form__label" htmlFor="content">
+            Contenu
+          </label>
+          <textarea
+            className="new-article__form__input"
+            name="content"
+            id="content"
+            onChange={handleChange}
+            value={newArticle.content}
+            required
+          />
 
-        <label htmlFor="publication_date">Date de publication</label>
-        <input
-          type="date"
-          name="publication_date"
-          id="publication_date"
-          onChange={handleChange}
-          value={newArticle.publication_date}
-        />
+          <label
+            className="new-article__form__label"
+            htmlFor="publication_date"
+          >
+            Date de publication
+          </label>
+          <input
+            className="new-article__form__input"
+            type="date"
+            name="publication_date"
+            id="publication_date"
+            onChange={handleChange}
+            value={newArticle.publication_date}
+          />
 
-        <input type="submit" value="Envoyer" />
-      </form>
+          <input
+            className="new-article__form__input"
+            type="submit"
+            value="Envoyer"
+          />
+        </form>
+      </div>
     </main>
   );
 }

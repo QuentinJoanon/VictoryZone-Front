@@ -1,19 +1,37 @@
-h1 {
-  text-align: center;
-}
+@use '../../styles/mixins' as m;
 
 .cgu {
-  border: solid 1px white;
-  margin: 20px;
-  padding: 10px;
+  // border: 1px solid red;
+  @include m.card-styles;
+  width: 80vw;
+  max-width: 900px;
+}
 
-  &__head {
-    margin-left: 20px;
-    margin-right: 10px;
+.cgu__description {
+  &__h2 {
+    padding-top: 10px;
+    padding-bottom: 20px;
   }
-
-  &__body {
-    margin-top: 10px;
-    margin-right: 10px;
+  &__content {
+    padding-bottom: 20px;
+    text-align: start !important;
   }
 }
+.cgu__section {
+  &__h3 {
+    padding-bottom: 2px;
+    text-align: left;
+    color: red;
+  }
+  &__content {
+    padding-bottom: 10px;
+    text-align: start !important;
+    font-style: italic;
+  }
+}
+
+// @media (min-width: 900px) {
+//   .cgu {
+//     width: 900px;
+//   }
+// }
