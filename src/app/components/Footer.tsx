@@ -52,24 +52,36 @@ export default function Footer() {
         <div className="footer__additional-links">
           <ul className="footer__additional-links-list">
             <li>
-            <a href="/cgu" className="footer__link">
+              <a href="/cgu" className="footer__link">
                 CGU
               </a>
             </li>
             <li>
-            <a href="/dashboard" className="footer__link">
+              <a href="/dashboard" className="footer__link">
                 Dashboard
               </a>
             </li>
           </ul>
           <div className="footer__social">
-            <a href="https://www.youtube.com" className="footer__social-link">
+            <a
+              href="https://www.youtube.com"
+              className="footer__social-link"
+              target="_blank"
+            >
               <Image src={youtube} width={20} height={20} alt="Logo Youtube" />
             </a>
-            <a href="https://www.twitch.tv" className="footer__social-link">
+            <a
+              href="https://www.twitch.tv"
+              className="footer__social-link"
+              target="_blank"
+            >
               <Image src={twitch} width={20} height={20} alt="Logo Twitch" />
             </a>
-            <a href="https://www.twitter.com" className="footer__social-link">
+            <a
+              href="https://www.twitter.com"
+              className="footer__social-link"
+              target="_blank"
+            >
               <Image src={twitter} width={20} height={20} alt="Logo Twitter" />
             </a>
           </div>

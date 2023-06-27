@@ -14,7 +14,6 @@
 
   a {
     text-decoration: none;
-    
   }
 
   /*  .img {
@@ -47,7 +46,7 @@
       opacity: 0;
       visibility: hidden;
       max-height: 0;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.01s linear;
     }
   }
 
@@ -188,8 +187,6 @@
       padding: 20px;
       gap: 20px;
       padding-right: 40px;
-
- 
     }
     &__image {
       width: 33.33%;
@@ -201,27 +198,19 @@
     &__links {
       display: flex;
       width: 33.33%;
-      
-
     }
     &__link {
       text-decoration: none;
       color: white;
       font-family: 'Righteous', sans-serif;
-      
-
     }
     &__links-list {
       list-style-type: none;
       padding: 0px;
-      
-      
-      
     }
     &__additional-links {
       width: 33.33%;
       margin-top: auto;
-
     }
     &__additional-links-list {
       padding: 0 20px;
@@ -234,7 +223,6 @@
 
       &-link {
         margin-right: 10px;
-        
       }
     }
   }
