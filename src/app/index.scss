@@ -1,6 +1,15 @@
 @use '../styles/variables' as v;
 @use '../styles/mixins' as m;
 
+.about-us {
+  @include m.card-styles;
+  &__description {
+    padding: 5px;
+    // text-align: left;
+    text-align: justify;
+  }
+}
+
 .article {
   @include m.card-styles;
 
