@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArticleData } from '../context/Article';
 import Image from 'next/image';
+import TimeFormatter from './timeFormatter';
 
 export default function CardArticle({
   slug,
@@ -9,8 +10,10 @@ export default function CardArticle({
   author,
   image,
   created_at,
+  publication_date,
   categories,
   figcaption,
+
 }: ArticleData | any) {
   return (
     <Link href={`/articles/${slug}`}>
@@ -26,7 +29,7 @@ export default function CardArticle({
         </div>
         <p className="article__category">{categories}</p>
         <p className="article__content">{content}</p>
-        <p className="article__date">{created_at}</p>
+        <p className="article__date">{<TimeFormatter time={publication_date} />}</p>
         <p className="article__author">{author}</p>
       </div>
     </Link>

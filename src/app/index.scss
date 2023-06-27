@@ -44,7 +44,6 @@
   &__update,
   &__author {
     color: #fff;
-    font-family: 'Lato', sans-serif;
     text-align: center;
     font-size: 1rem;
     line-height: 150%;
@@ -238,4 +237,12 @@
   .slick-prev:before {
     font-size: 20px; //  ajuster la taille des flèches ici
   }
+}
+
+/* CALENDAR */
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
