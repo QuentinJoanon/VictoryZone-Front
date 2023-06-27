@@ -1,73 +1,17 @@
 @use '../styles/variables' as v;
 @use '../styles/mixins' as m;
 
-.article {
+.about-us {
   @include m.card-styles;
-
-  --img-scale: 1.001;
-  --title-color: white;
-  position: relative;
-  transform-origin: center;
-  transition: all 0.4s ease-in-out;
-  padding: 38px;
-
-  &__title {
-    margin: 0 0 18px 0;
-    font-family: 'Righteous', sans-serif;
-    color: var(--title-color);
-    text-transform: uppercase;
-    font-size: 2.1rem;
+  &__description {
+    padding: 5px;
+    // text-align: left;
+    text-align: start;
+    text-align: justify;
   }
 
-  &__img {
-    background-position: center;
-    background-size: cover;
-    height: 300px;
-    width: 100%;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.255);
-  }
-
-  &__category,
-  &__content,
-  &__date,
-  &__update,
-  &__author {
-    color: #fff;
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    font-size: 1rem;
-    line-height: 150%;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-}
-
-.article:hover {
-  --img-scale: 1.1;
-  --title-color: rgba(255, 255, 255, 0.9);
-  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
-}
-@media (min-width: 1024px) {
-  .article {
-    width: 300px; /* ajuster la largeur de la carte */
-    transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
-
-    &:hover {
-      @include m.hover;
-    }
-  }
-  .article__img {
-    // a voir pour le layout
-    width: 100%;
-    height: 350px;
-  }
-
-  .articles__home {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 50px;
+  p {
+    font-size: 1.6em;
   }
 }
 
@@ -228,4 +172,12 @@
   .slick-prev:before {
     font-size: 20px; //  ajuster la taille des flèches ici
   }
+}
+
+/* CALENDAR */
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

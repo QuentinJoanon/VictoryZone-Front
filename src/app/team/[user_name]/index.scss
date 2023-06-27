@@ -1,8 +1,131 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+.member{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.member__section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.member__first_container__title{
+  margin-bottom: 20px;
+  width: 100%;
+  display: block;
+}
+.first__section{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
 .member__image {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 250px;
   position: relative;
-  height: 300px;
-
   & img {
-    object-fit: contain;
+    @include m.shadow-styles;
+    border-radius: 60px;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.member__infos {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.member__infos__role{
+  font-size: 1rem;
+  text-align: left;
+}
+.member__infos__name{
+  font-size: 1rem;
+  text-align: left;
+}
+.member__infos__description{
+  overflow-wrap: break-word;
+  font-size: 1rem;
+  margin-top: 15px;
+  text-align: left;
+  margin-right: 20px;
+}
+.title{
+  width: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  height: 40px;
+}
+.member__container{
+  @include m.card-styles;
+  min-height: 90px;
+  font-size: 1.5rem;
+  color:white;
+
+}
+.member__videos{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  justify-content: center;
+  gap:20px
+}
+
+.member__social{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:15px
+}
+.setup__external_link{
+ color:white;
+}
+.setup__external_link:hover{
+  color:v.$color;
+}
+@media (min-width:780px){
+  .member__first_container__title{
+    font-size: 3rem;
+  }
+  .member p {
+    font-size: 1.5rem;
+  }
+  .first__section{
+    justify-content: center;
+    width: 50vw;
+
+  }
+  .member__image{
+    height: 450px;
+    width: 400px;
+  }
+  .member__section:nth-child(2) {
+    width: 50vw;
+  }
+  .member__section:nth-child(3){
+    width: 50vw;
+  }
+  .member__section:nth-child(4){
+    width: 50vw;
+  }
+  .member__section:nth-child(5){
+    width: 50vw;
+  }
+  .member__section:nth-child(6){
+    width: 50vw;
+  }
+  .member__section:nth-child(7){
+    width: 100vw;
   }
 }
