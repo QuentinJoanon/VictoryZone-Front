@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { CalendarData } from '@/app/context/Calendar';
 import { editEvent } from '@/app/components_api/CalendarAdmin';
+import './index.scss';
 
 export default function EditCalendar({ params }: { params: { id: number } }) {
   const [event, setEvent] = useState<CalendarData | any>({});
@@ -54,95 +55,135 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
   return (
     <main>
       <h1>Nouvel évenement</h1>
-      <form onSubmit={handleSubmitForm}>
-        <label htmlFor="event_name">Nom de l &apos;évenement</label>
-        <input
-          type="text"
-          name="event_name"
-          id="event_name"
-          onChange={handleChange}
-          value={event.event_name}
-        />
+      <div className="modify-event">
+        <form className="modify-event__form" onSubmit={handleSubmitForm}>
+          <label className="modify-event__form__label" htmlFor="event_name">
+            Nom de l &apos;évenement
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="text"
+            name="event_name"
+            id="event_name"
+            onChange={handleChange}
+            value={event.event_name}
+          />
 
-        <label htmlFor="adversary_name">Adversaire</label>
-        <input
-          type="text"
-          name="adversary_name"
-          id="adversary_name"
-          onChange={handleChange}
-          value={event.adversary_name}
-          required
-        />
+          <label className="modify-event__form__label" htmlFor="adversary_name">
+            Adversaire
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="text"
+            name="adversary_name"
+            id="adversary_name"
+            onChange={handleChange}
+            value={event.adversary_name}
+            required
+          />
 
-        <label htmlFor="adversary_name_short">
-          Initiales de l &apos;adversaire
-        </label>
-        <input
-          type="text"
-          name="adversary_name_short"
-          id="adversary_name_short"
-          onChange={handleChange}
-          value={event.adversary_name_short}
-          required
-        />
+          <label
+            className="modify-event__form__label"
+            htmlFor="adversary_name_short"
+          >
+            Initiales de l &apos;adversaire
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="text"
+            name="adversary_name_short"
+            id="adversary_name_short"
+            onChange={handleChange}
+            value={event.adversary_name_short}
+            required
+          />
 
-        <label htmlFor="image">Logo de l &apos;adversaire</label>
-        <input
-          type="text"
-          name="image"
-          id="image"
-          onChange={handleChange}
-          value={event.image}
-          required
-        />
+          <label className="modify-event__form__label" htmlFor="image">
+            Logo de l &apos;adversaire
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="text"
+            name="image"
+            id="image"
+            onChange={handleChange}
+            value={event.image}
+            required
+          />
 
-        <label htmlFor="publication_date">Date de l &apos;évenement</label>
-        <input
-          type="date"
-          name="event_date"
-          id="event_date"
-          onChange={handleChange}
-          value={event.event_date}
-        />
+          <label
+            className="modify-event__form__label"
+            htmlFor="publication_date"
+          >
+            Date de l &apos;évenement
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="date"
+            name="event_date"
+            id="event_date"
+            onChange={handleChange}
+            value={event.event_date}
+          />
 
-        <label htmlFor="publication_date">Date de publication</label>
-        <input
-          type="date"
-          name="publication_date"
-          id="publication_date"
-          onChange={handleChange}
-          value={event.publication_date}
-        />
+          <label
+            className="modify-event__form__label"
+            htmlFor="publication_date"
+          >
+            Date de publication
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="date"
+            name="publication_date"
+            id="publication_date"
+            onChange={handleChange}
+            value={event.publication_date}
+          />
 
-        <label htmlFor="live_link">Lien de l &apos;évenement</label>
-        <input
-          type="text"
-          name="live_link"
-          id="live_link"
-          onChange={handleChange}
-          value={event.live_link}
-        />
+          <label className="modify-event__form__label" htmlFor="live_link">
+            Lien de l &apos;évenement
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="text"
+            name="live_link"
+            id="live_link"
+            onChange={handleChange}
+            value={event.live_link}
+          />
 
-        <label htmlFor="live_link">Lien du replay</label>
-        <input
-          type="text"
-          name="replay_link"
-          id="replay_link"
-          onChange={handleChange}
-          value={event.replay_link}
-        />
+          <label className="modify-event__form__label" htmlFor="live_link">
+            Lien du replay
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="text"
+            name="replay_link"
+            id="replay_link"
+            onChange={handleChange}
+            value={event.replay_link}
+          />
 
-        <label htmlFor="live_link">Score</label>
-        <input
-          type="text"
-          name="score"
-          id="score"
-          onChange={handleChange}
-          value={event.score}
-        />
+          <label className="modify-event__form__label" htmlFor="live_link">
+            Score
+          </label>
+          <input
+            className="modify-event__form__input"
+            type="text"
+            name="score"
+            id="score"
+            onChange={handleChange}
+            value={event.score}
+          />
 
-        <input type="submit" value="Envoyer" />
-      </form>
+          <input
+            className="modify-event__form__input"
+            type="submit"
+            value="Envoyer"
+          />
+        </form>
+      </div>
     </main>
   );
 }
