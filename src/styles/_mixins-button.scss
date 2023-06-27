@@ -3,21 +3,6 @@
 /****button*****/
 
 @mixin button {
-  background-image: linear-gradient(
-    to right top,
-    #184b6f,
-    #18486c,
-    #194468,
-    #194165,
-    #193e61,
-    #193e62,
-    #193d64,
-    #193d65,
-    #1a3f6b,
-    #1d4172,
-    #204278,
-    #25447e
-  );
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -40,6 +25,12 @@
   margin: 1.6em;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 150px -7px;
   backdrop-filter: blur(10px);
+  background: rgba(18, 58, 86, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 
   &:hover {
     transform: scale(1.1);
@@ -48,21 +39,6 @@
 }
 
 @mixin button-edit {
-  background-image: linear-gradient(
-    to right top,
-    #00ff2c,
-    #01f729,
-    #01ee25,
-    #01e622,
-    #01de1f,
-    #0ede23,
-    #17de27,
-    #1ede2b,
-    #2be635,
-    #36ee3e,
-    #3ff747,
-    #48ff50
-  );
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -85,6 +61,12 @@
   margin: 1.6em;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 150px -7px;
   backdrop-filter: blur(10px);
+  background: rgba(0, 255, 34, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 
   &:hover {
     transform: scale(1.1);
@@ -93,21 +75,6 @@
 }
 
 @mixin button-delete {
-  background-image: linear-gradient(
-    to right top,
-    #ff0000,
-    #f70000,
-    #ee0000,
-    #e60000,
-    #de0000,
-    #de0b08,
-    #df1410,
-    #df1b17,
-    #e72824,
-    #ef3431,
-    #f73e3c,
-    #ff4848
-  );
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -130,6 +97,12 @@
   margin: 1.6em;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 150px -7px;
   backdrop-filter: blur(10px);
+  background: rgba(255, 0, 0, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 
   &:hover {
     transform: scale(1.1);
