@@ -32,8 +32,6 @@
   object-fit: cover;
 }
 
-
-
 .article__content, .article__date, .article__update, .article__author {
   font-size: 1.4rem;
   line-height: 1.6;
@@ -49,3 +47,7 @@
   margin-bottom: 20px;
 }
 
+.article {
+  &:hover {
+    transform: none;
+}}
