@@ -1,4 +1,5 @@
 import { CalendarFutureData } from '../context/Calendar';
+import TimeFormatter from './timeFormatter';
 import './CardCalendar.scss';
 
 export default function CardFutureEvents({
@@ -12,7 +13,7 @@ export default function CardFutureEvents({
   return (
     <div className="future event">
       <h2 className="event__name">{event_name}</h2>
-      <h3 className="event__date">{event_date}</h3>
+      <h3 className="event__date">{<TimeFormatter time={event_date} />}</h3>
       <div className="event__teams">
         <div className="event__teams__home">
           <p className="event__teams__home__short-name">VZ</p>
