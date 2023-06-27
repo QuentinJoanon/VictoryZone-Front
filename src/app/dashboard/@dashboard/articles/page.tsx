@@ -7,6 +7,7 @@ import {
   fetchAdminArticles,
 } from '@/app/components_api/ArticlesAdmin';
 import Link from 'next/link';
+import './index.scss';
 
 export default function DashboardArticles() {
   const { setArticlesList } = useArticleContext();
@@ -20,11 +21,12 @@ export default function DashboardArticles() {
   return (
     <main>
       <h1>Articles</h1>
-      <Link href="/dashboard/articles/create">
-        <button>Ajouter un article</button>
-      </Link>
-
-      <div>{articles}</div>
+      <div className="new-article">
+        <Link href="/dashboard/articles/create">
+          <button className="button">Ajouter un article</button>
+        </Link>
+      </div>
+      <div className="articles__dashboard">{articles}</div>
     </main>
   );
 }
