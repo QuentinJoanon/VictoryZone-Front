@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ArticleData } from '@/app/context/Article';
 import { editArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
+import './index.scss';
 
 export default function EditArticle({ params }: { params: { slug: string } }) {
   const [article, setArticle] = useState<ArticleData | any>({});
@@ -47,65 +48,91 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
   return (
     <main>
       <h1>Nouvel article</h1>
-      <form onSubmit={handleSubmitForm}>
-        <label htmlFor="image">Image</label>
-        <input
-          type="text"
-          name="image"
-          id="image"
-          onChange={handleChange}
-          value={article.image}
-          required
-        />
+      <div className="modify-article">
+        <form className="modify-article__form" onSubmit={handleSubmitForm}>
+          <label className="modify-article__form__label" htmlFor="image">
+            Image
+          </label>
+          <input
+            type="text"
+            name="image"
+            id="image"
+            onChange={handleChange}
+            value={article.image}
+            required
+          />
 
-        <label htmlFor="figcaption">Légende de l &apos;image</label>
-        <input
-          type="text"
-          name="figcaption"
-          id="figcaption"
-          onChange={handleChange}
-          value={article.figcaption}
-        />
+          <label className="modify-article__form__label" htmlFor="figcaption">
+            Légende de l &apos;image
+          </label>
+          <input
+            className="modify-article__form__input"
+            type="text"
+            name="figcaption"
+            id="figcaption"
+            onChange={handleChange}
+            value={article.figcaption}
+          />
 
-        <label htmlFor="title">Titre</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          onChange={handleChange}
-          value={article.title}
-          required
-        />
+          <label className="modify-article__form__label" htmlFor="title">
+            Titre
+          </label>
+          <input
+            className="modify-article__form__input"
+            type="text"
+            name="title"
+            id="title"
+            onChange={handleChange}
+            value={article.title}
+            required
+          />
 
-        <label htmlFor="content">Contenu</label>
-        <textarea
-          name="content"
-          id="content"
-          onChange={handleChange}
-          value={article.content}
-          required
-        />
+          <label className="modify-article__form__label" htmlFor="content">
+            Contenu
+          </label>
+          <textarea
+            className="modify-article__form__input"
+            name="content"
+            id="content"
+            onChange={handleChange}
+            value={article.content}
+            required
+          />
 
-        <label htmlFor="author">Auteur</label>
-        <input
-          type="text"
-          name="author"
-          id="author"
-          onChange={handleChange}
-          value={article.author}
-          required
-        />
+          <label className="modify-article__form__label" htmlFor="author">
+            Auteur
+          </label>
+          <input
+            className="modify-article__form__input"
+            type="text"
+            name="author"
+            id="author"
+            onChange={handleChange}
+            value={article.author}
+            required
+          />
 
-        <label htmlFor="publication_date">Date de publication</label>
-        <input
-          type="date"
-          name="publication_date"
-          id="publication_date"
-          onChange={handleChange}
-        />
+          <label
+            className="modify-article__form__label"
+            htmlFor="publication_date"
+          >
+            Date de publication
+          </label>
+          <input
+            className="modify-article__form__input"
+            type="date"
+            name="publication_date"
+            id="publication_date"
+            onChange={handleChange}
+          />
 
-        <input type="submit" value="Envoyer" />
-      </form>
+          <input
+            className="modify-article__form__input"
+            type="submit"
+            value="Envoyer"
+          />
+        </form>
+      </div>
     </main>
   );
 }

@@ -15,18 +15,11 @@
     &__label {
       grid-column: 1;
       margin: 5px;
-
-      // padding: 5px;
-      // font-size: 1rem;
-      // border-width: 2px;
-      // border-color: rgba(255, 255, 255, 0.18);
-      // background-color: #142e4a;
-      // color: #ffffff;
-      // border-style: groove;
-      // border-radius: 10px;
+      font-size: 1.6rem;
     }
     &__input {
       grid-column: 2;
+      font-size: 1.6rem;
     }
   }
 }

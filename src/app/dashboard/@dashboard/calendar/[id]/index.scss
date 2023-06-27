@@ -1,7 +1,7 @@
 @use '../../../../../styles/mixins' as m;
 @use '../../../../../styles/mixins-button' as mb;
 
-.new-member {
+.modify-event {
   // conteneur globale
   @include m.card-styles;
   max-width: 800px;
