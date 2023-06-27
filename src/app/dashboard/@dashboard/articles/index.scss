@@ -1,0 +1,17 @@
+@use '../../../../styles/mixins-button' as m;
+
+.new-article {
+  display: flex;
+  justify-content: center;
+}
+
+.article-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-around;
+}
+
+.article-box {
+  margin: 1.6em;
+  width: 400px;
+}
