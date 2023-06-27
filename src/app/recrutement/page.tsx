@@ -212,7 +212,7 @@ export default function Recrutement() {
                 </div>
               )}
               <label className="recrutement__form__file__label" htmlFor="cv">
-                {/* Label pour le champ du fichier*/}+ Attacher votre CV
+                {/* Label pour le champ du fichier*/} Attacher votre CV
                 {/* </label> */}
                 <input
                   type="file"
