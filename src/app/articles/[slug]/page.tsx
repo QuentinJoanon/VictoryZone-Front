@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ArticleData } from '@/app/context/Article';
 import Image from 'next/image';
 import './index.scss';
+import TimeFormatter from '../../components/timeFormatter';
 
 export default function Article({ params }: { params: { slug: string } }) {
   const [article, setArticle] = useState<ArticleData | any>({});
@@ -30,7 +31,7 @@ export default function Article({ params }: { params: { slug: string } }) {
       <div className="article__img banner-image">
         <Image
           className="img"
-          src="https://cdn.discordapp.com/attachments/943622331916488704/1119222223698403328/carousel-3.webp" // {article.image}
+          src={article.image} // {article.image}
           fill={true}
           alt="" // {article.figcaption}
         />
@@ -39,7 +40,7 @@ export default function Article({ params }: { params: { slug: string } }) {
         <h2 className="article__title">{article.title}</h2>
         <p className="article__category">{labels}</p>
         <p className="article__content">{article.content}</p>
-        <p className="article__date">{article.created_at}</p>
+        <p className="article__date">{<TimeFormatter time={article.publication_date} />}</p>
         <p className="article__update">{article.updated_at}</p>
         <p className="article__author">{article.author}</p>
       </div>
