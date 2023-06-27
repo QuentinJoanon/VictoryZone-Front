@@ -18,6 +18,11 @@ interface setupData {
   updated_at?: string;
 }
 
+interface videoData {
+  id: number;
+  link:string;
+  is_active: boolean;
+}
 export default function TeamMember({
   params,
 }: {
@@ -51,7 +56,7 @@ export default function TeamMember({
       })
     : [];
     const videos = teamMember.media_video && Array.isArray(teamMember.media_video)
-  ? teamMember.media_video.map((video) => (
+  ? teamMember.media_video.map((video: videoData) => (
       <iframe
         className="member__videos__video"
         key={video.id}
