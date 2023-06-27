@@ -118,8 +118,8 @@ export default function Recrutement() {
 
   return (
     <main>
+      <h1>RECRUTEMENT</h1>
       <div className="recrutement">
-        <h1 className="recrutement__h1">RECRUTEMENT</h1>
         <p className="recrutement__description">
           Bienvenue sur la page de recrutement de la Team VictoryZone. Si vous
           êtes un joueur talentueux, passionné par WarZone et prêt à repousser
