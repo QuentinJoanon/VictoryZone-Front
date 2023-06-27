@@ -4,6 +4,7 @@
 .new-event {
   // conteneur globale
   @include m.card-styles;
+  max-width: 900px;
 
   &__form {
     // conteneur du formulaire
