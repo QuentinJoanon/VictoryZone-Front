@@ -36,12 +36,17 @@ export default function Article({ params }: { params: { slug: string } }) {
         />
       </div>
       <div className="wrapper">
+        <p className="article__category"><strong className='labele'>{labels}</strong></p>
         <h2 className="article__title">{article.title}</h2>
-        <p className="article__category">{labels}</p>
         <p className="article__content">{article.content}</p>
-        <p className="article__date">{article.created_at}</p>
+        <div className='article__date'>
+        <p className="date__art">date : {article.created_at}</p>
+        </div>
         <p className="article__update">{article.updated_at}</p>
-        <p className="article__author">{article.author}</p>
+        <div className='article__author'>
+
+        <p className="author__art">Ecrit par : {article.author}</p>
+        </div>
       </div>
     </div>
   );
