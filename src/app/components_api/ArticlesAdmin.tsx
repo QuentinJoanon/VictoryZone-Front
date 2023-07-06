@@ -21,15 +21,15 @@ export function fetchAdminArticles(
     });
 }
 
-export function createNewArticle(newArticle: ArticleData) {
+export function createNewArticle(form: FormData) {
   axiosInstance({
     method: 'post',
     url: `${process.env.NEXT_PUBLIC_API_URL}api/articles`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
-    data: newArticle, // Send the new article data in the request body
+    data: form, // Send the new article data in the request body
   })
     .then((response) => {
       console.log(response);

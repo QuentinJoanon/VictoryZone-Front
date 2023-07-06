@@ -1,50 +1,67 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
 import './index.scss';
 
 export default function NewArticle() {
-  const username = localStorage.getItem('user_name');
   const router = useRouter();
-  const [newArticle, setNewArticle] = useState({
-    image: '',
+  const [formData, setFormData] = useState({
+    image: null as File | null,
     title: '',
     content: '',
     publication_date: '',
-    author: username,
-    slug: '',
     figcaption: '',
   });
 
-  function convertToSlug(title: string) {
-    return title
-      .toLowerCase()
-      .replace(/ /g, '-')
-      .replace(/[^\w-]+/g, '');
-  }
+  const [fileName, setFileName] = useState('');
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (newArticle.publication_date === '') {
-      newArticle.publication_date = new Date().toISOString();
+
+    let { image, title, content, publication_date, figcaption } = formData;
+
+    if (publication_date === '') {
+      publication_date = new Date().toISOString();
     } else {
-      newArticle.publication_date = new Date(
-        newArticle.publication_date
-      ).toISOString();
+      publication_date = new Date(publication_date).toISOString();
     }
-    newArticle.slug = convertToSlug(newArticle.title);
-    createNewArticle(newArticle);
+
+    const form = new FormData();
+    form.append('image', image as File);
+    form.append('title', title);
+    form.append('content', content);
+    form.append('publication_date', publication_date);
+    form.append('figcaption', figcaption);
+    console.log(form);
+    createNewArticle(form);
     router.push('/dashboard/articles');
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setNewArticle({
-      ...newArticle,
-      [e.target.name]: e.target.value,
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, files } = e.target;
+    if (name === 'image') {
+      setFormData({
+        ...formData,
+        image: files && files.length > 0 ? files[0] : null,
+      });
+      setFileName(files && files.length > 0 ? files[0].name : '');
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
   };
 
@@ -52,17 +69,24 @@ export default function NewArticle() {
     <main>
       <h1>Nouvel article</h1>
       <div className="new-article">
-        <form className="new-article__form" onSubmit={handleSubmitForm}>
+        <form
+          className="new-article__form"
+          onSubmit={handleSubmitForm}
+          action={`${process.env.NEXT_PUBLIC_API_URL}api/recruitment`} // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
+          encType="multipart/form-data" //                                                          | indique que le form contient des données binaires telles que des fichiers.
+          method="post"
+        >
           <label className="new-article__form__label" htmlFor="image">
             Image
           </label>
           <input
             className="new-article__form__input"
-            type="text"
+            type="file"
             name="image"
             id="image"
             onChange={handleChange}
-            value={newArticle.image}
+            accept=".webp, .png, .jpeg"
+            ref={fileInputRef}
             required
           />
 
@@ -75,7 +99,7 @@ export default function NewArticle() {
             name="figcaption"
             id="figcaption"
             onChange={handleChange}
-            value={newArticle.figcaption}
+            value={formData.figcaption}
           />
 
           <label className="new-article__form__label" htmlFor="title">
@@ -87,7 +111,7 @@ export default function NewArticle() {
             name="title"
             id="title"
             onChange={handleChange}
-            value={newArticle.title}
+            value={formData.title}
             required
           />
 
@@ -98,8 +122,8 @@ export default function NewArticle() {
             className="new-article__form__input"
             name="content"
             id="content"
-            onChange={handleChange}
-            value={newArticle.content}
+            onChange={handleTextareaChange}
+            value={formData.content}
             required
           />
 
@@ -115,7 +139,7 @@ export default function NewArticle() {
             name="publication_date"
             id="publication_date"
             onChange={handleChange}
-            value={newArticle.publication_date}
+            value={formData.publication_date}
           />
 
           <input

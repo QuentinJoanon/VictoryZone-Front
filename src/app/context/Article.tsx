@@ -4,11 +4,11 @@ import { createContext, useContext, useState } from 'react';
 
 export interface ArticleData {
   id?: number;
-  slug: string;
+  slug?: string;
   title: string;
   content: string;
-  author: string | null;
-  image?: string;
+  author?: string | null;
+  image?: File | null;
   figcaption?: string;
   publication_date?: string;
   created_at?: string;
