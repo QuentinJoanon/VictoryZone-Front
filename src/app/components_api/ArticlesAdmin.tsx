@@ -1,6 +1,7 @@
 import { ArticleData, useArticleContext } from '../context/Article';
 import CardEditableArticle from '../components/CardEditableArticle';
 import axiosInstance from './axiosInstance';
+import { useMessageContext } from '../context/Message';
 
 export function fetchAdminArticles(
   setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
@@ -21,8 +22,8 @@ export function fetchAdminArticles(
     });
 }
 
-export function createNewArticle(form: FormData) {
-  axiosInstance({
+export function createNewArticle(form: FormData): Promise<number> {
+  return axiosInstance({
     method: 'post',
     url: `${process.env.NEXT_PUBLIC_API_URL}api/articles`,
     headers: {
@@ -32,10 +33,17 @@ export function createNewArticle(form: FormData) {
     data: form, // Send the new article data in the request body
   })
     .then((response) => {
-      console.log(response);
+      if (response.status === 201) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
 }
 

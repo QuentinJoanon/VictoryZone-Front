@@ -14,12 +14,13 @@ export default function NewArticle() {
     publication_date: '',
     figcaption: '',
   });
-
   const [fileName, setFileName] = useState('');
+  const [message, setMessage] = useState('');
+  const [imagePreview, setImagePreview] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     let { image, title, content, publication_date, figcaption } = formData;
@@ -36,9 +37,21 @@ export default function NewArticle() {
     form.append('content', content);
     form.append('publication_date', publication_date);
     form.append('figcaption', figcaption);
-    console.log(form);
     createNewArticle(form);
-    router.push('/dashboard/articles');
+    try {
+      const statusCode = await createNewArticle(form);
+      if (statusCode === 201) {
+        console.log('Article créé');
+        // setMessage('Fichier envoyé.');
+      } else {
+        console.log('Erreur else');
+        // setMessage('Erreur.');
+      }
+      // router.push('/dashboard/articles');
+    } catch (error) {
+      console.log('Erreur catch');
+      // setMessage('Erreur.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,6 +62,9 @@ export default function NewArticle() {
         image: files && files.length > 0 ? files[0] : null,
       });
       setFileName(files && files.length > 0 ? files[0].name : '');
+      setImagePreview(
+        files && files.length > 0 ? URL.createObjectURL(files[0]) : ''
+      );
     } else {
       setFormData({
         ...formData,
@@ -65,9 +81,22 @@ export default function NewArticle() {
     });
   };
 
+  const handleRemoveFile = () => {
+    setFormData({
+      ...formData,
+      image: null,
+    });
+    setFileName('');
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''; // reinitialise la valeur du champ du fichier en utilisant une chaine de caractére vide
+    }
+  };
+
   return (
     <main>
       <h1>Nouvel article</h1>
+      {message && <p>{message}</p>}
       <div className="new-article">
         <form
           className="new-article__form"
@@ -89,6 +118,15 @@ export default function NewArticle() {
             ref={fileInputRef}
             required
           />
+          {imagePreview && (
+            <div className="new-article__form__image-preview">
+              <img
+                src={imagePreview}
+                alt="Aperçu de l'image"
+                className="new-article__form__image-preview__image"
+              />
+            </div>
+          )}
 
           <label className="new-article__form__label" htmlFor="figcaption">
             Légende de l &apos;image
