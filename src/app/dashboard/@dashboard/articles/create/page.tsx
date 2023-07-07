@@ -4,9 +4,11 @@ import { useRef, useState } from 'react';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
 import './index.scss';
+import Image from 'next/image';
 
 export default function NewArticle() {
   const router = useRouter();
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const [formData, setFormData] = useState({
     image: null as File | null,
     title: '',
@@ -37,20 +39,17 @@ export default function NewArticle() {
     form.append('content', content);
     form.append('publication_date', publication_date);
     form.append('figcaption', figcaption);
-    createNewArticle(form);
     try {
       const statusCode = await createNewArticle(form);
       if (statusCode === 201) {
-        console.log('Article créé');
-        // setMessage('Fichier envoyé.');
+        setMessage('Fichier envoyé.');
       } else {
-        console.log('Erreur else');
-        // setMessage('Erreur.');
+        setMessage('Erreur ' + statusCode);
       }
-      // router.push('/dashboard/articles');
+      await sleep(2000);
+      router.push('/dashboard/articles');
     } catch (error) {
-      console.log('Erreur catch');
-      // setMessage('Erreur.');
+      setMessage('Erreur');
     }
   };
 
@@ -87,6 +86,7 @@ export default function NewArticle() {
       image: null,
     });
     setFileName('');
+    setImagePreview('');
 
     if (fileInputRef.current) {
       fileInputRef.current.value = ''; // reinitialise la valeur du champ du fichier en utilisant une chaine de caractére vide
@@ -98,33 +98,40 @@ export default function NewArticle() {
       <h1>Nouvel article</h1>
       {message && <p>{message}</p>}
       <div className="new-article">
-        <form
-          className="new-article__form"
-          onSubmit={handleSubmitForm}
-          action={`${process.env.NEXT_PUBLIC_API_URL}api/recruitment`} // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
-          encType="multipart/form-data" //                                                          | indique que le form contient des données binaires telles que des fichiers.
-          method="post"
-        >
-          <label className="new-article__form__label" htmlFor="image">
-            Image
-          </label>
-          <input
-            className="new-article__form__input"
-            type="file"
-            name="image"
-            id="image"
-            onChange={handleChange}
-            accept=".webp, .png, .jpeg"
-            ref={fileInputRef}
-            required
-          />
+        <form className="new-article__form" onSubmit={handleSubmitForm}>
+          <div className="new-article__form__image">
+            <label className="new-article__form__label" htmlFor="image">
+              Ajouter une image
+            </label>
+            <input
+              className="new-article__form__input"
+              type="file"
+              name="image"
+              id="image"
+              onChange={handleChange}
+              accept=".webp, .png, .jpeg"
+              ref={fileInputRef}
+              required
+            />
+          </div>
           {imagePreview && (
             <div className="new-article__form__image-preview">
-              <img
+              <Image
                 src={imagePreview}
+                width={200}
+                height={200}
                 alt="Aperçu de l'image"
                 className="new-article__form__image-preview__image"
               />
+              <p className="new-article__form__image-preview__filename">
+                {fileName}
+              </p>
+              <button
+                className="recrutement__form__file__file-info__remove-file"
+                onClick={handleRemoveFile}
+              >
+                X
+              </button>
             </div>
           )}
 

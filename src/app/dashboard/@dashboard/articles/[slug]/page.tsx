@@ -13,7 +13,9 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
 
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}api/articles/${params.slug}`)
+      .get(
+        `${process.env.NEXT_PUBLIC_API_URL}api/articles/admin/${params.slug}`
+      )
       .then((response) => {
         setArticle(response.data.data);
       })

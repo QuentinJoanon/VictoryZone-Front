@@ -2,7 +2,6 @@
 @use '../../../../../styles/mixins-button' as mb;
 
 .new-article {
-  // conteneur globale
   @include m.card-styles;
   max-width: 800px;
 
@@ -20,104 +19,6 @@
     &__input {
       grid-column: 2;
       font-size: 1.6rem;
-    }
-  }
-}
-
-.recrutement__form {
-  // conteneur du formulaire
-  // border: 1px solid yellow;
-
-  &__fields {
-    // border: 2px solid #c63575;
-    width: 100%;
-    padding-top: 8px;
-    margin-top: 10px;
-
-    padding: 5px;
-    font-size: 1rem;
-    border-width: 2px;
-    border-color: rgba(255, 255, 255, 0.18);
-    background-color: #142e4a;
-    color: #ffffff;
-    border-style: groove;
-    border-radius: 10px;
-
-    // background: #123a56;
-    // box-shadow: 0 8px 32px 0 rgba(162, 9, 204, 0.37);
-    // backdrop-filter: blur(9px);
-    // -webkit-backdrop-filter: blur(9px);
-    // border-radius: 10px;
-    // border: 2px solid #c6357495;
-
-    &::placeholder {
-      color: white;
-      padding-left: 10px;
-    }
-  }
-
-  &__btn {
-    // btn soumission du formulaire
-    // border: 1px solid orange;
-    display: flex;
-
-    &__submit {
-      // border: 1px solid cyan;
-      @include mb.button;
-      align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
-      margin: 20px auto;
-      padding: 5px 15px;
-      // border-radius: 10px;
-      // background-color: #c63575;
-      // color: white;
-      // box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
-      //   0 0 10px #c63575;
-    }
-  }
-}
-
-.recrutement__form__file {
-  // Pour le fichier CV
-  // border: 1px solid blueviolet;
-
-  &__input {
-    // border: 1px solid #b0b;
-    height: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
-    width: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
-    opacity: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
-    pointer-events: none; // desactiver les interactions du champ
-  }
-  &__label {
-    // border: solid 1px blue;
-    display: inline-flex;
-    align-items: center; // Aligner le + et le attacher votre cv
-    margin-left: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-
-    &::before {
-      content: '+';
-      font-size: 30px;
-      color: #c63575;
-      margin-right: 5px;
-      box-shadow: 0 8px 32px 0 rgba(162, 9, 204, 0.37);
-      backdrop-filter: blur(9px);
-      -webkit-backdrop-filter: blur(9px);
-    }
-  }
-
-  &__file-info {
-    display: flex; // Pour aligner correctement le nom du fichier et la croix de suppression
-    align-items: center; // Pour aligner correctement le nom du fichier et la croix de suppression
-
-    &__file-name {
-      // border: 1px solid orangered;
-      margin-top: 10px;
-      margin-left: 10px;
-    }
-    &__remove-file {
-      // border: solid 1px yellow;
-      margin-left: 5px;
     }
   }
 }
