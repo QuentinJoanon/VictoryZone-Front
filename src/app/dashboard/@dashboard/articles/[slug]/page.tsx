@@ -41,8 +41,13 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
 
     let { id, image, title, content, publication_date, figcaption } = article;
 
+    console.log(article);
+
     const form = new FormData();
-    form.append('image', image as File);
+    if (typeof image === 'object') {
+      form.append('image', image as File);
+    }
+    //form.append('image', image as File);
     form.append('title', title);
     form.append('content', content);
     form.append('publication_date', publication_date);
