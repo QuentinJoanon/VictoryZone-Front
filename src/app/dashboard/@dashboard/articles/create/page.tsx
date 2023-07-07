@@ -6,9 +6,10 @@ import { useRouter } from 'next/navigation';
 import './index.scss';
 import Image from 'next/image';
 
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 export default function NewArticle() {
   const router = useRouter();
-  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const [formData, setFormData] = useState({
     image: null as File | null,
     title: '',
@@ -42,7 +43,7 @@ export default function NewArticle() {
     try {
       const statusCode = await createNewArticle(form);
       if (statusCode === 201) {
-        setMessage('Fichier envoyé.');
+        setMessage('Article créé avec succès.');
       } else {
         setMessage('Erreur ' + statusCode);
       }
@@ -145,6 +146,7 @@ export default function NewArticle() {
             id="figcaption"
             onChange={handleChange}
             value={formData.figcaption}
+            required
           />
 
           <label className="new-article__form__label" htmlFor="title">

@@ -1,7 +1,6 @@
 import { ArticleData, useArticleContext } from '../context/Article';
 import CardEditableArticle from '../components/CardEditableArticle';
 import axiosInstance from './axiosInstance';
-import { useMessageContext } from '../context/Message';
 
 export function fetchAdminArticles(
   setArticlesList: React.Dispatch<React.SetStateAction<ArticleData[]>>
@@ -47,21 +46,29 @@ export function createNewArticle(form: FormData): Promise<number> {
     });
 }
 
-export function editArticle(article: ArticleData, articleId: number) {
-  axiosInstance({
+export function editArticle(form: FormData, id: number): Promise<number> {
+  return axiosInstance({
     method: 'patch',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${articleId}`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${id}`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
-    data: article, // Send the updated article data in the request body
+    data: form, // Send the updated article data in the request body
   })
     .then((response) => {
       console.log(response);
+      if (response.status === 200) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
 }
 
