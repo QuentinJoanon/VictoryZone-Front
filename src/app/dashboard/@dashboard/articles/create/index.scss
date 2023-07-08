@@ -2,7 +2,6 @@
 @use '../../../../../styles/mixins-button' as mb;
 
 .new-article {
-  // conteneur globale
   @include m.card-styles;
   max-width: 800px;
 
