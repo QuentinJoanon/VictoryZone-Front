@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { ArticleData } from '@/app/context/Article';
 import { editArticle } from '@/app/components_api/ArticlesAdmin';
@@ -15,6 +15,7 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
   const [fileName, setFileName] = useState('');
   const [message, setMessage] = useState('');
   const [imagePreview, setImagePreview] = useState('');
+  const [slug, setSlug] = useState('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
@@ -47,7 +48,6 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
     if (typeof image === 'object') {
       form.append('image', image as File);
     }
-    //form.append('image', image as File);
     form.append('title', title);
     form.append('content', content);
     form.append('publication_date', publication_date);
@@ -95,18 +95,16 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
     });
   };
 
-  const handleRemoveFile = () => {
-    setArticle({
-      ...article,
-      image: null,
-    });
-    setFileName('');
-    setImagePreview('');
-
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''; // reinitialise la valeur du champ du fichier en utilisant une chaine de caractére vide
+  useEffect(() => {
+    if (article.title) {
+      setSlug(
+        article.title
+          .toLowerCase()
+          .replace(/ /g, '-')
+          .replace(/[^\w-]+/g, '')
+      );
     }
-  };
+  }, [article.title]);
 
   return (
     <main>
@@ -118,6 +116,12 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
             <label className="modify-article__form__label" htmlFor="image">
               Modifier l &apos;image
             </label>
+            <p className="new-article__form__image__info">
+              Taille maximum autorisée : 3 Mo
+            </p>
+            <p className="new-article__form__image__info">
+              Formats autorisés : .webp, .png, .jpeg, .jpg
+            </p>
             <input
               className="modify-article__form__input"
               type="file"
@@ -140,12 +144,6 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
               <p className="new-article__form__image-preview__filename">
                 {fileName}
               </p>
-              <button
-                className="recrutement__form__file__file-info__remove-file"
-                onClick={handleRemoveFile}
-              >
-                X
-              </button>
             </div>
           )}
           <label className="modify-article__form__label" htmlFor="figcaption">
@@ -171,6 +169,7 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
             onChange={handleChange}
             value={article.title}
           />
+          <p className="new-article__form__slug">Slug : {slug}</p>
 
           <label className="modify-article__form__label" htmlFor="content">
             Contenu

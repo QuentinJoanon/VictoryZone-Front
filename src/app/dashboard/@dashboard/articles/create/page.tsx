@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
 import './index.scss';
@@ -20,8 +20,7 @@ export default function NewArticle() {
   const [fileName, setFileName] = useState('');
   const [message, setMessage] = useState('');
   const [imagePreview, setImagePreview] = useState('');
-
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [slug, setSlug] = useState('');
 
   const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -81,18 +80,16 @@ export default function NewArticle() {
     });
   };
 
-  const handleRemoveFile = () => {
-    setFormData({
-      ...formData,
-      image: null,
-    });
-    setFileName('');
-    setImagePreview('');
-
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''; // reinitialise la valeur du champ du fichier en utilisant une chaine de caractére vide
+  useEffect(() => {
+    if (formData.title) {
+      setSlug(
+        formData.title
+          .toLowerCase()
+          .replace(/ /g, '-')
+          .replace(/[^\w-]+/g, '')
+      );
     }
-  };
+  }, [formData.title]);
 
   return (
     <main>
@@ -104,14 +101,19 @@ export default function NewArticle() {
             <label className="new-article__form__label" htmlFor="image">
               Ajouter une image
             </label>
+            <p className="new-article__form__image__info">
+              Taille maximum autorisée : 3 Mo
+            </p>
+            <p className="new-article__form__image__info">
+              Formats autorisés : .webp, .png, .jpeg, .jpg
+            </p>
             <input
               className="new-article__form__input"
               type="file"
               name="image"
               id="image"
               onChange={handleChange}
-              accept=".webp, .png, .jpeg"
-              ref={fileInputRef}
+              accept=".webp, .png, .jpeg, .jpg"
               required
             />
           </div>
@@ -127,12 +129,6 @@ export default function NewArticle() {
               <p className="new-article__form__image-preview__filename">
                 {fileName}
               </p>
-              <button
-                className="recrutement__form__file__file-info__remove-file"
-                onClick={handleRemoveFile}
-              >
-                X
-              </button>
             </div>
           )}
 
@@ -161,6 +157,7 @@ export default function NewArticle() {
             value={formData.title}
             required
           />
+          <p className="new-article__form__slug">Slug : {slug}</p>
 
           <label className="new-article__form__label" htmlFor="content">
             Contenu
