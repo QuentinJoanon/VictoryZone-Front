@@ -22,8 +22,8 @@ export default function CardEditableMember({
     setIsModalVisible(false);
   };
   return (
-    <>
-      <div className={`card-container ${user_name}`}>
+    <div className={user_name}>
+      <div className={`card-container`}>
         <Link href={`/team/${user_name}`}>
           <div className="card-member">
             <div className="card-member__image">
@@ -50,6 +50,6 @@ export default function CardEditableMember({
           <DeleteMemberModal user_name={user_name} closeModal={closeModal} />
         </div>
       )}
-    </>
+    </div>
   );
 }
