@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { ArticleData } from '@/app/context/Article';
 import { editArticle } from '@/app/components_api/ArticlesAdmin';
@@ -16,7 +16,6 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
   const [message, setMessage] = useState('');
   const [imagePreview, setImagePreview] = useState('');
   const [slug, setSlug] = useState('');
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -41,8 +40,6 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
     e.preventDefault();
 
     let { id, image, title, content, publication_date, figcaption } = article;
-
-    console.log(article);
 
     const form = new FormData();
     if (typeof image === 'object') {
@@ -128,7 +125,6 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
               name="image"
               id="image"
               accept=".webp, .png, .jpeg"
-              ref={fileInputRef}
               onChange={handleChange}
             />
           </div>

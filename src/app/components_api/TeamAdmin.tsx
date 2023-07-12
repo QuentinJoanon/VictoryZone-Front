@@ -49,21 +49,28 @@ export function createNewMember(form: FormData): Promise<number> {
 }
 
 // Edits an existing team member
-export function editMember(member: TeamData, memberId: number) {
-  axiosInstance({
+export function editMember(form: FormData, id: number): Promise<number> {
+  return axiosInstance({
     method: 'patch',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/team/${memberId}`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/team/${id}`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
-    data: member,
+    data: form,
   })
     .then((response) => {
-      console.log(response);
+      if (response.status === 200) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
 }
 
