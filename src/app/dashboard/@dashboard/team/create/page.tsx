@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createNewMember } from '@/app/components_api/TeamAdmin';
 import './index.scss';
-import { sleep } from '../../articles/create/page';
 import Image from 'next/image';
 
 export default function NewMember() {
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const router = useRouter();
   const [newMember, setNewMember] = useState({
     user_name: '',

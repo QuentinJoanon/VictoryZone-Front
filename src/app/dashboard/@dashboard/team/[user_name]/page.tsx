@@ -7,13 +7,13 @@ import { TeamData } from '@/app/context/Team';
 import { editMember } from '@/app/components_api/TeamAdmin';
 import './index.scss';
 import Image from 'next/image';
-import { sleep } from '../../articles/create/page';
 
 export default function EditMember({
   params,
 }: {
   params: { user_name: string };
 }) {
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const [member, setMember] = useState<TeamData | any>({});
   const [fileName, setFileName] = useState('');
   const [message, setMessage] = useState('');
