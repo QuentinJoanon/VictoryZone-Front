@@ -7,9 +7,9 @@ import { editArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
 import './index.scss';
 import Image from 'next/image';
-import { sleep } from '../create/page';
 
 export default function EditArticle({ params }: { params: { slug: string } }) {
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const [article, setArticle] = useState<ArticleData | any>({});
 
   const [fileName, setFileName] = useState('');

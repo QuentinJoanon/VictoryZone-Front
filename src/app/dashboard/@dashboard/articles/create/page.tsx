@@ -6,9 +6,8 @@ import { useRouter } from 'next/navigation';
 import './index.scss';
 import Image from 'next/image';
 
-export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
 export default function NewArticle() {
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const router = useRouter();
   const [formData, setFormData] = useState({
     image: null as File | null,
