@@ -21,42 +21,67 @@ function generateSiteMap(articles: ArticleData, players: TeamData) {
      <url>
        <loc>${URL}/team</loc>
      </url>
-     ${players.map((player)=>{
-      return `
+     ${players
+       .map(
+         (player: {
+           user_name: string;
+           updated_at: string;
+           created_at: string;
+         }) => {
+           return `
         <url>
           <loc>${URL}/team/${player.user_name}</loc>
-          <lastmod>${new Date(player.updated_at || player.created_at).toISOString().split('T')[0]}</lastmod>
+          <lastmod>${
+            new Date(player.updated_at || player.created_at)
+              .toISOString()
+              .split('T')[0]
+          }</lastmod>
         </url>
       `;
-     }).join("")}
+         }
+       )
+       .join('')}
      <url>
        <loc>${URL}/articles</loc>
      </url>
-     ${articles.map((article)=>{
-      return `
+     ${articles
+       .map(
+         (article: {
+           slug: string;
+           updated_at: string;
+           publication_date: string;
+         }) => {
+           return `
         <url>
           <loc>${URL}/articles/${article.slug}</loc>
-          <lastmod>${new Date(article.updated_at || article.publication_date).toISOString().split('T')[0]}</lastmod>
+          <lastmod>${
+            new Date(article.updated_at || article.publication_date)
+              .toISOString()
+              .split('T')[0]
+          }</lastmod>
         </url>
       `;
-     }).join("")}
+         }
+       )
+       .join('')}
    </urlset>
  `;
 }
 
 export async function GET() {
-
-// const articles =[{ slug : 'test'}]; // Get all articles from the context
-const article = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}api/articles`);
-const articles = article.data.data
-const team = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}api/team`);
-const players = team.data.data
-const body = generateSiteMap(articles, players);
+  // const articles =[{ slug : 'test'}]; // Get all articles from the context
+  const article = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}api/articles`
+  );
+  const articles = article.data.data;
+  const team = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}api/team`);
+  const players = team.data.data;
+  const body = generateSiteMap(articles, players);
   return new Response(body, {
     status: 200,
     headers: {
-      "Cache-control": "public, s-maxage=86400, stale-while-revalidate",
-      "content-type": "application/xml",
+      'Cache-control': 'public, s-maxage=86400, stale-while-revalidate',
+      'content-type': 'application/xml',
     },
   });
 }
