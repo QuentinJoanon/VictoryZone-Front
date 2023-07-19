@@ -129,7 +129,7 @@ export default function Recrutement() {
         </p>
         <div className="recrutement__form">
           <form
-            action="https://projet-14-victory-zone-back-production.up.railway.app/api/recruitment" // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
+            action={`${process.env.NEXT_PUBLIC_API_URL}api/recruitment`} // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
             encType="multipart/form-data" //                                                          | indique que le form contient des données binaires telles que des fichiers.
             method="post" //                                                                          | indique que le form doit etre envoyé avec la methode post.
             onSubmit={handleSubmit} //                                                                | ONSUBMIT=HANDLESUBMIT = gestionnaire d'evenement qui sera appelé lorsue le formulaire sera soumis. HandleSubmit est la fonction qui gére la soumission du formulaire.

@@ -12,7 +12,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'projet-14-victory-zone-back-production.up.railway.app',
+        hostname: 'esport-website-backend-production.up.railway.app',
         //port: '',
         //pathname: '',
       },

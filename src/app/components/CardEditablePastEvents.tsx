@@ -4,6 +4,7 @@ import { useState } from 'react';
 import DeleteCalendarModal from './DeleteCalendarModal';
 import Image from 'next/image';
 import logo from '../../assets/logo.webp';
+import TimeFormatter from './timeFormatter';
 
 export default function CardEditablePastEvents({
   id,
@@ -26,7 +27,7 @@ export default function CardEditablePastEvents({
   return (
     <div className={`past event event-${id}`}>
       <h2 className="event__name">{event_name}</h2>
-      <h3 className="event__date">{event_date}</h3>
+      <h3 className="event__date">{<TimeFormatter time={event_date} />}</h3>
       <div className="event__teams">
         <div className="event__teams__home">
           <p className="event__teams__home__short-name">VZ</p>

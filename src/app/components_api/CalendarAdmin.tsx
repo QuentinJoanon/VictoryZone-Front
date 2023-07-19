@@ -33,40 +33,55 @@ export function fetchAdminCalendar(
 }
 
 // Creates a new event in the calendar
-export function createNewEvent(newEvent: CalendarData) {
-  axiosInstance({
+export function createNewEvent(form: FormData): Promise<number> {
+  return axiosInstance({
     method: 'post',
     url: `${process.env.NEXT_PUBLIC_API_URL}api/calendar`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
-    data: newEvent,
+    data: form,
   })
     .then((response) => {
-      console.log(response);
+      if (response.status === 201) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
 }
 
 // Edits an existing future event in the calendar
-export function editEvent(event: CalendarFutureData) {
-  axiosInstance({
+export function editEvent(event: FormData, id: number): Promise<number> {
+  return axiosInstance({
     method: 'patch',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/calendar/${event.id}`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/calendar/${id}`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
     data: event,
   })
     .then((response) => {
       console.log(response);
+      if (response.status === 200) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
 }
 

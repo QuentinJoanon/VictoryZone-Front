@@ -21,39 +21,54 @@ export function fetchAdminArticles(
     });
 }
 
-export function createNewArticle(newArticle: ArticleData) {
-  axiosInstance({
+export function createNewArticle(form: FormData): Promise<number> {
+  return axiosInstance({
     method: 'post',
     url: `${process.env.NEXT_PUBLIC_API_URL}api/articles`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
-    data: newArticle, // Send the new article data in the request body
+    data: form, // Send the new article data in the request body
   })
     .then((response) => {
-      console.log(response);
+      if (response.status === 201) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
 }
 
-export function editArticle(article: ArticleData, articleId: number) {
-  axiosInstance({
+export function editArticle(form: FormData, id: number): Promise<number> {
+  return axiosInstance({
     method: 'patch',
-    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${articleId}`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/articles/${id}`,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
-    data: article, // Send the updated article data in the request body
+    data: form, // Send the updated article data in the request body
   })
     .then((response) => {
       console.log(response);
+      if (response.status === 200) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
 }
 
