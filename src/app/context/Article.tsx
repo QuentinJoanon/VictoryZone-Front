@@ -3,6 +3,7 @@
 import { createContext, useContext, useState } from 'react';
 
 export interface ArticleData {
+  map?: any;
   id?: number;
   slug?: string;
   title: string;
