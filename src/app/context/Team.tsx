@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
 export interface TeamData {
+  map?: any;
   id?: number;
   user_name: string;
   first_name: string;
