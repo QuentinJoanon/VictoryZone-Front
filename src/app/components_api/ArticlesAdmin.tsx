@@ -99,6 +99,7 @@ export function AllEditableArticles() {
       content={article.content}
       author={article.author}
       image={article.image}
+      publication_date={article.publication_date}
       created_at={article.created_at}
       categories={
         Array.isArray(article.categories)
