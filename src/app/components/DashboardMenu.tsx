@@ -27,6 +27,11 @@ export default function DashboardMenu() {
           </Link>
         </li>
         <li>
+          <Link className="header-link" href="/dashboard/recrutement">
+            Acceder aux candidatures
+          </Link>
+        </li>
+        <li>
           <a className="header-link" href="/dashboard" onClick={handleSubmit}>
             Deconnexion
           </a>

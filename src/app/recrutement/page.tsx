@@ -73,7 +73,6 @@ export default function Recrutement() {
     }
 
     const form = new FormData(); //                                               | Création d'une instance de FormData pour envoyer les données du formulaire
-    form.append('user_name', user_name); //                                       | Ajout du nom d'utilisateur
     form.append('email', email);
     form.append('first_name', first_name);
     form.append('last_name', last_name);
@@ -134,16 +133,6 @@ export default function Recrutement() {
             method="post" //                                                                          | indique que le form doit etre envoyé avec la methode post.
             onSubmit={handleSubmit} //                                                                | ONSUBMIT=HANDLESUBMIT = gestionnaire d'evenement qui sera appelé lorsue le formulaire sera soumis. HandleSubmit est la fonction qui gére la soumission du formulaire.
           >
-            {/* Champ pour le nom d'utilisateur */}
-            <input
-              type="text"
-              className="recrutement__form__fields"
-              placeholder="Nom d'utilisateur"
-              name="user_name"
-              value={formData.user_name}
-              onChange={handleChange}
-              required
-            />
             {/* Champ pour le nom de famille */}
             <input
               type="text"
