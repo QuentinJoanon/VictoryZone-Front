@@ -57,6 +57,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a href="/contact" className="footer__link">
+                Contact
+              </a>
+            </li>
+            <li>
               <a href="/dashboard" className="footer__link">
                 Dashboard
               </a>
