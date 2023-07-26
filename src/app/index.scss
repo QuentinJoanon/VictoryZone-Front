@@ -1,35 +1,200 @@
 @use '../styles/variables' as v;
 @use '../styles/mixins' as m;
 
-.about-us {
-  @include m.card-styles;
-  &__description {
-    padding: 5px;
-    // text-align: left;
-    text-align: start;
-    text-align: justify;
-  }
-
-  p {
-    font-size: 1.6em;
+.main {
+  // border: 4px solid white;
+  margin: 10px 20px; // 10px +90px(taille du header) = 100px
+  border-radius: 2rem;
+  background: rgb(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  @media screen and (min-width: 1200px) {
+    margin: 10px 100px;
   }
 }
 
-/*******TEAM***********/
+// *** Zone de présentation ***
+.presentation {
+  margin: 60px 30px;
+  font-size: 14px;
+  // border: 1px solid red;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(
+    0.25turn,
+    rgba(198, 53, 117, 0),
+    rgb(198, 53, 117),
+    rgba(198, 53, 117, 0)
+  );
+  border-image-slice: 1;
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 110px 60px;
+  }
 
-.card-member {
+  &__welcome {
+    // border: 1px solid orange;
+    font-size: 16px;
+    color: white;
+    @media screen and (min-width: 1200px) {
+      width: 400px;
+      margin: 1px 0px 1px calc(50% - 200px);
+      text-align: center;
+    }
+  }
+
+  &__main-title {
+    // border: 1px solid orange;
+    margin-top: 50px;
+    font-size: 38px;
+    text-align: center;
+    color: white;
+    @media screen and (min-width: 1200px) {
+      margin-top: 80px;
+    }
+  }
+
+  &__quote {
+    // border: 1px solid orange;
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #c63575;
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__description {
+    // border: 1px solid orange;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 16px;
+    &--space {
+      padding-bottom: 80px;
+      @media screen and (min-width: 1200px) {
+        padding-bottom: 100px;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      display: flex;
+      justify-content: center;
+      width: 350px;
+      margin: 1px 0px 1px calc(50% - 175px);
+    }
+  }
+
+  &__btn {
+    // border: 1px solid orange;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    &__neon-btn {
+      position: relative;
+      display: inline-block;
+      padding: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #c63575,
+        0 0 82px #c63575, 0 0 92px #c63575, 0 0 102px #c63575, 0 0 151px #c63575;
+      border-radius: 10px;
+      box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #c63575,
+        0 0 0.8rem #c63575, 0 0 2.8rem #c63575, inset 0 0 1.3rem #c63575;
+
+      &::before {
+        pointer-events: none;
+        content: '';
+        position: absolute;
+        background: #c63575;
+        top: 120%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: perspective(80px) rotateX(40deg) scale(1, 0.55);
+        filter: blur(2em);
+        opacity: 0.7;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        box-shadow: 0 0 10em 0.5em #c63575;
+        opacity: 0;
+        transition: opacity 100ms linear;
+      }
+      &:hover {
+        background: #c63575;
+        color: #ffffff;
+        text-shadow: none;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 150px;
+    }
+  }
+}
+
+//*** La Team ***
+.team {
+  margin-top: 50px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(
+    0.25turn,
+    rgba(198, 53, 117, 0),
+    rgb(198, 53, 117),
+    rgba(198, 53, 117, 0)
+  );
+  border-image-slice: 1;
+  @media screen and (min-width: 1200px) {
+    padding-bottom: 150px;
+  }
+  &__title {
+    font-size: 38px;
+    text-align: center;
+    color: white;
+  }
+
+  &__sub-title {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #c63575;
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 50px;
+    }
+  }
+}
+// style pour les cartes de membres sur la home page
+.card-container__member {
+  position: relative;
+  width: 90%;
+  max-width: 280px;
   margin: auto;
   margin-top: 40px;
-  width: 90%;
+  margin-bottom: 40px;
   border-radius: 15px;
   overflow: hidden;
-  margin-bottom: 40px;
-  position: relative;
-  max-width: 280px;
-
   --border-size: 3px; // Taille de la bordure animée
-  --border-angle: 0turn; // Angle initial de l'animation de la bordure
-
+  --border-angle: 0turn; // Angle initial de l'animation de la bordur
   // Image de fond pour l'animation de la bordure
   background-image: conic-gradient(
       from var(--border-angle),
@@ -53,52 +218,61 @@
   background-position: center center;
   background-repeat: no-repeat; // Pour éviter que l'image de fond pour l'animation de la bordure ne se répète
   animation: bg-spin 7s linear infinite; // Appliquer l'animation de la bordure et vitesse animation
-
-  &__image {
-    height: 370px;
-    position: relative;
-    margin: 3px;
-    border-radius: 15px;
+  &:hover {
+    transform: scale(
+      1.1
+    ); // la carte s'agrandira de 10% lorsque la souris sera passée dessus
+    transition: transform 0.3s linear;
   }
-  &__image img {
-    object-fit: cover;
-    object-position: top;
+
+  &__image-container {
+    position: relative;
+    height: 370px;
+
+    margin: 3px;
+    // border: 1px solid red;
     border-radius: 15px;
+    &__img {
+      object-fit: cover;
+      object-position: top;
+      border-radius: 15px;
+    }
   }
 
   &__details {
-    position: absolute; /* positionner absolument les détails par rapport à la carte du membre */
-    bottom: 0; /* positionnez les détails en bas de la carte du membre */
-    left: 0; /* aligner les détails à gauche de la carte du membre */
-    right: 0; /* aligner les détails à droite de la carte du membre */
-    background-color: rgba(
-      0,
-      0,
-      0,
-      0.6
-    ); /* arrière-plan semi-transparent pour les détails */
-    color: #fff;
-    padding: 10px; /* espacement intérieur pour les détails */
+    // border: 1px solid red;
+    position: absolute; //positionner absolument les détails par rapport à la carte du membre
+    bottom: 0; // positionnez les détails en bas de la carte du membre
+    left: 0; // aligner les détails à gauche de la carte du membre
+    right: 0; // aligner les détails à droite de la carte du membre
     margin: 3px;
+    padding: 10px; /* espacement intérieur pour les détails */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white; /* arrière-plan semi-transparent pour les détails */
+    text-align: center;
     border-radius: 0 0 15px 15px;
-  }
 
-  &__username,
-  &__fullname,
-  &__role {
-    text-decoration: none;
-    font-size: 18px;
-    margin-top: 10px;
+    &__username {
+      font-size: 30px;
+    }
+    &__fullname {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c63575;
+    }
+    &__role {
+      font-size: 14px;
+    }
   }
 }
-
 @property --border-angle {
   // Propriété personnalisée pour l'animation de la bordure
   syntax: '<angle>'; // La syntaxe de la propriété est un angle
   inherits: false; // La propriété n'est pas héritée par les enfants de la carte
   initial-value: 0turn; // Valeur initiale de la propriété
 }
-
 @keyframes bg-spin {
   // Définition de l'animation de la bordure
   to {
@@ -106,9 +280,215 @@
   }
 }
 
-/*.card-member:hover { // Lorsque la souris est sur la carte
-  animation-play-state: paused;
-}*/
+//*** Events ***
+.calendar {
+  margin-top: 50px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(
+    0.25turn,
+    rgba(198, 53, 117, 0),
+    rgb(198, 53, 117),
+    rgba(198, 53, 117, 0)
+  );
+  border-image-slice: 1;
+  @media screen and (min-width: 1200px) {
+    margin-top: 100px;
+    padding-bottom: 150px;
+  }
+
+  &__title {
+    font-size: 38px;
+    text-align: center;
+    color: white;
+  }
+
+  &__sub-title {
+    padding-bottom: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #c63575;
+    @media screen and (min-width: 1200px) {
+      padding-bottom: 30px;
+    }
+  }
+  &__sub-title__result {
+    margin: 50px 0;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #c63575;
+    @media screen and (min-width: 1200px) {
+      margin: 30px 0;
+    }
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    @media screen and (min-width: 1200px) {
+      margin-top: 100px;
+    }
+
+    &__neon-btn {
+      position: relative;
+      display: inline-block;
+      padding: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #c63575,
+        0 0 82px #c63575, 0 0 92px #c63575, 0 0 102px #c63575, 0 0 151px #c63575;
+      border-radius: 10px;
+      box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #c63575,
+        0 0 0.8rem #c63575, 0 0 2.8rem #c63575, inset 0 0 1.3rem #c63575;
+
+      &::before {
+        pointer-events: none;
+        content: '';
+        position: absolute;
+        background: #c63575;
+        top: 120%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: perspective(80px) rotateX(40deg) scale(1, 0.55);
+        filter: blur(2em);
+        opacity: 0.7;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        box-shadow: 0 0 10em 0.5em #c63575;
+        opacity: 0;
+        transition: opacity 100ms linear;
+      }
+      &:hover {
+        background: #c63575;
+        color: #ffffff;
+        text-shadow: none;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+.calendar-container {
+  @media screen and (min-width: 1200px) {
+    width: 1000px;
+    margin: 50px 0 50px calc(50% - 500px);
+  }
+}
+
+//*** Articles ***
+.articles {
+  margin-top: 50px;
+  padding-bottom: 100px;
+  @media screen and (min-width: 1200px) {
+    margin-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  &__title {
+    margin-top: 50px;
+    font-size: 38px;
+    text-align: center;
+    color: white;
+  }
+
+  &__sub-title {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #c63575;
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    @media screen and (min-width: 1200px) {
+      margin-top: 60px;
+    }
+    &__neon-btn {
+      position: relative;
+      display: inline-block;
+      padding: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #c63575,
+        0 0 82px #c63575, 0 0 92px #c63575, 0 0 102px #c63575, 0 0 151px #c63575;
+      border-radius: 10px;
+      box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #c63575,
+        0 0 0.8rem #c63575, 0 0 2.8rem #c63575, inset 0 0 1.3rem #c63575;
+
+      &::before {
+        pointer-events: none;
+        content: '';
+        position: absolute;
+        background: #c63575;
+        top: 120%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: perspective(80px) rotateX(40deg) scale(1, 0.55);
+        filter: blur(2em);
+        opacity: 0.7;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        box-shadow: 0 0 10em 0.5em #c63575;
+        opacity: 0;
+        transition: opacity 100ms linear;
+      }
+      &:hover {
+        background: #c63575;
+        color: #ffffff;
+        text-shadow: none;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .articles__home {
+    display: flex;
+    margin: 0 40px;
+    gap: 20px;
+  }
+}
 
 /***carousel*/ //
 .slick-dots {
@@ -172,12 +552,4 @@
   .slick-prev:before {
     font-size: 20px; //  ajuster la taille des flèches ici
   }
-}
-
-/* CALENDAR */
-
-.calendar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }

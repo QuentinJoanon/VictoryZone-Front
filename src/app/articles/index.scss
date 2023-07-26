@@ -1,6 +1,25 @@
 @use '../../styles/variables' as v;
 @use '../../styles/mixins' as m;
 
-:root p {
-  text-align: left;
+.articles {
+  margin: 40px;
+  border-radius: 2rem;
+
+  &__title {
+    margin-top: 50px;
+    font-size: 38px;
+  }
+
+  &__sub-title {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .articles__home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    margin: 0 40px;
+  }
 }
