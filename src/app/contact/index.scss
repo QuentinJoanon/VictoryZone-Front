@@ -1,0 +1,48 @@
+@use '../../styles/variables' as v;
+.contact {
+  width: 30vw;
+  margin: 0 auto 0 auto;
+  label {
+    display: block;
+  }
+  input {
+    width: 30vw;
+  }
+  textarea {
+    width: 30vw;
+    height: 70px;
+  }
+}
+.hidden {
+  display: none;
+}
+.spinner {
+  width: 4em;
+  height: 4em;
+  border: 0.5em solid rgba(0, 0, 0, 0.1);
+  border-left-color: v.$color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  /* For mobile phones: */
+  .contact {
+    width: 90vw;
+    margin: 0 auto 0 auto;
+    input {
+      width: 90vw;
+      height: 25px;
+    }
+    textarea {
+      width: 90vw;
+      height: 70px;
+    }
+  }
+}
