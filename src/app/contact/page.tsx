@@ -14,7 +14,7 @@ export default function Contact() {
   const [copy, setCopy] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
-  const [classState, setClassState] = useState('hidden spinner');
+  const [classState, setClassSpinner] = useState('hiddenspinner spinner');
   useEffect(() => {
     if (userRef.current) {
       userRef.current.focus();
@@ -26,7 +26,7 @@ export default function Contact() {
   }, [email, first_name, last_name, subject, message, copy]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    setClassState('spinner');
+    setClassSpinner('spinner');
     e.preventDefault();
     console.log(email, first_name, last_name, subject, message, copy);
     axios({
@@ -47,7 +47,7 @@ export default function Contact() {
       .then((response) => {
         console.log(response);
         setSuccess(true);
-        setClassState('hidden spinner');
+        setClassSpinner('hiddenspinner spinner');
       })
       .catch((error) => {
         if (!error?.response) {
