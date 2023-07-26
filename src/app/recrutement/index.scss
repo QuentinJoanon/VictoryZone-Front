@@ -2,66 +2,122 @@
 @use '../../styles/mixins-button' as mb;
 
 .recrutement {
-  // conteneur globale
-  // border: 1px solid white;
-  @include m.card-styles;
-
-  &__description {
-    // border: 1px solid greenyellow;
-    padding: 10px;
-    text-align: start;
-    text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 20px 0 20px;
+  background: rgb(0, 0, 0, 0.1);
+  text-decoration: none;
+  border-radius: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  @media screen and (min-width: 1200px) {
+    margin: 10px 100px;
   }
-}
 
-.recrutement__form {
-  // conteneur du formulaire
-  // border: 1px solid yellow;
-
-  &__fields {
-    // border: 2px solid #c63575;
-    width: 100%;
-    padding-top: 8px;
-    margin-top: 10px;
-
-    padding: 5px;
-    font-size: 1rem;
-    border-width: 2px;
-    border-color: rgba(255, 255, 255, 0.18);
-    background-color: #142e4a;
-    color: #ffffff;
-    border-style: groove;
-    border-radius: 10px;
-
-    // background: #123a56;
-    // box-shadow: 0 8px 32px 0 rgba(162, 9, 204, 0.37);
-    // backdrop-filter: blur(9px);
-    // -webkit-backdrop-filter: blur(9px);
-    // border-radius: 10px;
-    // border: 2px solid #c6357495;
-
-    &::placeholder {
-      color: white;
-      padding-left: 10px;
+  &__title {
+    margin-top: 50px;
+    font-size: 38px;
+    text-align: center;
+    color: white;
+    @media screen and (min-width: 1200px) {
+      margin-top: 100px;
     }
   }
+  &__sub-title {
+    margin-bottom: 50px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #c63575;
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+  }
+  &__description-container {
+    @media screen and (min-width: 1200px) {
+      width: 500px;
+    }
+  }
+  &__description {
+    margin: 0 40px;
+    font-size: 18px;
+    color: white;
+    @media screen and (min-width: 1200px) {
+    }
+  }
+  &__sub-description {
+    margin: 50px 40px 0 40px;
+    color: white;
+  }
 
-  &__btn {
-    // btn soumission du formulaire
-    // border: 1px solid orange;
-    display: flex;
+  &__form {
+    margin-top: 20px;
+    padding: 20px;
+    color: white;
+    & textarea {
+      resize: none;
+      height: 200px;
+      &::placeholder {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      display: flex;
+      justify-content: center;
+      margin: 60px;
+    }
 
-    &__submit {
-      // border: 1px solid cyan;
-      @include mb.button;
-      align-self: center; // Centre le bouton horizomtalement dans le conteneur sans qu'il prenne tout l'espace honrizontalement
-      margin: 20px auto;
-      padding: 5px 15px;
-      // border-radius: 10px;
-      // background-color: #c63575;
-      // color: white;
-      // box-shadow: 0 0 20px #c63575, 0 0 15px #354dc6, 0 0 10px #354dc6,
-      //   0 0 10px #c63575;
+    &__fields {
+      width: 100%;
+      margin-top: 15px;
+      padding: 20px;
+      color: white;
+      box-shadow: 0px 1px 2px rgba(198, 53, 117, 0.5),
+        0px 2px 4px rgba(198, 53, 117, 0.5), 0px 4px 8px rgba(198, 53, 117, 0.5),
+        0px 8px 16px rgba(198, 53, 117, 0.5);
+      border-radius: 5px;
+      background: rgba(40, 39, 39, 0.495);
+      border: none;
+      outline: none;
+      &::placeholder {
+        padding-left: 10px;
+        color: white;
+      }
+    }
+    &__btn {
+      display: flex;
+      margin-bottom: 50px;
+
+      // btn soumission du formulaire
+
+      &__submit {
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        border-radius: 10px;
+        background-color: rgb(198, 53, 117, 0.9);
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px,
+          rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+          rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        color: white;
+        // border: none;
+        &:hover {
+          color: #ffffff;
+          text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
+        }
+        @media screen and (min-width: 1200px) {
+          margin-top: 50px;
+        }
+      }
     }
   }
 }
@@ -78,18 +134,19 @@
     pointer-events: none; // desactiver les interactions du champ
   }
   &__label {
-    // border: solid 1px blue;
     display: inline-flex;
     align-items: center; // Aligner le + et le attacher votre cv
-    margin-left: 10px;
-    padding: 8px 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
     cursor: pointer;
+    font-weight: 700;
 
     &::before {
       content: '+';
-      font-size: 30px;
+      font-size: 40px;
       color: #c63575;
-      margin-right: 5px;
+      margin-right: 10px;
       box-shadow: 0 8px 32px 0 rgba(162, 9, 204, 0.37);
       backdrop-filter: blur(9px);
       -webkit-backdrop-filter: blur(9px);
@@ -99,6 +156,7 @@
   &__file-info {
     display: flex; // Pour aligner correctement le nom du fichier et la croix de suppression
     align-items: center; // Pour aligner correctement le nom du fichier et la croix de suppression
+    margin-top: 15px;
 
     &__file-name {
       // border: 1px solid orangered;
@@ -106,7 +164,7 @@
       margin-left: 10px;
     }
     &__remove-file {
-      // border: solid 1px yellow;
+      border: solid 1px yellow;
       margin-left: 5px;
     }
   }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useState, ChangeEvent, FormEvent, useRef } from 'react';
 import './index.scss';
 /* eslint-disable react/no-unescaped-entities */
+import { khand, staatliches, ysabeau } from '@/styles/fonts/fonts';
 
 export default function Recrutement() {
   // * Etat local pour stocker les données du formulaire:
@@ -117,129 +118,150 @@ export default function Recrutement() {
   };
 
   return (
-    <main>
-      <h1>RECRUTEMENT</h1>
-      <div className="recrutement">
-        <p className="recrutement__description">
-          Bienvenue sur la page de recrutement de la Team VictoryZone. Si vous
-          êtes un joueur talentueux, passionné par WarZone et prêt à repousser
-          vos limites, vous êtes au bon endroit. Rejoignez-nous dans notre quête
-          de l'excellence compétitive et de la domination sur la scène de
-          l'esport.
+    <section className="recrutement">
+      <h1 className={`recrutement__title ${staatliches.className}`}>
+        Recrutement
+      </h1>
+      <h2 className={`recrutement__sub-title ${ysabeau.className}`}>
+        Prêt à vivre l'aventure ultime de l'e-sport ?
+      </h2>
+      <div className="recrutement__description-container">
+        <p className={`recrutement__description ${khand.className}`}>
+          Rejoignez VictoryZone, l'équipe qui transforme les joueurs en
+          professionnels. <br /> Postulez dès maintenant et laissez votre talent
+          briller au sommet. <br /> Ensemble, nous écrirons l'histoire de
+          l'e-sport. <br /> La victoire vous attend !
         </p>
-        <div className="recrutement__form">
-          <form
-            action={`${process.env.NEXT_PUBLIC_API_URL}api/recruitment`} // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
-            encType="multipart/form-data" //                                                          | indique que le form contient des données binaires telles que des fichiers.
-            method="post" //                                                                          | indique que le form doit etre envoyé avec la methode post.
-            onSubmit={handleSubmit} //                                                                | ONSUBMIT=HANDLESUBMIT = gestionnaire d'evenement qui sera appelé lorsue le formulaire sera soumis. HandleSubmit est la fonction qui gére la soumission du formulaire.
-          >
-            {/* Champ pour le nom d'utilisateur */}
-            <input
-              type="text"
-              className="recrutement__form__fields"
-              placeholder="Nom d'utilisateur"
-              name="user_name"
-              value={formData.user_name}
-              onChange={handleChange}
-              required
-            />
-            {/* Champ pour le nom de famille */}
-            <input
-              type="text"
-              className="recrutement__form__fields"
-              placeholder="Nom de famille"
-              name="last_name"
-              value={formData.last_name}
-              onChange={handleChange}
-              required
-            />
-            {/* Champ pour le prénom */}
-            <input
-              type="text"
-              className="recrutement__form__fields"
-              placeholder="Prénom"
-              name="first_name"
-              value={formData.first_name}
-              onChange={handleChange}
-              required
-            />
-            {/* Champ pour l'adresse e-mail */}
-            <input
-              type="email"
-              className="recrutement__form__fields"
-              placeholder="Adresse e-mail"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            {/* Champ pour le message */}
-            <textarea
-              className="recrutement__form__fields"
-              placeholder="Message"
-              name="message"
-              value={formData.message}
-              onChange={handleTextAreaChange}
-              required
-            ></textarea>
-            {/* Champ pour le lien externe */}
-            <input
-              type="text"
-              className="recrutement__form__fields"
-              placeholder="Lien vers vos Highlights (facultatif)"
-              name="external_link"
-              value={formData.external_link}
-              onChange={handleChange}
-            />
-
-            {/* Champ pour le fichier CV */}
-
-            <div className="recrutement__form__file">
-              {fileName && ( // Lorsque fileName existe (lorsqu'un fichier a été selectionné) =
-                <div className="recrutement__form__file__file-info">
-                  {/* On affiche la div file-info*/}
-                  <p className="recrutement__form__file__file-info__file-name">
-                    {fileName}
-                  </p>
-                  {/* Qui contient le nom du fichier*/}
-                  <button
-                    className="recrutement__form__file__file-info__remove-file"
-                    onClick={handleRemoveFile}
-                  >
-                    {/* et un bouton pour le supprimer*/}X
-                  </button>
-                </div>
-              )}
-              <label className="recrutement__form__file__label" htmlFor="cv">
-                {/* Label pour le champ du fichier*/} Attacher votre CV
-                {/* </label> */}
-                <input
-                  type="file"
-                  className="recrutement__form__file__input" // output pour le champ du fichier
-                  name="cv"
-                  id="cv"
-                  onChange={handleChange}
-                  accept=".pdf, .doc, .docx"
-                  ref={fileInputRef} // Ajout de la référence au champ de fichier
-                  required
-                />
-              </label>
-            </div>
-
-            {/* Bouton de soumission du formulaire */}
-
-            <div className="recrutement__form__btn">
-              <input
-                type="submit"
-                value="Envoyer"
-                className="recrutement__form__btn__submit"
-              />
-            </div>
-          </form>
-          {isFormSubmitted && <p>Le formulaire a été envoyé avec succès !</p>}
-        </div>
+        <p className={`recrutement__sub-description ${khand.className}`}>
+          Bienvenue chez VictoryZone, l'équipe d'e-sport qui ouvre les portes de
+          la reconversion professionnelle dans le monde du gaming. Nous
+          recherchons des joueurs ambitieux, passionnés et talentueux pour
+          rejoindre notre équipe d'élite. En tant que membre de VictoryZone,
+          vous bénéficierez d'un encadrement personnalisé, de ressources de
+          pointe et d'un environnement d'entraînement de premier ordre. Notre
+          objectif est de vous aider à développer vos compétences et à atteindre
+          le niveau professionnel. Vous aurez l'opportunité de participer à des
+          compétitions de haut niveau, de représenter notre équipe et de défier
+          les meilleurs joueurs du monde entier. Rejoignez-nous dès maintenant
+          pour vivre une aventure passionnante dans l'e-sport et laissez votre
+          talent briller au sommet. Ensemble, nous écrirons l'histoire de
+          l'e-sport et nous construirons un avenir radieux pour notre équipe.
+          Postulez dès aujourd'hui et préparez-vous à la victoire avec
+          VictoryZone.
+        </p>
       </div>
-    </main>
+      <div className="recrutement__form">
+        <form
+          action="https://projet-14-victory-zone-back-production.up.railway.app/api/recruitment" // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
+          encType="multipart/form-data" //                                                          | indique que le form contient des données binaires telles que des fichiers.
+          method="post" //                                                                          | indique que le form doit etre envoyé avec la methode post.
+          onSubmit={handleSubmit} //                                                                | ONSUBMIT=HANDLESUBMIT = gestionnaire d'evenement qui sera appelé lorsue le formulaire sera soumis. HandleSubmit est la fonction qui gére la soumission du formulaire.
+        >
+          {/* Champ pour le nom d'utilisateur */}
+          <input
+            type="text"
+            className="recrutement__form__fields"
+            placeholder="Nom d'utilisateur"
+            name="user_name"
+            value={formData.user_name}
+            onChange={handleChange}
+            required
+          />
+          {/* Champ pour le nom de famille */}
+          <input
+            type="text"
+            className="recrutement__form__fields"
+            placeholder="Nom de famille"
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+            required
+          />
+          {/* Champ pour le prénom */}
+          <input
+            type="text"
+            className="recrutement__form__fields"
+            placeholder="Prénom"
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+            required
+          />
+          {/* Champ pour l'adresse e-mail */}
+          <input
+            type="email"
+            className="recrutement__form__fields"
+            placeholder="Adresse e-mail"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          {/* Champ pour le message */}
+          <textarea
+            className="recrutement__form__fields"
+            placeholder="Message"
+            name="message"
+            value={formData.message}
+            onChange={handleTextAreaChange}
+            required
+          ></textarea>
+          {/* Champ pour le lien externe */}
+          <input
+            type="text"
+            className="recrutement__form__fields"
+            placeholder="Lien vers vos Highlights (facultatif)"
+            name="external_link"
+            value={formData.external_link}
+            onChange={handleChange}
+          />
+
+          {/* Champ pour le fichier CV */}
+
+          <div className="recrutement__form__file">
+            {fileName && ( // Lorsque fileName existe (lorsqu'un fichier a été selectionné) =
+              <div className="recrutement__form__file__file-info">
+                {/* On affiche la div file-info*/}
+                <p className="recrutement__form__file__file-info__file-name">
+                  {fileName}
+                </p>
+                {/* Qui contient le nom du fichier*/}
+                <button
+                  className="recrutement__form__file__file-info__remove-file"
+                  onClick={handleRemoveFile}
+                >
+                  {/* et un bouton pour le supprimer*/}X
+                </button>
+              </div>
+            )}
+            <label className="recrutement__form__file__label" htmlFor="cv">
+              {/* Label pour le champ du fichier*/} Attacher votre CV
+              {/* </label> */}
+              <input
+                type="file"
+                className="recrutement__form__file__input" // output pour le champ du fichier
+                name="cv"
+                id="cv"
+                onChange={handleChange}
+                accept=".pdf, .doc, .docx"
+                ref={fileInputRef} // Ajout de la référence au champ de fichier
+                required
+              />
+            </label>
+          </div>
+
+          {/* Bouton de soumission du formulaire */}
+
+          <div className="recrutement__form__btn">
+            <input
+              type="submit"
+              value="Envoyer"
+              className="recrutement__form__btn__submit"
+            />
+          </div>
+        </form>
+        {isFormSubmitted && <p>Le formulaire a été envoyé avec succès !</p>}
+      </div>
+    </section>
   );
 }

@@ -8,6 +8,7 @@ import {
   fetchCalendars,
 } from '../components_api/CalendarList';
 import './index.scss';
+import { staatliches, ysabeau } from '@/styles/fonts/fonts';
 
 export default function Calendar() {
   const { setCalendarFutureList, setCalendarPastList } = useCalendarContext();
@@ -20,12 +21,18 @@ export default function Calendar() {
   const pastCalendars = AllPastCalendars(); // Get all past calendars from the context
 
   return (
-    <main>
-      <h1>CALENDRIER</h1>
-      <h2>PROCHAINS MATCHS</h2>
+    <section className="calendar">
+      <h1 className={`calendar__title ${staatliches.className}`}>Calendrier</h1>
+      <h2 className={`calendar__sub-title ${ysabeau.className}`}>
+        Prochains matchs
+      </h2>
       <div>{futureCalendars}</div>
-      <h2>DERNIERS RESULTATS</h2>
+      <h2
+        className={`calendar__sub-title calendar__sub-title__bis ${ysabeau.className}`}
+      >
+        Derniers résultats
+      </h2>
       <div>{pastCalendars}</div>
-    </main>
+    </section>
   );
 }
