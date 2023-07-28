@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import { ArticlesContextProvider } from './context/Article';
 import { CalendarContextProvider } from './context/Calendar';
 import { TeamContextProvider } from './context/Team';
+import { RecruitmentContextProvider } from './context/Recruitment';
 import { Roboto } from 'next/font/google';
 
 const roboto = Roboto({
@@ -29,7 +30,9 @@ export default function RootLayout({
           <ArticlesContextProvider>
             <CalendarContextProvider>
               <TeamContextProvider>
-                <main className="content">{children}</main>
+                <RecruitmentContextProvider>
+                  <main className="content">{children}</main>
+                </RecruitmentContextProvider>
               </TeamContextProvider>
             </CalendarContextProvider>
           </ArticlesContextProvider>

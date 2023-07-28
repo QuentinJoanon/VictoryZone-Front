@@ -74,7 +74,6 @@ export default function Recrutement() {
     }
 
     const form = new FormData(); //                                               | Création d'une instance de FormData pour envoyer les données du formulaire
-    form.append('user_name', user_name); //                                       | Ajout du nom d'utilisateur
     form.append('email', email);
     form.append('first_name', first_name);
     form.append('last_name', last_name);
@@ -126,12 +125,6 @@ export default function Recrutement() {
         Prêt à vivre l'aventure ultime de l'e-sport ?
       </h2>
       <div className="recrutement__description-container">
-        <p className={`recrutement__description ${khand.className}`}>
-          Rejoignez VictoryZone, l'équipe qui transforme les joueurs en
-          professionnels. <br /> Postulez dès maintenant et laissez votre talent
-          briller au sommet. <br /> Ensemble, nous écrirons l'histoire de
-          l'e-sport. <br /> La victoire vous attend !
-        </p>
         <p className={`recrutement__sub-description ${khand.className}`}>
           Bienvenue chez VictoryZone, l'équipe d'e-sport qui ouvre les portes de
           la reconversion professionnelle dans le monde du gaming. Nous
@@ -152,7 +145,7 @@ export default function Recrutement() {
       </div>
       <div className="recrutement__form">
         <form
-          action="https://projet-14-victory-zone-back-production.up.railway.app/api/recruitment" // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
+          action={`${process.env.NEXT_PUBLIC_API_URL}api/recruitment`} // | ACTION = L'url vers laquelle le form sera envoyé lors de la soumission du forn.
           encType="multipart/form-data" //                                                          | indique que le form contient des données binaires telles que des fichiers.
           method="post" //                                                                          | indique que le form doit etre envoyé avec la methode post.
           onSubmit={handleSubmit} //                                                                | ONSUBMIT=HANDLESUBMIT = gestionnaire d'evenement qui sera appelé lorsue le formulaire sera soumis. HandleSubmit est la fonction qui gére la soumission du formulaire.

@@ -14,6 +14,7 @@ export function fetchAdminArticles(
     },
   })
     .then((response) => {
+      console.log(response.data.data);
       setArticlesList(response.data.data); // Set the fetched articles list in the state
     })
     .catch((error) => {
