@@ -1,91 +1,129 @@
-'use client';
-import logo from '../../assets/logo.webp';
+/* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
+import logo from '../../assets/logo.webp';
 import twitch from '../../../public/twitch.svg';
 import youtube from '../../../public/youtube.svg';
 import twitter from '../../../public/twitter.svg';
+import instagram from '../../../public/instagram.svg';
+import facebook from '../../../public/facebook.svg';
+import steam from '../../../public/steam.svg';
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__image">
-          <a href="/">
+      <div className="footer__social">
+        <p className="footer__social__find-us">Retrouvez-nous sur</p>
+        <div className="footer__social__items">
+          <a
+            className="footer__social__items__link"
+            href="https://www.youtube.com"
+            target="_blank"
+          >
+            <Image src={youtube} width={40} height={40} alt="Logo Youtube" />
+          </a>
+          <a
+            className="footer__social__items__link"
+            href="https://www.twitch.tv"
+            target="_blank"
+          >
+            <Image src={twitch} width={40} height={40} alt="Logo Twitch" />
+          </a>
+          <a
+            className="footer__social__items__link"
+            href="https://www.twitter.com"
+            target="_blank"
+          >
+            <Image src={twitter} width={40} height={40} alt="Logo Twitter" />
+          </a>
+          <a
+            className="footer__social__items__link"
+            href="https://www.instagram.com"
+            target="_blank"
+          >
+            <Image src={steam} width={40} height={40} alt="Logo Steam" />
+          </a>
+          <a
+            className="footer__social__items__link"
+            href="https://www.steam.com"
+            target="_blank"
+          >
+            <Image src={facebook} width={40} height={40} alt="Logo Facebook" />
+          </a>
+          <a
+            className="footer__social__items__link"
+            href="https://www.facebook.com"
+            target="_blank"
+          >
             <Image
-              className="footer__logo"
-              src={logo}
-              // width={100}
-              height={100}
-              alt="Logo VictoryZone"
-              priority={true}
+              src={instagram}
+              width={40}
+              height={40}
+              alt="Logo Instagram"
             />
           </a>
         </div>
+      </div>
+      <div className="footer__name">VictoryZone</div>
 
-        <div className="footer__links">
-          <ul className="footer__links-list">
-            <li>
-              <a href="/team" className="footer__link">
-                Team
-              </a>
-            </li>
-            <li>
-              <a href="/articles" className="footer__link">
-                Articles
-              </a>
-            </li>
-            <li>
-              <a href="/calendrier" className="footer__link">
-                Calendrier
-              </a>
-            </li>
-            <li>
-              <a href="/recrutement" className="footer__link">
-                Recrutement
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div className="footer__nav">
+        <ul className="footer__nav__list">
+          <li className="footer__nav__list__item footer__nav__list__item__bordered">
+            <a className="footer__nav__list__item__link" href="/">
+              Accueil
+            </a>
+          </li>
+          <li className="footer__nav__list__item footer__nav__list__item__bordered">
+            <a className="footer__nav__list__item__link" href="/articles">
+              Articles
+            </a>
+          </li>
+          <li className="footer__nav__list__item footer__nav__list__item__bordered">
+            <a className="footer__nav__list__item__link" href="/team">
+              La Team
+            </a>
+          </li>
+          <li className="footer__nav__list__item footer__nav__list__item__bordered">
+            <a className="footer__nav__list__item__link" href="/calendrier">
+              Calendrier
+            </a>
+          </li>
+          <li className="footer__nav__list__item footer__nav__list__item__bordered">
+            <a className="footer__nav__list__item__link" href="/calendrier">
+              Recrutement
+            </a>
+          </li>
+        </ul>
+        <ul className="footer__nav__list">
+          <li className="footer__nav__list__item">
+            <a
+              className="footer__nav__list__item__link footer__nav__list__item__link__cgu"
+              href="/cgu"
+            >
+              Conditions d'utilisation et politique de confidentialité
+            </a>
+          </li>
+        </ul>
+        <ul className="footer__nav__list">
+          <li className="footer__nav__list__item">
+            <a
+              className="footer__nav__list__item__link footer__nav__list__item__link__admin"
+              href="/dashboard"
+            >
+              Espace Admin
+            </a>
+          </li>
+        </ul>
+      </div>
 
-        <div className="footer__separator"></div>
-
-        <div className="footer__additional-links">
-          <ul className="footer__additional-links-list">
-            <li>
-              <a href="/cgu" className="footer__link">
-                CGU
-              </a>
-            </li>
-            <li>
-              <a href="/dashboard" className="footer__link">
-                Dashboard
-              </a>
-            </li>
-          </ul>
-          <div className="footer__social">
-            <a
-              href="https://www.youtube.com"
-              className="footer__social-link"
-              target="_blank"
-            >
-              <Image src={youtube} width={20} height={20} alt="Logo Youtube" />
-            </a>
-            <a
-              href="https://www.twitch.tv"
-              className="footer__social-link"
-              target="_blank"
-            >
-              <Image src={twitch} width={20} height={20} alt="Logo Twitch" />
-            </a>
-            <a
-              href="https://www.twitter.com"
-              className="footer__social-link"
-              target="_blank"
-            >
-              <Image src={twitter} width={20} height={20} alt="Logo Twitter" />
-            </a>
-          </div>
-        </div>
+      <div className="footer__logo">
+        <a href="/">
+          <Image
+            src={logo}
+            height={100}
+            alt="Logo VictoryZone"
+            priority={true}
+          />
+        </a>
       </div>
     </footer>
   );

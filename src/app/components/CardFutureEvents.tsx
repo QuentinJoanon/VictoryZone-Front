@@ -4,6 +4,7 @@ import './CardCalendar.scss';
 import Image from 'next/image';
 import logo from '../../assets/logo.webp';
 import Link from 'next/link';
+import { staatliches, ysabeau } from '@/styles/fonts/fonts';
 
 export default function CardFutureEvents({
   id,
@@ -14,13 +15,22 @@ export default function CardFutureEvents({
   image,
 }: CalendarFutureData) {
   return (
-    <div className="future event">
-      <h2 className="event__name">{event_name}</h2>
-      <h3 className="event__date">{<TimeFormatter time={event_date} />}</h3>
-      <div className="event__teams">
-        <div className="event__teams__home">
-          <p className="event__teams__home__short-name">VZ</p>
-          <div className="event__teams__home__logo">
+    <div className="futur-event">
+      <div className="futur-event__description">
+        <h3
+          className={`futur-event__description__name ${staatliches.className}`}
+        >
+          {event_name}
+        </h3>
+        <h4
+          className={`futur-event__description__date ${staatliches.className}`}
+        >
+          {<TimeFormatter time={event_date} />}
+        </h4>
+      </div>
+      <div className="futur-event__teams">
+        <div className="futur-event__teams__home">
+          <div className="futur-event__teams__home__logo">
             <Image
               className="logo"
               src={logo}
@@ -29,13 +39,11 @@ export default function CardFutureEvents({
               priority={true}
             />
           </div>
+          <div className="futur-event__teams__home__initials">VZ</div>
         </div>
-        <p>Vs</p>
-        <div className="event__teams__away">
-          <p className="event__teams__away__short-name">
-            {adversary_name_short}
-          </p>
-          <div className="event__teams__logo__away">
+        <div className="futur-event__teams__versus custom-font">V S</div>
+        <div className="futur-event__teams__away">
+          <div className="futur-event__teams__away__logo">
             <Image
               className="logo"
               src={image}
@@ -44,13 +52,16 @@ export default function CardFutureEvents({
               priority={true}
             />
           </div>
+          <div className="futur-event__teams__away__initials">
+            {adversary_name_short}
+          </div>
         </div>
       </div>
-      <a href={live_link} target="_blank">
-        <button className="event__button" type="button">
+      <div className="futur-event__btn">
+        <a className="futur-event__btn__white-neon" href={live_link}>
           Live
-        </button>
-      </a>
+        </a>
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { ArticleData } from '@/app/context/Article';
 import Image from 'next/image';
 import './index.scss';
 import TimeFormatter from '../../components/timeFormatter';
+import { khand, staatliches } from '@/styles/fonts/fonts';
 
 export default function Article({ params }: { params: { slug: string } }) {
   const [article, setArticle] = useState<ArticleData | any>({});
@@ -27,27 +28,40 @@ export default function Article({ params }: { params: { slug: string } }) {
     : [];
 
   return (
-    <div className="article container">
-      <div className="article__img banner-image">
+    <div className="article-container">
+      <div className="article-container__img">
         <Image
           className="img"
           src={article.image} // {article.image}
           fill={true}
           alt="" // {article.figcaption}
+          sizes="(max-width: 768px) 100vw, 700px"
         />
       </div>
-      <div className="wrapper">
-        <p className="article__category"><strong className='labele'>{labels}</strong></p>
-        <h2 className="article__title">{article.title}</h2>
-        <p className="article__content">{article.content}</p>
-        <div className='article__date'>
-        <p className="article__date">{<TimeFormatter time={article.publication_date} />}</p>
+      <div className="article-container__info">
+        <div className="article-container__info__top-items">
+          <div
+            className={`article-container__info__top-items__category ${khand.className}`}
+          >
+            {labels}
+          </div>
+          <div
+            className={`article-container__info__top-items__date ${khand.className}`}
+          >
+            {<TimeFormatter time={article.publication_date} />}
+          </div>
+          <div className="article-container__info__top-items__author">
+            {article.author}
+          </div>
         </div>
-        <p className="article__update">{article.updated_at}</p>
-        <div className='article__author'>
-
-        <p className="author__art">Ecrit par : {article.author}</p>
-        </div>
+        <h1
+          className={`article-container__info__title ${staatliches.className}`}
+        >
+          {article.title}
+        </h1>
+        <p className={`article-container__info__content ${khand.className}`}>
+          {article.content}
+        </p>
       </div>
     </div>
   );

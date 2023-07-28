@@ -3,93 +3,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
+.article-container {
+  margin: 10px 20px;
+  background: rgb(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
-.article.container {
-  @include m.card-styles;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+  border-radius: 2rem;
+  @media screen and (min-width: 1200px) {
+    width: 1000px;
+    margin: 10px 0px 1px calc(50% - 500px);
+    padding: 0 100px 100px 100px;
+  }
 
-.article__img {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
+  &__img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
 
-.banner-image {
-  background-position: center;
-  background-size: cover;
-}
+  &__info {
+    color: white;
+    padding: 10px;
 
-.img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    &__top-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      &__category {
+        padding: 5px;
+        background: #c63575;
+        font-size: small;
+        border-radius: 5px;
+      }
+      &__date {
+        color: #c63575;
+        font-size: 16px;
+        font-style: italic;
+      }
+      &__author {
+        color: #c63575;
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
 
-.article__title {
-  font-family: 'Righteous', sans-serif;
-  font-size: 2.4rem;
-  color: rgba(255,255,255,0.98);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  
+    &__title {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 30px;
+      letter-spacing: 1px;
+      @media screen and (min-width: 1200px) {
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+    }
+    &__content {
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
 }
-
-.article__content, .article__date, .article__update, .article__author {
-  font-size: 1.4rem;
-  line-height: 1.6;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  text-align: left;
-
-}
-
-.article__category {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: right;
- 
-
-
-}
-.labele{
-  background-color: v.$color;
-    font-weight: 700;
-    padding: 5px;
-    border-radius: 5px;
-    
-}
-.article__date{
-  display: flex;
-}
-.date__art{
-  background-color: v.$color;
-  font-weight: 700;
-  padding: 5px;
-  border-radius: 5px;
- width: auto;
-}
-.author__art{
-  background-color: v.$color;
-  font-weight: 700;
-  padding: 5px;
-  border-radius: 5px;
- width: auto; 
-}
-.article__author{
-  display: flex
-}
-
-.article {
-  &:hover {
-    transform: none;
-}}

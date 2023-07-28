@@ -2,90 +2,99 @@
 @use '../../styles/mixins' as m;
 @use '../../styles/mixins-button' as mb;
 
-.button {
-  @include mb.button;
+.img {
+  object-fit: cover;
+  // object-position: top;
 }
+.card-article {
+  margin-bottom: 50px;
+  box-shadow: 0px 1px 2px rgba(198, 53, 117, 0.5),
+    0px 2px 4px rgba(198, 53, 117, 0.5), 0px 4px 8px rgba(198, 53, 117, 0.5),
+    0px 8px 16px rgba(198, 53, 117, 0.5);
+  &:hover {
+    @include m.hover;
+    transform: scale(
+      /*  la carte s'agrandira de 10% lorsque la souris sera passée dessus */
+        1.1
+    );
+  }
 
-.button-edit {
-  @include mb.button-edit;
-}
-
-.button-delete {
-  @include mb.button-delete;
-}
-
-.article {
-  @include m.card-styles;
-
-  --img-scale: 1.001;
-  --title-color: white;
-  position: relative;
-  transform-origin: center;
-  transition: all 0.4s ease-in-out;
-  padding: 0;
-
-  &__title {
-    margin: 1.6em;
-    font-family: 'Righteous', sans-serif;
-    color: var(--title-color);
-    text-transform: uppercase;
-    font-size: 2.1rem;
+  &__link {
+    text-decoration: none !important;
   }
 
   &__img {
+    position: relative;
     width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
+    aspect-ratio: 16/9;
   }
 
-  .img {
-    object-fit: cover;
-    object-position: top;
-  }
-  &__content {
-    margin: 1.6em;
-    font-size: 1.6rem;
-  }
-  &__category {
-    background-color: v.$color;
-    font-weight: 700;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  &__date,
-  &__update,
-  &__author {
-    font-size: small;
-  }
+  &__info {
+    color: white;
+    padding: 10px;
 
-  .info-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 1.6em;
+    &__top-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      &__category {
+        padding: 5px;
+        background: #c63575;
+        font-size: small;
+        border-radius: 5px;
+      }
+      &__date {
+        color: #c63575;
+        font-size: 12px;
+        font-style: italic;
+      }
+      &__author {
+        color: #c63575;
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+
+    &__title {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+    &__content {
+      // text-align: center;
+      color: #cbbac1;
+      font-size: 12px;
+    }
   }
 }
 
-@media (min-width: 1024px) {
-  .article {
-    width: 400px; /* ajuster la largeur de la carte */
-    transition: transform 0.3s ease; /* transition en douceur lorsque la carte s'agrandit */
+// STYLE POUR LES BOUTONS MODIFIER ET SUPPRIMER DU DASHBOARD
+.dashboard-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 
+  &__button {
+    padding: 20px 40px;
+    background-color: #c63575;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.734);
     &:hover {
-      @include m.hover;
+      color: #ffffff;
+      text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
     }
-  }
-  .article__img {
-    // a voir pour le layout
-    width: 100%;
-    height: 350px;
-  }
-
-  .articles__home {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+    &--edit {
+      background-color: green;
+    }
+    &--delete {
+      background-color: red;
+    }
   }
 }

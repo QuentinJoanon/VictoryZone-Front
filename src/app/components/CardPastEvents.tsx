@@ -2,6 +2,7 @@ import { CalendarPastData } from '../context/Calendar';
 import Image from 'next/image';
 import logo from '../../assets/logo.webp';
 import TimeFormatter from './timeFormatter';
+import { staatliches, ysabeau } from '@/styles/fonts/fonts';
 export default function CardPastEvents({
   id,
   event_name,
@@ -12,13 +13,22 @@ export default function CardPastEvents({
   image,
 }: CalendarPastData) {
   return (
-    <div className="past event">
-      <h2 className="event__name">{event_name}</h2>
-      <h3 className="event__date">{<TimeFormatter time={event_date} />}</h3>
-      <div className="event__teams">
-        <div className="event__teams__home">
-          <p className="event__teams__home__short-name">VZ</p>
-          <div className="event__teams__home__logo">
+    <div className="futur-event">
+      <div className="futur-event__description">
+        <h3
+          className={`futur-event__description__name ${staatliches.className}`}
+        >
+          {event_name}
+        </h3>
+        <h4
+          className={`futur-event__description__date ${staatliches.className}`}
+        >
+          {<TimeFormatter time={event_date} />}
+        </h4>
+      </div>
+      <div className="futur-event__teams">
+        <div className="futur-event__teams__home">
+          <div className="futur-event__teams__home__logo">
             <Image
               className="logo"
               src={logo}
@@ -27,13 +37,11 @@ export default function CardPastEvents({
               priority={true}
             />
           </div>
+          <div className="futur-event__teams__home__initials">VZ</div>
         </div>
-        <p>{score}</p>
-        <div className="event__teams__away">
-          <p className="event__teams__away__short-name">
-            {adversary_name_short}
-          </p>
-          <div className="event__teams__logo__away">
+        <div className="futur-event__teams__score">{score}</div>
+        <div className="futur-event__teams__away">
+          <div className="futur-event__teams__away__logo">
             <Image
               className="logo"
               src={image}
@@ -42,13 +50,16 @@ export default function CardPastEvents({
               priority={true}
             />
           </div>
+          <div className="futur-event__teams__away__initials">
+            {adversary_name_short}
+          </div>
         </div>
       </div>
-      <a href={replay_link} target="_blank">
-        <button className="event__button" type="button">
+      <div className="futur-event__btn">
+        <a className="futur-event__btn__white-neon" href={replay_link}>
           Replay
-        </button>
-      </a>
+        </a>
+      </div>
     </div>
   );
 }

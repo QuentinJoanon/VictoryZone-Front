@@ -1,171 +1,127 @@
 @use '../../styles/variables' as v;
 @use '../../styles/mixins' as m;
+@font-face {
+  font-family: 'CyberwayRiders';
+  src: url('/fonts/CyberwayRiders.ttf') format('truetype');
+}
 
-.event {
-  @include m.card-styles;
+.futur-event {
+  padding: 10px;
+  background: rgba(40, 39, 39, 0.495);
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(198, 53, 117, 0.5),
+    0px 2px 4px rgba(198, 53, 117, 0.5), 0px 4px 8px rgba(198, 53, 117, 0.5),
+    0px 8px 16px rgba(198, 53, 117, 0.5);
+
+  @media screen and (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-items: center;
+    margin: 0 80px;
+    border-radius: 30px;
+  }
+
+  &__description {
+    padding: 10px;
+
+    &__name {
+      padding-bottom: 5px;
+      color: white;
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+    &__date {
+      color: #c63575;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+  }
 
   &__teams {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; // ajuster cette valeur en fonction de l'espace souhaité
-    flex-wrap: wrap;
     padding: 10px;
-  }
-
-  &__teams__home__logo,
-  &__teams__logo__away {
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(135, 31, 126, 0.37);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    width: 60px; // taille  pour les logos
-    height: 60px;
-    position: relative;
-    // object-fit: contain; // logos s'adaptent à l'espace disponible
-  }
-
-  .logo {
-    object-fit: contain;
-  }
-
-  &__button {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90px;
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    color: rgb(20, 2, 22);
-    position: relative;
-    box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
-    background-color: rgba(255, 255, 255, 0.718);
-    backdrop-filter: blur(10px);
-  }
-
-  &__button::after {
-    --move1: inset(50% 50% 50% 50%);
-    --move2: inset(31% 0 40% 0);
-    --move3: inset(39% 0 15% 0);
-    --move4: inset(45% 0 40% 0);
-    --move5: inset(45% 0 6% 0);
-    --move6: inset(14% 0 61% 0);
-    clip-path: var(--move1);
-    content: 'Victory';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  &__button::before {
-    content: '';
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
-
-  &__button:hover::after {
-    animation: glitch-animation 1.3s;
-    text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #e94be8;
-    background-color: transparent;
-    border: 3px solid rgb(0, 255, 213);
-  }
-
-  &__button:hover {
-    text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #e94be8;
-    border: 1px solid rgb(0, 255, 213);
-  }
-
-  /* Glitch Animation */
-  @keyframes glitch-animation {
-    0% {
-      clip-path: var(--move1);
-      transform: translate(0px, -20px);
-    }
-    10% {
-      clip-path: var(--move2);
-      transform: translate(-20px, 20px);
-    }
-    20% {
-      clip-path: var(--move3);
-      transform: translate(20px, 0px);
-    }
-    30% {
-      clip-path: var(--move4);
-      transform: translate(-20px, 20px);
-    }
-    40% {
-      clip-path: var(--move5);
-      transform: translate(20px, -20px);
-    }
-    50% {
-      clip-path: var(--move6);
-      transform: translate(-20px, 20px);
-    }
-    60% {
-      clip-path: var(--move1);
-      transform: translate(20px, -20px);
-    }
-    70% {
-      clip-path: var(--move3);
-      transform: translate(-20px, 20px);
-    }
-    80% {
-      clip-path: var(--move2);
-      transform: translate(20px, -20px);
-    }
-    90% {
-      clip-path: var(--move4);
-      transform: translate(-10px, 10px);
-    }
-    100% {
-      clip-path: var(--move1);
-      transform: translate(0);
-    }
-  }
-}
-
-@media (min-width: 1024px) {
-  .event {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    justify-items: center;
-
-    &__name,
-    &__date {
-      grid-column: 1;
-      text-align: left;
+    gap: 50px;
+    @media screen and (min-width: 1200px) {
+      gap: 40px;
     }
 
-    &__teams {
-      margin-bottom: 10px;
-      grid-column: 2;
-      gap: 50px;
-
-      &__home__logo,
-      &__logo__away {
-        width: 90px; // augmenter la taille pour les logos pour min-width
-        height: 90px; // augmenter la taille pour les logos pour min-width
+    &__home {
+      color: white;
+      &__logo {
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(135, 31, 126, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        width: 70px; // taille  pour les logos
+        height: 70px;
+        position: relative;
+        object-fit: contain; // logos s'adaptent à l'espace disponible
+      }
+      &__initials {
+        padding: 5px;
+        text-align: center;
       }
     }
 
-    &__button {
-      right: 50px;
-      grid-column: 4;
-      text-align: right;
+    &__versus {
+      color: white;
+
+      &.custom-font {
+        font-family: 'CyberwayRiders', sans-serif;
+      }
+    }
+    &__score {
+      color: white;
+    }
+
+    &__away {
+      color: white;
+      &__logo {
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(135, 31, 126, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        width: 60px; // taille  pour les logos
+        height: 60px;
+        position: relative;
+        object-fit: contain; // logos s'adaptent à l'espace disponible
+      }
+      &__initials {
+        padding: 5px;
+        text-align: center;
+      }
+    }
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    @media screen and (min-width: 1200px) {
+      justify-content: flex-end;
+    }
+
+    &__white-neon {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #c63575;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover {
+        color: #ffffff;
+        text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
+      }
     }
   }
 }

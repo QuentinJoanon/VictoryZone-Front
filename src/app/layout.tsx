@@ -5,6 +5,12 @@ import { ArticlesContextProvider } from './context/Article';
 import { CalendarContextProvider } from './context/Calendar';
 import { TeamContextProvider } from './context/Team';
 import { RecruitmentContextProvider } from './context/Recruitment';
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: 'VictoryZone',
@@ -18,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body>
+      <body className={roboto.className}>
         <div className="wrapper">
           <Header />
           <ArticlesContextProvider>
