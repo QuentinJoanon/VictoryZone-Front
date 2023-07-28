@@ -17,7 +17,6 @@ export function fetchAdminRecruitments(
     },
   })
     .then((response) => {
-      console.log(response.data.data);
       setRecruitmentList(response.data.data); // Set the fetched recruitments list in the state
     })
     .catch((error) => {
@@ -25,12 +24,41 @@ export function fetchAdminRecruitments(
     });
 }
 
+export function editRecruitment(
+  recruitment: RecruitementData,
+  id: number
+): Promise<number> {
+  return axiosInstance({
+    method: 'patch',
+    url: `${process.env.NEXT_PUBLIC_API_URL}api/recruitment/${id}`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Content-Type': 'application/json',
+    },
+    data: recruitment,
+  })
+    .then((response) => {
+      console.log(response);
+      if (response.status === 200) {
+        return response.status;
+      } else {
+        throw new Error(
+          "Une erreur s'est produite lors de l'envoi du formulaire."
+        );
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      throw error;
+    });
+}
+
 export function AllRecruitments() {
   const { recruitmentList } = useRecruitmentContext();
-  console.log(recruitmentList);
   const recruitments = recruitmentList.map((recruitment: RecruitementData) => (
     <CardRecruitment
       key={recruitment.id}
+      id={recruitment.id}
       email={recruitment.email}
       first_name={recruitment.first_name}
       last_name={recruitment.last_name}

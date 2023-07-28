@@ -12,7 +12,7 @@ export interface RecruitementData {
   external_link?: string;
   cv?: File | null;
   is_reviewed?: boolean;
-  is_accepted?: string;
+  is_accepted?: boolean;
   reviewer_comment?: string;
   reviewer_comment_private?: string;
   created_at?: string;
