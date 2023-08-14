@@ -8,6 +8,7 @@ import { editEvent } from '@/app/components_api/CalendarAdmin';
 import './index.scss';
 import Image from 'next/image';
 import { type } from 'os';
+import { khand, staatliches } from '@/styles/fonts/fonts';
 
 export default function EditCalendar({ params }: { params: { id: number } }) {
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -103,16 +104,16 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
   };
 
   return (
-    <main>
-      <h1>Modifier un évenement</h1>
-      {message && <p>{message}</p>}
-      <div className="modify-event">
-        <form className="modify-event__form" onSubmit={handleSubmitForm}>
+    <section className="modify-event">
+      <h1 className={`modify-event__title ${staatliches.className}`}>Modifier un évenement</h1>
+      {message && <p className={`modify-event__sub-description ${khand.className}`}>{message}</p>}
+      <div className="modify-event__form">
+        <form onSubmit={handleSubmitForm}>
           <label className="modify-event__form__label" htmlFor="event_name">
             Nom de l &apos;évenement
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="event_name"
             id="event_name"
@@ -124,7 +125,7 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             Adversaire
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="adversary_name"
             id="adversary_name"
@@ -140,7 +141,7 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             Initiales de l &apos;adversaire
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="adversary_name_short"
             id="adversary_name_short"
@@ -149,35 +150,35 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             required
           />
 
-          <div className="modify-article__form__image">
-            <label className="modify-article__form__label" htmlFor="image">
+          <div className="modify-event__form__file__file-info">
+            <label
+              className="modify-event__form__file__label"
+              htmlFor="image"
+            >
               Logo de l &apos;adversaire
+              <input
+                className="modify-event__form__file__input"
+                type="file"
+                name="image"
+                id="image"
+                accept=".webp, .png, .jpeg"
+                onChange={handleChange}
+              />
             </label>
-            <p className="new-article__form__image__info">
-              Taille maximum autorisée : 3 Mo
-            </p>
-            <p className="new-article__form__image__info">
-              Formats autorisés : .webp, .png, .jpeg, .jpg
-            </p>
-            <input
-              className="modify-article__form__input"
-              type="file"
-              name="image"
-              id="image"
-              accept=".webp, .png, .jpeg"
-              onChange={handleChange}
-            />
+          </div>
+          <div className="modify-event__form__image__info">
+            <p>Taille maximum autorisée : 3 Mo</p>
+            <p>Formats autorisés : .webp, .png, .jpeg, .jpg</p>
           </div>
           {imagePreview && (
-            <div className="modify-article__form__image-preview">
+            <div className="modify-event__form__image-preview">
               <Image
                 src={imagePreview}
-                width={200}
-                height={200}
+                fill={true}
                 alt="Aperçu de l'image"
-                className="new-article__form__image-preview__image"
+                className="modify-event__form__image-preview__image"
               />
-              <p className="new-article__form__image-preview__filename">
+              <p className="modify-event__form__image-preview__filename">
                 {fileName}
               </p>
             </div>
@@ -190,7 +191,7 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             Date de l &apos;évenement
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="date"
             name="event_date"
             id="event_date"
@@ -205,7 +206,7 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             Date de publication
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="date"
             name="publication_date"
             id="publication_date"
@@ -217,7 +218,7 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             Lien de l &apos;évenement
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="live_link"
             id="live_link"
@@ -229,7 +230,7 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             Lien du replay
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="replay_link"
             id="replay_link"
@@ -241,7 +242,7 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
             Score
           </label>
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="score"
             id="score"
@@ -250,12 +251,12 @@ export default function EditCalendar({ params }: { params: { id: number } }) {
           />
 
           <input
-            className="modify-event__form__input"
+            className="modify-event__form__fields"
             type="submit"
             value="Envoyer"
           />
         </form>
       </div>
-    </main>
+    </section>
   );
 }
