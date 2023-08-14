@@ -101,12 +101,40 @@
     };
   }
 }
+.calendar {
+  // margin: 40px;
+  @media screen and (min-width: 1200px) {
+    width: 800px;
+    margin: 50px 0 50px calc(50% - 400px);
+  }
+  &__title {
+    margin-top: 60px;
+    font-size: 38px;
+    @media screen and (min-width: 1200px) {
+      margin-top: 110px;
+    }
+  }
+
+  &__sub-title {
+    margin-bottom: 50px;
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+    &__bis {
+      margin-top: 50px;
+      @media screen and (min-width: 1200px) {
+        margin-top: 80px;
+      }
+    }
+  }
+}
 
 // STYLE POUR LES BOUTONS MODIFIER ET SUPPRIMER DU DASHBOARD
 .dashboard-btn {
   display: flex;
   justify-content: space-around;
   padding: 10px;
+  max-width: 600px;
 
   &__button {
     border: none;

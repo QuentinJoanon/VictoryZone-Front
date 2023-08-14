@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createNewEvent } from '@/app/components_api/CalendarAdmin';
-import './index.scss';
+import '../[id]/index.scss';
 import Image from 'next/image';
+import { khand, staatliches } from '@/styles/fonts/fonts';
 
 export default function NewEvent() {
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -81,16 +82,16 @@ export default function NewEvent() {
   };
 
   return (
-    <main>
-      <h1>Nouvel évenement</h1>
-      {message && <p>{message}</p>}
-      <div className="new-event">
-        <form className="new-event__form" onSubmit={handleSubmitForm}>
-          <label className="new-event__form__label" htmlFor="event_name">
+    <section className="modify-event">
+      <h1 className={`modify-event__title ${staatliches.className}`}>Nouvel évenement</h1>
+      {message && <p className={`modify-event__sub-description ${khand.className}`}>{message}</p>}
+      <div className="modify-event__form">
+        <form onSubmit={handleSubmitForm}>
+          <label className="modify-event__form__label" htmlFor="event_name">
             Nom de l &apos;évenement
           </label>
           <input
-            className="new-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="event_name"
             id="event_name"
@@ -98,11 +99,11 @@ export default function NewEvent() {
             value={formData.event_name}
           />
 
-          <label className="new-event__form__label" htmlFor="adversary_name">
+          <label className="modify-event__form__label" htmlFor="adversary_name">
             Adversaire
           </label>
           <input
-            className="new-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="adversary_name"
             id="adversary_name"
@@ -112,13 +113,13 @@ export default function NewEvent() {
           />
 
           <label
-            className="new-event__form__label"
+            className="modify-event__form__label"
             htmlFor="adversary_name_short"
           >
             Initiales de l &apos;adversaire
           </label>
           <input
-            className="new-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="adversary_name_short"
             id="adversary_name_short"
@@ -126,46 +127,45 @@ export default function NewEvent() {
             value={formData.adversary_name_short}
             required
           />
-          <div className="new-article__form__image">
-            <label className="new-article__form__label" htmlFor="image">
-              Ajouter une image
+          <div className="modify-event__form__file__file-info">
+            <label
+              className="modify-event__form__file__label"
+              htmlFor="image"
+            >
+              Logo de l &apos;adversaire
+              <input
+                className="modify-event__form__file__input"
+                type="file"
+                name="image"
+                id="image"
+                accept=".webp, .png, .jpeg"
+                onChange={handleChange}
+              />
             </label>
-            <p className="new-article__form__image__info">
-              Taille maximum autorisée : 3 Mo
-            </p>
-            <p className="new-article__form__image__info">
-              Formats autorisés : .webp, .png, .jpeg, .jpg
-            </p>
-            <input
-              className="new-article__form__input"
-              type="file"
-              name="image"
-              id="image"
-              onChange={handleChange}
-              accept=".webp, .png, .jpeg, .jpg"
-              required
-            />
+          </div>
+          <div className="modify-event__form__image__info">
+            <p>Taille maximum autorisée : 3 Mo</p>
+            <p>Formats autorisés : .webp, .png, .jpeg, .jpg</p>
           </div>
           {imagePreview && (
-            <div className="new-article__form__image-preview">
+            <div className="modify-event__form__image-preview">
               <Image
                 src={imagePreview}
-                width={200}
-                height={200}
+                fill={true}
                 alt="Aperçu de l'image"
-                className="new-article__form__image-preview__image"
+                className="modify-event__form__image-preview__image"
               />
-              <p className="new-article__form__image-preview__filename">
+              <p className="modify-event__form__image-preview__filename">
                 {fileName}
               </p>
             </div>
           )}
 
-          <label className="new-event__form__label" htmlFor="publication_date">
+          <label className="modify-event__form__label" htmlFor="publication_date">
             Date de l &apos;évenement
           </label>
           <input
-            className="new-event__form__input"
+            className="modify-event__form__fields"
             type="date"
             name="event_date"
             id="event_date"
@@ -173,11 +173,11 @@ export default function NewEvent() {
             value={formData.event_date}
           />
 
-          <label className="new-event__form__label" htmlFor="live_link">
+          <label className="modify-event__form__label" htmlFor="live_link">
             Lien de live
           </label>
           <input
-            className="new-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="live_link"
             id="live_link"
@@ -185,11 +185,11 @@ export default function NewEvent() {
             value={formData.live_link}
           />
 
-          <label className="new-event__form__label" htmlFor="replay_link">
+          <label className="modify-event__form__label" htmlFor="replay_link">
             Lien de replay
           </label>
           <input
-            className="new-event__form__input"
+            className="modify-event__form__fields"
             type="text"
             name="replay_link"
             id="replay_link"
@@ -198,12 +198,12 @@ export default function NewEvent() {
           />
 
           <input
-            className="new-event__form__input"
+            className="modify-event__form__fields"
             type="submit"
             value="Envoyer"
           />
         </form>
       </div>
-    </main>
+    </section>
   );
 }

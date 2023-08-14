@@ -5,6 +5,7 @@ import DeleteCalendarModal from './DeleteCalendarModal';
 import Image from 'next/image';
 import logo from '../../assets/logo.webp';
 import TimeFormatter from './timeFormatter';
+import { staatliches } from '@/styles/fonts/fonts';
 
 export default function CardEditablePastEvents({
   id,
@@ -25,13 +26,23 @@ export default function CardEditablePastEvents({
     setIsModalVisible(false);
   };
   return (
-    <div className={`past event event-${id}`}>
-      <h2 className="event__name">{event_name}</h2>
-      <h3 className="event__date">{<TimeFormatter time={event_date} />}</h3>
-      <div className="event__teams">
-        <div className="event__teams__home">
-          <p className="event__teams__home__short-name">VZ</p>
-          <div className="event__teams__home__logo">
+    <>
+    <div className={`futur-event event-${id}`}>
+      <div className="futur-event__description">
+        <h3
+          className={`futur-event__description__name ${staatliches.className}`}
+        >
+          {event_name}
+        </h3>
+        <h4
+          className={`futur-event__description__date ${staatliches.className}`}
+        >
+          {<TimeFormatter time={event_date} />}
+        </h4>
+      </div>
+      <div className="futur-event__teams">
+        <div className="futur-event__teams__home">
+          <div className="futur-event__teams__home__logo">
             <Image
               className="logo"
               src={logo}
@@ -40,14 +51,12 @@ export default function CardEditablePastEvents({
               priority={true}
             />
           </div>
+          <div className="futur-event__teams__home__initials">VZ</div>
         </div>
-        <p>{score}</p>
-        <div className="event__teams__away">
-          <p className="event__teams__away__short-name">
-            {adversary_name_short}
-          </p>
-          <div className="event__teams__logo__away">
-            <Image
+        <div className="futur-event__teams__versus custom-font">V S</div>
+        <div className="futur-event__teams__away">
+          <div className="futur-event__teams__away__logo">
+          <Image
               className="logo"
               src={image}
               fill={true}
@@ -55,22 +64,30 @@ export default function CardEditablePastEvents({
               priority={true}
             />
           </div>
+          <div className="futur-event__teams__away__initials">
+            {adversary_name_short}
+          </div>
         </div>
       </div>
-      <a href={replay_link} target="_blank">
-        <button className="event__button" type="button">
+      <div className="futur-event__btn">
+        <a className="futur-event__btn__white-neon" href={replay_link}>
           Replay
-        </button>
-      </a>
+        </a>
+      </div>
+    </div>
+        <div className='dashboard-btn'>
       <Link href={`dashboard/calendar/${id}`}>
-        <button>Modifier</button>
+        <button className="dashboard-btn__button edit">Modifier</button>
       </Link>
-      <button onClick={handleDeleteClick}>Supprimer</button>
+      <button className="dashboard-btn__button delete" onClick={handleDeleteClick}>
+        Supprimer
+      </button>
+      </div>
       {isModalVisible && (
         <div id="deleteArticleModal">
           <DeleteCalendarModal id={id} closeModal={closeModal} />
         </div>
       )}
-    </div>
+    </>
   );
 }

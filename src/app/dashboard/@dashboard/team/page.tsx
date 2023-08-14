@@ -7,6 +7,7 @@ import {
   AllEditableMembers,
   fetchAdminTeam,
 } from '@/app/components_api/TeamAdmin';
+import { staatliches } from '@/styles/fonts/fonts';
 import './index.scss';
 
 export default function DashboardTeam() {
@@ -19,17 +20,16 @@ export default function DashboardTeam() {
   const members = AllEditableMembers();
 
   return (
-    <>
-      <div className="team">
-        <h1>TEAM</h1>
-        <div className="new-member">
+      <section className="team">
+        <h1 className={`team__title ${staatliches.className}`}>TEAM</h1>
+        <div className="new">
+        <div className="new__btn">
           <Link href="/dashboard/team/create">
-            <button className="button">Ajouter un membre</button>
+            <button className="new__btn__neon-btn">Ajouter un membre</button>
           </Link>
         </div>
-
+        </div>
         <div>{members}</div>
-      </div>
-    </>
+      </section>
   );
 }
