@@ -1,22 +1,32 @@
 @use '../../styles/variables' as v;
 @use '../../styles/mixins' as m;
 
-.dashboard-menu ul li {
-  background-color: #123a56;
-  border-radius: 10px;
-  padding: 20px; /* espace intérieur de la carte */
-  margin-top: 30px; /* add top margin */
-  margin-bottom: 30px; /* add bottom margin */
-  overflow: hidden;
-  white-space: nowrap; /* keep all text on the same line */
-  text-align: center;
-  @include m.shadow-styles;
-}
-
 .dashboard-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 40px;
+  margin: 20px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.dashboard-menu ul li {
+  padding-bottom: 40px;
+  border: none;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  :hover {
+    color: #ffffff;
+    text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
+  }
+}
+
+.dashboard-menu a {
+  color: #c63575;
 }

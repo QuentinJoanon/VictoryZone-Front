@@ -7,6 +7,7 @@ import { editArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
 import './index.scss';
 import Image from 'next/image';
+import { khand, staatliches, ysabeau } from '@/styles/fonts/fonts';
 
 export default function EditArticle({ params }: { params: { slug: string } }) {
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -104,40 +105,46 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
   }, [article.title]);
 
   return (
-    <main>
-      <h1>Modifier l &apos;article</h1>
-      {message && <p>{message}</p>}
-      <div className="modify-article">
-        <form className="modify-article__form" onSubmit={handleSubmitForm}>
-          <div className="modify-article__form__image">
-            <label className="modify-article__form__label" htmlFor="image">
+    <section className="modify-article">
+      <h1 className={`modify-article__title ${staatliches.className}`}>
+        Modifier l &apos;article
+      </h1>
+      {message && (
+        <p className={`modify-article__sub-description ${khand.className}`}>
+          {message}
+        </p>
+      )}
+      <div className="modify-article__form">
+        <form onSubmit={handleSubmitForm}>
+          <div className="modify-article__form__file__file-info">
+            <label
+              className="modify-article__form__file__label"
+              htmlFor="image"
+            >
               Modifier l &apos;image
+              <input
+                className="modify-article__form__file__input"
+                type="file"
+                name="image"
+                id="image"
+                accept=".webp, .png, .jpeg"
+                onChange={handleChange}
+              />
             </label>
-            <p className="new-article__form__image__info">
-              Taille maximum autorisée : 3 Mo
-            </p>
-            <p className="new-article__form__image__info">
-              Formats autorisés : .webp, .png, .jpeg, .jpg
-            </p>
-            <input
-              className="modify-article__form__input"
-              type="file"
-              name="image"
-              id="image"
-              accept=".webp, .png, .jpeg"
-              onChange={handleChange}
-            />
+          </div>
+          <div className="modify-article__form__image__info">
+            <p>Taille maximum autorisée : 3 Mo</p>
+            <p>Formats autorisés : .webp, .png, .jpeg, .jpg</p>
           </div>
           {imagePreview && (
             <div className="modify-article__form__image-preview">
               <Image
                 src={imagePreview}
-                width={200}
-                height={200}
+                fill={true}
                 alt="Aperçu de l'image"
-                className="new-article__form__image-preview__image"
+                className="modify-article__form__image-preview__image"
               />
-              <p className="new-article__form__image-preview__filename">
+              <p className="modify-article__form__image-preview__filename">
                 {fileName}
               </p>
             </div>
@@ -146,7 +153,7 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
             Légende de l &apos;image
           </label>
           <input
-            className="modify-article__form__input"
+            className="modify-article__form__fields"
             type="text"
             name="figcaption"
             id="figcaption"
@@ -158,20 +165,20 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
             Titre
           </label>
           <input
-            className="modify-article__form__input"
+            className="modify-article__form__fields"
             type="text"
             name="title"
             id="title"
             onChange={handleChange}
             value={article.title}
           />
-          <p className="new-article__form__slug">Slug : {slug}</p>
+          <p className="modify-article__form__slug">Slug : {slug}</p>
 
           <label className="modify-article__form__label" htmlFor="content">
             Contenu
           </label>
           <textarea
-            className="modify-article__form__input"
+            className="modify-article__form__fields"
             name="content"
             id="content"
             onChange={handleTextareaChange}
@@ -185,20 +192,22 @@ export default function EditArticle({ params }: { params: { slug: string } }) {
             Date de publication
           </label>
           <input
-            className="modify-article__form__input"
+            className="modify-article__form__fields"
             type="date"
             name="publication_date"
             id="publication_date"
             onChange={handleChange}
           />
 
-          <input
-            className="modify-article__form__input"
-            type="submit"
-            value="Envoyer"
-          />
+          <div className="modify-article__form__btn">
+            <input
+              type="submit"
+              value="Envoyer"
+              className="modify-article__form__btn__submit"
+            />
+          </div>
         </form>
       </div>
-    </main>
+    </section>
   );
 }

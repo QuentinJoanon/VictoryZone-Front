@@ -1,6 +1,7 @@
 'use client';
 import jwt_decode from 'jwt-decode';
 import React, { useEffect, useState } from 'react';
+import './index.scss';
 
 interface DashboardLayout {
   id: number;
