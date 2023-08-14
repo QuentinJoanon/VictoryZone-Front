@@ -7,6 +7,7 @@ import { TeamData } from '@/app/context/Team';
 import { editMember } from '@/app/components_api/TeamAdmin';
 import './index.scss';
 import Image from 'next/image';
+import { khand, staatliches } from '@/styles/fonts/fonts';
 
 export default function EditMember({
   params,
@@ -69,7 +70,7 @@ export default function EditMember({
       console.log(form);
       const statusCode = await editMember(form, id);
       if (statusCode === 200) {
-        setMessage('Article modifié avec succès.');
+        setMessage('member modifié avec succès.');
       } else {
         setMessage('Erreur ' + statusCode);
       }
@@ -108,49 +109,49 @@ export default function EditMember({
   };
 
   return (
-    <main>
-      <h1>Modifier un membre</h1>
-      {message && <p>{message}</p>}
-      <div className="modify-member">
-        <form className="modify-member__form" onSubmit={handleSubmitForm}>
-          <div className="modify-member__form__image">
-            <label className="modify-member__label" htmlFor="image">
+    <section className="modify-member">
+      <h1 className={`modify-member__title ${staatliches.className}`}>Modifier un membre</h1>
+      {message && <p className={`modify-member__sub-description ${khand.className}`}>{message}</p>}
+      <div className="modify-member__form">
+        <form onSubmit={handleSubmitForm}>
+        <div className="modify-member__form__file__file-info">
+            <label
+              className="modify-member__form__file__label"
+              htmlFor="image"
+            >
               Modifier la photo
+              <input
+                className="modify-member__form__file__input"
+                type="file"
+                name="image"
+                id="image"
+                accept=".webp, .png, .jpeg"
+                onChange={handleChange}
+              />
             </label>
-            <p className="new-article__form__image__info">
-              Taille maximum autorisée : 3 Mo
-            </p>
-            <p className="new-article__form__image__info">
-              Formats autorisés : .webp, .png, .jpeg, .jpg
-            </p>
-            <input
-              className="modify-member__form__input"
-              type="file"
-              name="image"
-              id="image"
-              accept=".webp, .png, .jpeg"
-              onChange={handleChange}
-            />
+          </div>
+          <div className="modify-member__form__image__info">
+            <p>Taille maximum autorisée : 3 Mo</p>
+            <p>Formats autorisés : .webp, .png, .jpeg, .jpg</p>
           </div>
           {imagePreview && (
-            <div className="modify-article__form__image-preview">
+            <div className="modify-member__form__image-preview">
               <Image
                 src={imagePreview}
-                width={200}
-                height={200}
+                fill={true}
                 alt="Aperçu de l'image"
-                className="new-article__form__image-preview__image"
+                className="modify-member__form__image-preview__image"
               />
-              <p className="new-article__form__image-preview__filename">
+              <p className="modify-member__form__image-preview__filename">
                 {fileName}
               </p>
             </div>
           )}
-          <label className="modify-member__label" htmlFor="first_name">
+          <label className="modify-member__form__label" htmlFor="first_name">
             Prénom
           </label>
           <input
-            className="modify-member__input"
+            className="modify-member__form__fields"
             type="text"
             name="first_name"
             id="first_name"
@@ -158,11 +159,11 @@ export default function EditMember({
             value={member.first_name}
           />
 
-          <label className="modify-member__label" htmlFor="user_name">
+          <label className="modify-member__form__label" htmlFor="user_name">
             Pseudo
           </label>
           <input
-            className="modify-member__input"
+            className="modify-member__form__fields"
             type="text"
             name="user_name"
             id="user_name"
@@ -170,11 +171,11 @@ export default function EditMember({
             value={member.user_name}
           />
 
-          <label className="modify-member__label" htmlFor="role">
+          <label className="modify-member__form__label" htmlFor="role">
             Rôle
           </label>
           <input
-            className="modify-member__input"
+            className="modify-member__form__fields"
             type="text"
             name="role"
             id="role"
@@ -182,22 +183,22 @@ export default function EditMember({
             value={member.role}
           />
 
-          <label className="modify-member__label" htmlFor="description">
+          <label className="modify-member__form__label" htmlFor="description">
             Description
           </label>
           <textarea
-            className="modify-member__input"
+            className="modify-member__form__fields"
             name="description"
             id="description"
             onChange={handleTextareaChange}
             value={member.description}
           />
 
-          <label className="modify-member__label" htmlFor="youtube_link">
+          <label className="modify-member__form__label" htmlFor="youtube_link">
             Youtube
           </label>
           <input
-            className="modify-member__input"
+            className="modify-member__form__fields"
             type="text"
             name="youtube_link"
             id="youtube_link"
@@ -205,11 +206,11 @@ export default function EditMember({
             value={member.youtube_link}
           />
 
-          <label className="modify-member__label" htmlFor="twitch_link">
+          <label className="modify-member__form__label" htmlFor="twitch_link">
             Twitch
           </label>
           <input
-            className="modify-member__input"
+            className="modify-member__form__fields"
             type="text"
             name="twitch_link"
             id="twitch_link"
@@ -217,11 +218,11 @@ export default function EditMember({
             value={member.twitch_link}
           />
 
-          <label className="modify-member__label" htmlFor="twitter_link">
+          <label className="modify-member__form__label" htmlFor="twitter_link">
             Twitter
           </label>
           <input
-            className="modify-member__input"
+            className="modify-member__form__fields"
             type="text"
             name="twitter_link"
             id="twitter_link"
@@ -230,12 +231,12 @@ export default function EditMember({
           />
 
           <input
-            className="modify-member__input"
+            className="modify-member__form__fields"
             type="submit"
             value="Envoyer"
           />
         </form>
       </div>
-    </main>
+    </section>
   );
 }
