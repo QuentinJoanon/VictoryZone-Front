@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { createNewArticle } from '@/app/components_api/ArticlesAdmin';
 import { useRouter } from 'next/navigation';
-import './index.scss';
+import '../[slug]/index.scss';
 import Image from 'next/image';
+import { khand, staatliches, ysabeau } from '@/styles/fonts/fonts';
 
 export default function NewArticle() {
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -91,51 +92,51 @@ export default function NewArticle() {
   }, [formData.title]);
 
   return (
-    <main>
-      <h1>Nouvel article</h1>
-      {message && <p>{message}</p>}
-      <div className="new-article">
-        <form className="new-article__form" onSubmit={handleSubmitForm}>
-          <div className="new-article__form__image">
-            <label className="new-article__form__label" htmlFor="image">
+    <section className="modify-article">
+      <h1 className={`modify-article__title ${staatliches.className}`}>Nouvel article</h1>
+      {message && <p className={`modify-article__sub-description ${khand.className}`}>{message}</p>}
+      <div className="modify-article__form">
+        <form onSubmit={handleSubmitForm}>
+          <div className="modify-article__form__file__file-info">
+          <label
+              className="modify-article__form__file__label"
+              htmlFor="image"
+            >
               Ajouter une image
+              <input
+                className="modify-article__form__file__input"
+                type="file"
+                name="image"
+                id="image"
+                accept=".webp, .png, .jpeg"
+                onChange={handleChange}
+              />
             </label>
-            <p className="new-article__form__image__info">
-              Taille maximum autorisée : 3 Mo
-            </p>
-            <p className="new-article__form__image__info">
-              Formats autorisés : .webp, .png, .jpeg, .jpg
-            </p>
-            <input
-              className="new-article__form__input"
-              type="file"
-              name="image"
-              id="image"
-              onChange={handleChange}
-              accept=".webp, .png, .jpeg, .jpg"
-              required
-            />
+          </div>
+          <div className="modify-article__form__image__info">
+            <p>Taille maximum autorisée : 3 Mo</p>
+            <p>Formats autorisés : .webp, .png, .jpeg, .jpg</p>
           </div>
           {imagePreview && (
-            <div className="new-article__form__image-preview">
+            <div className="modify-article__form__form__image-preview">
               <Image
                 src={imagePreview}
                 width={200}
                 height={200}
                 alt="Aperçu de l'image"
-                className="new-article__form__image-preview__image"
+                className="modify-article__form__form__image-preview__image"
               />
-              <p className="new-article__form__image-preview__filename">
+              <p className="modify-article__form__form__image-preview__filename">
                 {fileName}
               </p>
             </div>
           )}
 
-          <label className="new-article__form__label" htmlFor="figcaption">
+          <label className="modify-article__form__form__label" htmlFor="figcaption">
             Légende de l &apos;image
           </label>
           <input
-            className="new-article__form__input"
+            className="modify-article__form__fields"
             type="text"
             name="figcaption"
             id="figcaption"
@@ -144,11 +145,11 @@ export default function NewArticle() {
             required
           />
 
-          <label className="new-article__form__label" htmlFor="title">
+          <label className="modify-article__form__form__label" htmlFor="title">
             Titre
           </label>
           <input
-            className="new-article__form__input"
+            className="modify-article__form__fields"
             type="text"
             name="title"
             id="title"
@@ -156,13 +157,13 @@ export default function NewArticle() {
             value={formData.title}
             required
           />
-          <p className="new-article__form__slug">Slug : {slug}</p>
+          <p className="modify-article__form__slug">Slug : {slug}</p>
 
-          <label className="new-article__form__label" htmlFor="content">
+          <label className="modify-article__form__label" htmlFor="content">
             Contenu
           </label>
           <textarea
-            className="new-article__form__input"
+            className="modify-article__form__fields"
             name="content"
             id="content"
             onChange={handleTextareaChange}
@@ -171,13 +172,13 @@ export default function NewArticle() {
           />
 
           <label
-            className="new-article__form__label"
+            className="modify-article__form__label"
             htmlFor="publication_date"
           >
             Date de publication
           </label>
           <input
-            className="new-article__form__input"
+            className="modify-article__form__fields"
             type="date"
             name="publication_date"
             id="publication_date"
@@ -185,13 +186,16 @@ export default function NewArticle() {
             value={formData.publication_date}
           />
 
-          <input
-            className="new-article__form__input"
-            type="submit"
-            value="Envoyer"
-          />
+<div className="modify-article__form__btn">
+            <input
+              type="submit"
+              value="Envoyer"
+              className="modify-article__form__btn__submit"
+            />
+          </div>
+          
         </form>
       </div>
-    </main>
+    </section>
   );
 }
