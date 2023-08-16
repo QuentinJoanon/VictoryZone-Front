@@ -4,6 +4,12 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+
+  .errmsg {
+    color: #ffffff;
+    text-shadow: red 0px 0px 5px, red 0px 0px 10px, red 0px 0px 15px;
+    margin: 15px;
+  }
  
 
   h1 {
