@@ -1,25 +1,179 @@
-@use '../../../../../styles/mixins' as m;
-@use '../../../../../styles/mixins-button' as mb;
-
 .modify-article {
-  // conteneur globale
-  @include m.card-styles;
-  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 20px 0 20px;
+  background: rgb(0, 0, 0, 0.1);
+  text-decoration: none;
+  border-radius: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  @media screen and (min-width: 1200px) {
+    margin: 10px 100px;
+  }
+
+  &__title {
+    margin-top: 50px;
+    font-size: 38px;
+    text-align: center;
+    color: white;
+    @media screen and (min-width: 1200px) {
+      margin-top: 100px;
+    }
+  }
+  &__sub-title {
+    margin-bottom: 50px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #c63575;
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+  }
+  &__description-container {
+    @media screen and (min-width: 1200px) {
+      width: 500px;
+    }
+  }
+  &__description {
+    margin: 0 40px;
+    font-size: 18px;
+    color: white;
+    @media screen and (min-width: 1200px) {
+    }
+  }
+  &__sub-description {
+    margin: 50px 40px 0 40px;
+    color: white;
+  }
 
   &__form {
-    // conteneur du formulaire
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px;
-
-    &__label {
-      grid-column: 1;
-      margin: 5px;
-      font-size: 1.6rem;
+    margin-top: 20px;
+    padding: 20px;
+    color: white;
+    & textarea {
+      resize: none;
+      height: 200px;
+      &::placeholder {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+      }
     }
-    &__input {
-      grid-column: 2;
-      font-size: 1.6rem;
+    @media screen and (min-width: 1200px) {
+      display: flex;
+      justify-content: center;
+      margin: 60px;
+    }
+    &__image__info {
+      margin-bottom: 1rem;
+    }
+    &__image-preview {
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+    &__image-preview__image {
+      object-fit: contain;
+    }
+    &__fields {
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      padding: 20px;
+      color: white;
+      box-shadow: 0px 1px 2px rgba(198, 53, 117, 0.5),
+        0px 2px 4px rgba(198, 53, 117, 0.5), 0px 4px 8px rgba(198, 53, 117, 0.5),
+        0px 8px 16px rgba(198, 53, 117, 0.5);
+      border-radius: 5px;
+      background: rgba(40, 39, 39, 0.495);
+      border: none;
+      outline: none;
+      &::placeholder {
+        padding-left: 10px;
+        color: white;
+      }
+    }
+    &__btn {
+      display: flex;
+      margin-bottom: 50px;
+
+      // btn soumission du formulaire
+
+      &__submit {
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        border-radius: 10px;
+        background-color: rgb(198, 53, 117, 0.9);
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px,
+          rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+          rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        color: white;
+        // border: none;
+        &:hover {
+          color: #ffffff;
+          text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
+        }
+        @media screen and (min-width: 1200px) {
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+}
+
+.modify-article__form__file {
+  // Pour le fichier CV
+  // border: 1px solid blueviolet;
+
+  &__input {
+    // border: 1px solid #b0b;
+    height: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
+    width: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
+    opacity: 0px; // Cacher le bouton de champ d'entrée pour afficher le label
+    pointer-events: none; // desactiver les interactions du champ
+  }
+  &__label {
+    display: inline-flex;
+    align-items: center; // Aligner le + et le attacher votre cv
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 700;
+
+    &::before {
+      content: '+';
+      font-size: 40px;
+      color: #c63575;
+      margin-right: 10px;
+      box-shadow: 0 8px 32px 0 rgba(162, 9, 204, 0.37);
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
+    }
+  }
+
+  &__file-info {
+    display: flex; // Pour aligner correctement le nom du fichier et la croix de suppression
+    align-items: center; // Pour aligner correctement le nom du fichier et la croix de suppression
+    margin-top: 15px;
+
+    &__file-name {
+      // border: 1px solid orangered;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+    &__remove-file {
+      border: solid 1px yellow;
+      margin-left: 5px;
     }
   }
 }

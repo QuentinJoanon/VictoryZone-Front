@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { AllMembersTeam, fetchTeam } from '../components_api/TeamList';
 import { useTeamContext } from '../context/Team';
 import { fetchMedias } from '../components_api/MediaList';
+import { khand, staatliches, ysabeau } from '@/styles/fonts/fonts';
 
 export default function Team() {
   const { setTeamList } = useTeamContext();
@@ -32,10 +33,13 @@ export default function Team() {
   return (
     <>
       <div className="team">
-        <h1>TEAM</h1>
+        <h1 className={`team__title ${staatliches.className}`}>La Team</h1>
+        <h2 className={`team__sub-title ${ysabeau.className}`}>Warzone</h2>
         {membersTeam}
       </div>
-      <h2>Nos dernières vidéos</h2>
+      <h2 className={`team__sub-title ${ysabeau.className}`}>
+        Nos dernières vidéos
+      </h2>
       <div className="videos-container">{videos}</div>
     </>
   );

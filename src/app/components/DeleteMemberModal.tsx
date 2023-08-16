@@ -21,15 +21,21 @@ export default function DeleteMemberModal({
     <div className="modal-box">
       <h3>Voulez-vous vraiment supprimer ce membre ?</h3>
       <form
-        className="modal-action"
+        className="modal-box__form"
         onSubmit={(e) => handleDeleteSubmit(e, user_name)}
       >
-        <button type="button" className="button" onClick={closeModal}>
-          Fermer
-        </button>
-        <button type="submit" className="button-delete">
-          Supprimer
-        </button>
+        <div className='dashboard-btn'>
+          <button
+            type="button"
+            className="dashboard-btn__button"
+            onClick={closeModal}
+          >
+            Fermer
+          </button>
+          <button type="submit" className="dashboard-btn__button delete">
+            Supprimer
+          </button>
+        </div>
       </form>
     </div>
   );

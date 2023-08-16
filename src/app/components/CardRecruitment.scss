@@ -1,0 +1,26 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+@use '../../styles/mixins-button' as mb;
+
+.button {
+  @include mb.button;
+}
+
+.button-edit {
+  @include mb.button-edit;
+}
+
+.button-delete {
+  @include mb.button-delete;
+}
+
+.recruitment {
+  @include m.card-styles;
+  display: flex;
+
+  --img-scale: 1.001;
+  --title-color: white;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  padding: 0;
+}

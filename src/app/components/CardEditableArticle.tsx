@@ -2,9 +2,10 @@ import Link from 'next/link';
 import { ArticleData } from '../context/Article';
 import Image from 'next/image';
 import DeleteArticleModal from './DeleteArticleModal';
-import './CardArticle.scss';
+import './CardEditableArticle.scss';
 import { useState } from 'react';
 import TimeFormatter from './timeFormatter';
+import { khand, staatliches } from '@/styles/fonts/fonts';
 
 export default function CardEditableArticle({
   slug,
@@ -27,10 +28,9 @@ export default function CardEditableArticle({
   };
 
   return (
-    <div className={`article-box ${slug}`}>
-      <Link href={`/articles/${slug}`}>
-        <div className="article">
-          <div className="article__img">
+    <article className={`card-article ${slug}`}>
+      <Link className="card_article__link" href={`/articles/${slug}`}>
+          <div className="card-article__img">
             <Image
               className="img"
               src={image}
@@ -38,32 +38,45 @@ export default function CardEditableArticle({
               alt="" // {figcaption}
             />
           </div>
-          <div className="info-container">
-            <div>
-              <p className="article__date">
+          <div className="card-article__info">
+            <div className="card-article__info__top-items">
+              <div
+                className={`card-article__info__top-items__category ${khand.className}`}
+              >
+                {categories}
+              </div>
+              <div
+                className={`card-article__info__top-items__date ${khand.className}`}
+              >
                 {<TimeFormatter time={publication_date} />}
-              </p>
-              <p className="article__author">{author}</p>
+              </div>
+              <div className="card-article__info__top-items__author">
+                {author}
+              </div>
             </div>
-            <div>
-              <p className="article__category">{categories}</p>
-            </div>
-          </div>
-          <h2 className="article__title">{title}</h2>
-          <p className="article__content">{content}</p>
+
+          <h1 className={`card-article__info__title ${staatliches.className}`}>
+            {title}
+          </h1>
+
+          <p className={`card-article__info__content ${khand.className}`}>
+            {content}
+          </p>
         </div>
       </Link>
+      <div className='dashboard-btn'>
       <Link href={`dashboard/articles/${slug}`}>
-        <button className="button-edit">Modifier</button>
+        <button className="dashboard-btn__button edit">Modifier</button>
       </Link>
-      <button className="button-delete" onClick={handleDeleteClick}>
+      <button className="dashboard-btn__button delete" onClick={handleDeleteClick}>
         Supprimer
       </button>
+      </div>
       {isModalVisible && (
         <div id="deleteArticleModal">
           <DeleteArticleModal slug={slug} closeModal={closeModal} />
         </div>
       )}
-    </div>
+    </article>
   );
 }

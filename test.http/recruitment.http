@@ -1,4 +1,4 @@
-@endpoint = http://localhost:{{$dotenv PORT}}/api
+@endpoint = https://esport-website-backend-production.up.railway.app/api
 @accessToken = {{login.response.body.$.data.accessToken}}
 @refreshToken = {{login.response.body.$.data.refreshToken}}
 
@@ -8,8 +8,8 @@ POST {{endpoint}}/auth/login
 content-type: application/json
 
 {
-    "email": "axel@axel.com",
-    "password": "secret"
+    "email": "john@example.com",
+    "password": "oclock"
 }
 
 ### REFRESH TOKEN FIRST TIME

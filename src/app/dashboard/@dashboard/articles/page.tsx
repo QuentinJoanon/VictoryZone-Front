@@ -7,7 +7,8 @@ import {
   fetchAdminArticles,
 } from '@/app/components_api/ArticlesAdmin';
 import Link from 'next/link';
-import './index.scss';
+// import './index.scss';
+import { staatliches } from '@/styles/fonts/fonts';
 
 export default function DashboardArticles() {
   const { setArticlesList } = useArticleContext();
@@ -19,14 +20,19 @@ export default function DashboardArticles() {
   const articles = AllEditableArticles();
 
   return (
-    <main>
-      <h1>Articles</h1>
-      <div className="new-article">
+    <section className="articles">
+      <h1 className={`articles__title ${staatliches.className}`}>Articles</h1>
+      <div className="new">
+      <div className="new__btn">
         <Link href="/dashboard/articles/create">
-          <button className="button">Ajouter un article</button>
+          <button className="new__btn__neon-btn">Ajouter un article</button>
         </Link>
+        </div>
       </div>
+      <h2 className={`articles__sub-title ${staatliches.className}`}>
+        Tous les articles
+      </h2>
       <div className="articles__dashboard">{articles}</div>
-    </main>
+    </section>
   );
 }

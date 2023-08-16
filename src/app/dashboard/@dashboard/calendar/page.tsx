@@ -8,6 +8,7 @@ import {
   AllEditablePastCalendars,
   fetchAdminCalendar,
 } from '@/app/components_api/CalendarAdmin';
+import { staatliches } from '@/styles/fonts/fonts';
 
 export default function DashboardCalandar() {
   const { setCalendarFutureList, setCalendarPastList } = useCalendarContext();
@@ -20,14 +21,17 @@ export default function DashboardCalandar() {
   const pastCalendar = AllEditablePastCalendars();
 
   return (
-    <main>
-      <h1>Calendrier</h1>
+    <section className="calendar">
+      <h1 className={`calendar__title ${staatliches.className}`}>Calendrier</h1>
+            <div className="new">
+      <div className="new__btn">
       <Link href="/dashboard/calendar/create">
-        <button>Ajouter un évenement</button>
+        <button className="new__btn__neon-btn">Ajouter un évenement</button>
       </Link>
-
+        </div>
+      </div>
       <div>{futureCalendar}</div>
       <div>{pastCalendar}</div>
-    </main>
+    </section>
   );
 }

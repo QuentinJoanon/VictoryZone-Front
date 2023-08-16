@@ -3,6 +3,7 @@ import { ArticleData } from '../context/Article';
 import Image from 'next/image';
 import TimeFormatter from './timeFormatter';
 import './CardArticle.scss';
+import { khand, staatliches } from '@/styles/fonts/fonts';
 
 export default function CardArticle({
   slug,
@@ -16,30 +17,43 @@ export default function CardArticle({
   figcaption,
 }: ArticleData | any) {
   return (
-    <Link href={`/articles/${slug}`}>
-      <div className="article">
-        <div className="article__img">
+    <article className="card-article">
+      <Link className="card_article__link" href={`/articles/${slug}`}>
+        <div className="card-article__img">
           <Image
             className="img"
             src={image}
             fill={true}
             alt="" // {figcaption}
+            sizes="(max-width: 768px) 100vw, 700px"
           />
         </div>
-        <div className="info-container">
-          <div>
-            <p className="article__date">
+        <div className="card-article__info">
+          <div className="card-article__info__top-items">
+            <div
+              className={`card-article__info__top-items__category ${khand.className}`}
+            >
+              {categories}
+            </div>
+            <div
+              className={`card-article__info__top-items__date ${khand.className}`}
+            >
               {<TimeFormatter time={publication_date} />}
-            </p>
-            <p className="article__author">{author}</p>
+            </div>
+            <div className="card-article__info__top-items__author">
+              {author}
+            </div>
           </div>
-          <div>
-            <p className="article__category">{categories}</p>
-          </div>
+
+          <h1 className={`card-article__info__title ${staatliches.className}`}>
+            {title}
+          </h1>
+
+          <p className={`card-article__info__content ${khand.className}`}>
+            {content}
+          </p>
         </div>
-        <h2 className="article__title">{title}</h2>
-        <p className="article__content">{content}</p>
-      </div>
-    </Link>
+      </Link>
+    </article>
   );
 }
